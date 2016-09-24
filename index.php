@@ -132,6 +132,16 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
         </section>
     </div>
     <section class="video">
+
+    	<h2>Tutorial: IntelliJ 2016, Scala 2.11, ScalaTest &amp; SBT: Quick Tutorial</h2>
+        <iframe id="video" width="640" height="360" src="//www.youtube-nocookie.com/embed/A2w8kBA22vo?rel=0"
+                frameborder="0" allowfullscreen></iframe>
+                <p class="permalink"><a href="/1607/quick-scala-tutorial/">Permalink</a></p>
+
+
+    </section>
+
+    <section class="video">
         <h2>Talk &amp; paper: <a href="http://xmllondon.com/2014/presentations/narmontas/" target="_blank">XML
                 Processing in Scala at XML London 2014</a></h2>
 
@@ -140,6 +150,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
             conference.</p>
         <iframe id="video" width="640" height="360" src="//www.youtube-nocookie.com/embed/sgDmXU5NHXU?rel=0"
                 frameborder="0" allowfullscreen></iframe>
+                <p class="permalink"><a href="/1406/xml-processing-in-scala/">Permalink</a></p>
     </section>
     <br/>
     <section class="video">
@@ -148,5 +159,6 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
         <p>March - April 2014, City of London</p>
         <iframe id="video" width="640" height="360" src="//www.youtube-nocookie.com/embed/tsR0zc6kzRk?rel=0"
                 frameborder="0" allowfullscreen></iframe>
+                <p class="permalink"><a href="/1404/an-introduction-to-scala/">Permalink</a></p>
     </section>
 <?php echo $foot;
