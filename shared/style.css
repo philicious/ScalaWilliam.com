@@ -1,0 +1,263 @@
+a {
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -gecko-transition: all 0.2s linear;
+}
+.slide h2 {
+  font-family: "Myriad Web Pro";
+  font-size: 20px;
+}
+.slide {
+  font-family: "Lucida Grande";
+  font-size: 16px;
+}
+header {
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+header h1 {
+  font-family: "Myriad Web Pro";
+  font-size: 40px;
+  margin-bottom: 0;
+}
+header h1 a {
+  text-decoration: none;
+  color: #001834;
+}
+header h2 {
+  margin-top: 0;
+  font-family: "Myriad Web Pro";
+  font-size: 18px;
+  font-weight: normal;
+  letter-spacing: -0.06em;
+  margin-bottom: 0;
+}
+#links > nav > ul {
+  width: 35em;
+  margin-left: auto;
+  margin-right: auto;
+}
+#links > nav > ul > li {
+  background-color: #f4f4f4;
+  border: 1px solid #e5e5e5;
+  border-radius: 1em;
+  background-repeat: no-repeat;
+  background-position: center 1.5em;
+  display: inline-block;
+  text-align: center;
+  margin-right: 2em;
+  width: 9.5em;
+  vertical-align: top;
+  box-shadow: 0px 0px 2px gray;
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -gecko-transition: all 0.2s linear;
+}
+#links > nav > ul > li:last {
+  margin-right: 0;
+}
+#links > nav > ul > li a {
+  display: block;
+  padding-top: 4.5em;
+  height: 9em;
+  text-decoration: none;
+  color: black;
+}
+#links > nav > ul > li a p {
+  font-family: "Lucida Grande";
+  font-size: 12px;
+  margin: 1em;
+}
+#links > nav > ul > li a h3 {
+  font-family: "Myriad Web Pro";
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+#links > nav > ul > li:hover {
+  box-shadow: 0px 0px 2px black;
+}
+#links > nav > ul > li:hover a {
+  color: blue;
+}
+.slide {
+  min-width: 600px;
+  width: 50em;
+  margin: 0 auto;
+}
+section.slide {
+  background-repeat: no-repeat;
+  margin-top: 5em;
+  margin-bottom: 5em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  border-top: thin solid #c0c0c0;
+  border-bottom: thin solid #c0c0c0;
+  position: relative;
+  margin-left: 40%;
+}
+section.slide > h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+section.slide .img {
+  left: -16em;
+  position: absolute;
+  height: 10em;
+  width: 16em;
+}
+#william .img {
+  background-image: url('../images/william.png');
+  position: absolute;
+  top: 50%;
+  margin-top: -60px;
+  width: 180px;
+  background-position: right top;
+  background-repeat: no-repeat;
+  height: 120px;
+}
+#services .img {
+  background-image: url('../images/handshake.png');
+  position: absolute;
+  top: 50%;
+  margin-top: -60px;
+  width: 180px;
+  background-position: right top;
+  background-repeat: no-repeat;
+  height: 120px;
+}
+#scala .img {
+  background-image: url('../images/what-is-scala.png');
+  position: absolute;
+  top: 50%;
+  margin-top: -60px;
+  width: 180px;
+  background-position: right top;
+  background-repeat: no-repeat;
+  height: 120px;
+}
+#li-linkedin {
+  background-image: url('../images/linkedin.png');
+}
+#li-email {
+  background-image: url('../images/email.png');
+}
+#li-github {
+  background-image: url('../images/github.png');
+}
+#links h2 {
+  display: none;
+}
+#links {
+  position: fixed;
+  bottom: 0;
+  height: 16em;
+  left: 0;
+  right: 0;
+  border-top: thin solid #c0c0c0;
+  background: white;
+  z-index: 7;
+}
+header {
+  border-bottom: thin solid #c0c0c0;
+  background: white;
+  z-index: 5;
+}
+#main {
+  margin-left: auto;
+  margin-right: auto;
+}
+.section {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.section > .slide {
+  position: absolute;
+  top: 50%;
+  margin-top: -10em;
+}
+#menu {
+  font-family: "Lucida Grande";
+  font-size: 16px;
+  letter-spacing: -1px;
+}
+#menu > ol {
+  list-style-type: none;
+}
+#menu > ol > li {
+  display: inline-block;
+}
+#menu > ol > li a {
+  cursor: pointer;
+}
+#menu > ol > li a:hover {
+  color: red;
+}
+#menu > ol > li.current a {
+  color: yellow;
+}
+#menu > ol > li:after {
+  margin-left: 1em;
+  margin-right: 0.7em;
+  content: "•";
+}
+#menu > ol > li:last-child:after {
+  content: "";
+}
+.section {
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -gecko-transition: all 0.2s linear;
+}
+body.shifting .section {
+  z-index: 2;
+  opacity: 0;
+}
+body.shifting[data-current-view=william] li[data-id=william] a {
+  color: blue;
+}
+body.shifting[data-current-view=william] .section#william {
+  z-index: 3;
+  opacity: 1;
+}
+body.shifting[data-current-view=services] li[data-id=services] a {
+  color: blue;
+}
+body.shifting[data-current-view=services] .section#services {
+  z-index: 3;
+  opacity: 1;
+}
+body.shifting[data-current-view=scala] li[data-id=scala] a {
+  color: blue;
+}
+body.shifting[data-current-view=scala] .section#scala {
+  z-index: 3;
+  opacity: 1;
+}
+#twitter {
+  position: fixed;
+  top: 2em;
+  left: 50%;
+  margin-left: 25em;
+}
+#twitter svg {
+  width: 3em;
+  height: 2em;
+  opacity: 0.8;
+}
+#twitter:hover svg {
+  opacity: 1;
+}

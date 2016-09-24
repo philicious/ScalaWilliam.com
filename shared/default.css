@@ -1,0 +1,208 @@
+
+	@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(opensans.woff) format('woff');
+}
+body {
+ font-family:"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+ overflow-y:scroll;
+ line-height:1.6;
+  cursor:default;
+}
+a {
+color: #3887f3;
+text-decoration:none;
+}
+h1 { font-weight:normal; margin-bottom:0;}
+h2 {
+	margin-top:0;
+	font-weight:normal;
+}
+header {
+	border-bottom:thin solid lightgrey;
+  line-height:1.2;
+  cursor:default;
+}
+#links {
+	margin-top:2em;
+}
+#links h2 {
+	display:none;
+}
+#links li {
+display:inline-block;
+font-size:0.9em;
+}
+#links ul {
+	margin-left:auto;
+	margin-right:auto;
+}
+#links > nav > ul > li:last {
+  margin-right: 0;
+}
+#links > nav > ul > li a {
+  display: block;
+  padding:1.0em;
+  border-radius: 1em;
+  box-shadow: 0px 0px 2px gray;
+  padding-top: 5em;
+  height: 9em;
+  text-decoration: none;
+  color: black;
+  /*border: 1px solid #e5e5e5;*/
+
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -gecko-transition: all 0.2s linear;
+}
+#detail {
+margin-top:3.6em;
+font-size:small;
+}
+#links > nav > ul > li a h3 {
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -gecko-transition: all 0.2s linear;
+}
+#links > nav > ul > li a:hover {
+
+  box-shadow: 0px 0px 2px #3887f3;
+}
+#links > nav > ul > li a:hover h3 {
+color: #3887f3;
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -gecko-transition: all 0.2s linear;
+}
+#links > nav > ul > li {
+  background-color: #f4f4f4;
+  border-radius: 1em;
+  background-repeat: no-repeat;
+  background-position: center 1.5em;
+  display: inline-block;
+  text-align: center;
+  margin-right: 2em;
+  width: 12em;
+  vertical-align: top;
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -gecko-transition: all 0.2s linear;
+}
+#li-linkedin {
+  background-image: url('/shared/linkedin.png');
+}
+#li-email {
+  background-image: url('/shared/email.png');
+}
+#li-github {
+  background-image: url('/shared/github.png');
+}
+#links a:hover {
+
+}
+
+#linkedin {
+  position: absolute;
+  top:0.5em;
+  right:0em;
+
+}
+#linkedin svg {
+  opacity: 0.8;
+}
+#linkedin:hover svg {
+  opacity: 1;
+}
+#github-icon {
+  position: absolute;
+  top:2.7em;
+  right:0em;
+margin-right:-2px;
+}
+#github-icon img {
+max-height: 1.1em;
+opacity: 0.8;
+}
+header h2 {
+padding-right:1.7em;}
+#github-icon:hover img {
+  opacity: 1;
+}
+
+#twitter {
+  position: absolute;
+  top:2.6em;
+  right:0em;
+}
+#twitter svg {
+  width: 1.8em;
+  height: 1.2em;
+  opacity: 0.8;
+}
+#twitter:hover svg {
+  opacity: 1;
+}
+#main {
+	margin-left:auto;
+margin-right:auto;
+	width:44em;
+	max-width:90%;
+	position:relative;
+	padding-bottom:2em;
+}
+.slide {
+	margin-top:2em;
+}
+.slide p {
+	/*text-align:justify;*/
+}
+#william .slide {
+  position:relative;
+
+}
+.section#william .slide .img {
+background-image:url('/index/images/headshot-junefourteen.jpg');
+}
+.section#projects .slide .img {
+  background-image: url('/index/images/xmllondon-talk.jpeg');
+}
+.section .slide .img {
+
+  background-size: 100%;
+  width:190px;
+margin-left:1.6em;
+margin-bottom:1.6em;
+  height:125px;
+  border-radius:0.5em;
+  background-repeat:no-repeat;
+  /*position:absolute;
+  right:0;
+  top:0.7em;*/
+float:right;
+display:block;
+  box-shadow:1px 2px 3px lightgray, -1px 0px 3px lightgray;
+}
+.section#william .slide .img {
+height:auto;
+width:180px;
+height:225px;
+}
+.slide {
+	/*text-align:justify;*/
+}
+.q {
+	font-family:Georgia, serif;
+}
+#skills {
+  list-style-type: square;
+}

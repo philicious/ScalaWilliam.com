@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "out",
+"redirects": [ {
+  "source" : "/CV",
+  "destination" : "/cv",
+  "type" : 301
+}]
+  }
+}
