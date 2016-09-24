@@ -206,3 +206,7 @@ height:225px;
 #skills {
   list-style-type: square;
 }
+
+p.permalink {
+	font-size:0.7em;
+}
