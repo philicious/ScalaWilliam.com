@@ -43,6 +43,9 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
         <section class="slide">
             <span class="img"></span>
             <ul id="projects-list">
+            	                <li><a href="http://actionfps.com/" target="_blank">ActionFPS</a>, December 2014 to now
+                </li>
+
                 <li><a href="http://xmllondon.com/2014/presentations/narmontas" target="_blank">XML Processing in Scala,
                         XML London 2014</a> (<a href="https://scala.contractors/xml_processing_in_scala.pdf"
                                                 target="_blank">PDF</a>), June 2014
@@ -52,8 +55,6 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                 </li>
                 <li><a href="http://duel.gg/" target="_blank">duel.gg rankings</a> for <a
                         href="http://www.sauerbraten.org/" target="_blank">Sauerbraten</a>, since January 2014
-                </li>
-                <li><a href="http://actionfps.com/" target="_blank">ActionFPS</a>, May 2015 to now
                 </li>
                 <li><a href="http://woop.ac/" target="_blank">woop.ac rankings</a> for <a
                         href="http://assault.cubers.net/" target="_blank">AssaultCube</a>, December 2014 to May 2015
