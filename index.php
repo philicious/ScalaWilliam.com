@@ -43,6 +43,8 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
         <section class="slide">
             <span class="img"></span>
             <ul id="projects-list">
+		    <li>Article: <a href="https://medium.com/@ScalaWilliam/feature-switches-inheritance-and-agile-with-scala-jmx-on-the-jvm-140b4bf94d9f"
+			   target="_blank">Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM</a></li>
             	                <li><a href="http://actionfps.com/" target="_blank">ActionFPS</a>, December 2014 to now
                 </li>
 
