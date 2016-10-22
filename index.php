@@ -15,10 +15,9 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
             I have been developing software since 2004.</p>
             <p>Prior to moving to Singapore in 2016 I was a Contractor in London, UK.</p>
 
-                <p>My most recent
-                <a href="https://github.com/ScalaWilliam/ActionFPS" target="_blank">open source</a>
-                project is
-                <a href="http://actionfps.com/" target="_blank">ActionFPS</a>. <a href="/cv/">View my CV here</a>.
+                <p>My most recent open source projects are
+                <a href="https://github.com/ScalaWilliam/ActionFPS/" target="_blank">ActionFPS</a>
+			and <a href="https://git.watch" target="_blank">Git Watch</a>. <a href="/cv/">View my CV here</a>.
                 </p>
 	</section>
     </div>
@@ -43,6 +42,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
         <section class="slide">
             <span class="img"></span>
             <ul id="projects-list">
+		    <li><a href="https://git.watch/" target="_blank">Git Watch</a>, July 2016 to now.</li>
 		    <li>Article: <a href="https://medium.com/@ScalaWilliam/feature-switches-inheritance-and-agile-with-scala-jmx-on-the-jvm-140b4bf94d9f"
 			   target="_blank">Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM</a></li>
             	                <li><a href="http://actionfps.com/" target="_blank">ActionFPS</a>, December 2014 to now
@@ -76,6 +76,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
             </ul>
             <h3>Open Source projects</h3>
             <ul id="os-projects-list">
+	    <li><a href="https://git.watch/" target="_blank">Git Watch</a>, July 2016 to now.</li>
                 <li><a target="_blank" href="https://github.com/ScalaWilliam/ActionFPS">ActionFPS</a>, open sourced since
                     November 2015
                 </li>
