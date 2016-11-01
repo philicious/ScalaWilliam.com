@@ -20,6 +20,7 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     <dt>August 2016</dt>
     <dd>Blog comment: <a href="https://novelist.xyz/tech/hugo-site-deployment-workflow/#comment-2805196952">How I deploy my Hugo site to my webserver</a></dd>
     <dt>July 2016</dt>
+    <dd>YouTube: <a href="https://www.youtube.com/watch?v=A2w8kBA22vo">IntelliJ 2016, Scala 2.11, ScalaTest &amp; SBT: Quick Tutorial</a></dd>
     <dd>Quora: <a href="https://www.quora.com/How-can-I-publish-my-own-dataset-for-easy-querying-for-free/answer/William-Narmontas">How can I publish my own dataset for easy querying for free?</a></dd>
     <dt>May 2016</dt>
     <dd>Blog comment: <a href="https://enear.github.io/2016/04/11/monad-transformers/#comment-2648703158">Hands on function composition with monad transformers</a></dd>
