@@ -21,5 +21,7 @@ rsync -a cv out/
 rsync -a shared out/
 rsync -a index out/
 php index.php > out/index.html
+mkdir -p out/content/
+php content/index.php > out/content/index.html
 php 1406/xml-processing-in-scala/index.php > out/1406/xml-processing-in-scala/index.html
 php 1607/quick-scala-tutorial/index.php > out/1607/quick-scala-tutorial/index.html
