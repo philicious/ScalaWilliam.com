@@ -4,7 +4,7 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
   <section class="video">
     <header>
       <h2>Public Content</h2>
-      <p>Contributions to Quora, Stack Overflow and GitHub. Excluding my open source projects.</p>
+      <p>Contributions to Quora, Stack Overflow and GitHub. Excluding my open source projects. <a href="https://www.scalawilliam.com/cv/">My CV is here</a>.</p>
     </header>
   <dl>
     <dt>October 2016</dt>
