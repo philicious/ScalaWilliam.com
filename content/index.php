@@ -17,9 +17,12 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     <dd>Stack Overflow: <a href="http://stackoverflow.com/a/39713832/2789308">How to convert two columns from a data frame to Map(col1, col2) in scala?</a></dd>
     <dd>Slideshare: <a href="http://www.slideshare.net/WilliamNarmontas/xml-processing-in-scala-xml-london-2014">XML Processing in Scala (XML London 2014)</a></dd>
     <dd>Slideshare: <a href="http://www.slideshare.net/WilliamNarmontas/an-introduction-to-scala-2014">An Introduction to Scala (2014)</a></dd>
+    <dt>August 2016</dt>
+    <dd>Blog comment: <a href="https://novelist.xyz/tech/hugo-site-deployment-workflow/#comment-2805196952">How I deploy my Hugo site to my webserver</a></dd>
     <dt>July 2016</dt>
     <dd>Quora: <a href="https://www.quora.com/How-can-I-publish-my-own-dataset-for-easy-querying-for-free/answer/William-Narmontas">How can I publish my own dataset for easy querying for free?</a></dd>
     <dt>May 2016</dt>
+    <dd>Blog comment: <a href="https://enear.github.io/2016/04/11/monad-transformers/#comment-2648703158">Hands on function composition with monad transformers</a></dd>
       <dd>Quora: <a href="https://www.quora.com/What-are-the-benefits-of-Java-8-over-scala/answer/William-Narmontas">What are the benefits of Java(8) over scala?</a></dd>
       <dd>Quora: <a href="https://www.quora.com/In-order-to-become-a-Scala-developer-what-kind-of-Scala-code-do-I-need-to-show-in-my-github-to-potential-employers/answer/William-Narmontas">In order to become a Scala developer, what kind of Scala code do I need to show in my github to potential employers?</a></dd>
     <dt>April 2016</dt>
@@ -37,6 +40,8 @@ Request
 <dt>January 2015</dt>
 <dd>GitHub issue: <a href="https://github.com/BaseXdb/basex/issues/1059">REST + contexts: fine in 7.9, but in 8.0, "400 Bad Request: Multiple context values specified."</a></dd>
 <dd>Quora: <a href="https://www.quora.com/Which-language-should-I-use-for-high-Web-and-Websocket-Traffic/answer/William-Narmontas">Which language should I use for high Web and Websocket Traffic?</a></dd>
+<dt>July 2014</dt>
+<dd>Blog comment: <a href="http://undiscoveredfeatures.com/elixir-tasks-vs-scala-futures/#comment-1623104975">Elixir Tasks vs Scala Futures</a></dd>
 <dt>May 2014</dt>
 <dd>Stack Overflow: <a href="http://stackoverflow.com/a/23443327/2789308">How to store Scala XML Pattern in a variable?</a></dd>
 <dt>April 2014</dt>
