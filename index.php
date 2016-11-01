@@ -62,7 +62,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                 <li><a href="http://woop.ac/" target="_blank">woop.ac rankings</a> for <a
                         href="http://assault.cubers.net/" target="_blank">AssaultCube</a>, December 2014 to May 2015
                 </li>
-                <li><a href="http://www.milanohouseinteriors.co.uk/" target="_blank">Milano House Curtains</a>, August
+                <li><a href="http://www.milanohousecurtains.co.uk/" target="_blank">Milano House Curtains</a>, August
                     2012 to now
                 </li>
                 <li><a href="http://hi-skill.us/" target="_blank">HI-SKILL rankings</a> for <a
