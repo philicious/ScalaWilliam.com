@@ -7,6 +7,9 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
       <p>Contributions to Quora, Stack Overflow and GitHub. Excluding my open source projects. <a href="https://www.scalawilliam.com/cv/">My CV is here</a>.</p>
     </header>
   <dl>
+    <dt>November 2016</dt>
+    <dd>GitHub issue: <a href="https://github.com/nrinaudo/kantan.csv/issues/58">kantan.csv: Support Scala 2.12.0</a>.</dd>
+    <dd>GitHub issue: <a href="https://github.com/nrinaudo/kantan.csv/issues/59">kantan.csv: Support for cats 0.8.0</a>.</dd>
     <dt>October 2016</dt>
     <dd>Stack Overflow: <a href="http://stackoverflow.com/a/40335314/2789308">Asset mapping outside public folder on Play framework</a></dd>
     <dd>Quora: <a href="https://www.quora.com/What-are-the-advantages-and-disadvantages-of-play-framework/answer/William-Narmontas">What are the advantages and disadvantages of play framework?</a></dd>
