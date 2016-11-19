@@ -8,6 +8,7 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     </header>
   <dl>
     <dt>November 2016</dt>
+    <dd>Slideshare: <a href="http://www.slideshare.net/WilliamNarmontas/git-watch">Git Watch</a></dd>
     <dd>GitHub issue: <a href="https://github.com/nrinaudo/kantan.csv/issues/58">kantan.csv: Support Scala 2.12.0</a>.</dd>
     <dd>GitHub issue: <a href="https://github.com/nrinaudo/kantan.csv/issues/59">kantan.csv: Support for cats 0.8.0</a>.</dd>
     <dt>October 2016</dt>
