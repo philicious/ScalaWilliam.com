@@ -13,3 +13,7 @@ script:
 after_success:
   - firebase deploy --token=${FIREBASE_CI_TOKEN}
 dist: trusty
+cache:
+  directories:
+    - $HOME/.npm
+
