@@ -9,8 +9,7 @@ dependencies:
     - "~/.npm"
 test:
   override:
-    - ./build.sh
-    - echo It works
+    - make
 deployment:
   production:
     branch: master
