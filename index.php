@@ -110,23 +110,9 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
     </div>
     <aside id="links">
         <h2>Links</h2>
-        <nav>
-            <ul>
-                <li id="li-linkedin"><a href="https://uk.linkedin.com/in/scalawilliam/" target="_blank"
-                                        title="LinkedIn profile"
-                        ><h3>LinkedIn</h3>
-
-                        <p>See my professional profile and connect with me on LinkedIn.</p></a></li>
-                <li id="li-email"><a href="mailto:hello@scalawilliam.com" target="_blank" title="E-mail"
-                        ><h3>E-mail</h3>
-
-                        <p>Contact me to find out how I can help your business.</p></a></li>
-                <li id="li-github"><a href="https://github.com/ScalaWilliam/duel.gg" target="_blank" title="GitHub link"
-                        ><h3>GitHub: duel.gg</h3>
-
-                        <p>See my code in open source projects. Judge for yourself.</p></a></li>
-            </ul>
-        </nav>
+        <p>
+            E-mail me:<a href="mailto:hello@scalawilliam.com" target="_blank" title="E-mail">hello@scalawilliam.com</a>
+        </p>
     </aside>
     <div class="section" id="scala">
         <section class="slide">
