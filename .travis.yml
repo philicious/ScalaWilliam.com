@@ -5,9 +5,7 @@ php:
 addons:
   apt:
     packages:
-      php7.0-cli
-before_install:
-  - sudo apt-get -y install php-cli
+      php-cli
 install:
   - npm install -g firebase-tools
 script:
