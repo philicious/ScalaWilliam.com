@@ -11,7 +11,10 @@ $split_text = "---SPLIT HERE---";
 $content_node = $domdoc->getElementById("content");
 $split_text_node = $domdoc->createTextNode($split_text);
 $content_node->parentNode->replaceChild($split_text_node, $content_node);
-list($head, $foot) = explode($split_text, $domdoc->saveHTML());
-if (!isset($skip_head) || $skip_head === false) {
-    echo $head;
+list($top, $foot) = explode($split_text, $domdoc->saveHTML());
+if (isset($custom_head)) {
+    list($first_top, $top) = explode("</head>", $top);
+    echo $first_top;
+} else if (!isset($skip_head) || $skip_head === false) {
+    echo $top;
 }
