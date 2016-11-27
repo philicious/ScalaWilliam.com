@@ -25,7 +25,6 @@ mkdir -p out/content/
 php content/index.php > out/content/index.html
 php 1406/xml-processing-in-scala/index.php > out/1406/xml-processing-in-scala/index.html
 php 1607/quick-scala-tutorial/index.php > out/1607/quick-scala-tutorial/index.html
-php add-analytics.php $(find out -iname '*.html'|grep -v shared)
 mkdir -p out/1611/firebase-static-site-deploy/
 ruby -e '
     require "github/markup"
@@ -33,3 +32,6 @@ ruby -e '
     puts GitHub::Markup.render(file, File.read(file))
 ' > out/1611/firebase-static-site-deploy/index.html
 php surround.php out/1611/firebase-static-site-deploy/index.html
+
+
+php add-analytics.php $(find out -iname '*.html'|grep -v shared)
