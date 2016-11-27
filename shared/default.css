@@ -173,7 +173,7 @@ margin-right:auto;
 .section#william .slide .img {
 background-image:url('/index/images/headshot-junefourteen.jpg');
 }
-.section#projects .slide .img {
+.section#talks .slide .img {
   background-image: url('/index/images/xmllondon-talk.jpeg');
 }
 .section .slide .img {
@@ -210,6 +210,10 @@ height:225px;
 p.permalink {
 	font-size:0.7em;
 }
+
+    ul {
+      list-style-type: square;
+    }
 
 
 .testimonials {

@@ -5,8 +5,6 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
         <section class="slide">
             <span class="img"></span>
 
-            <h2><span class="q">&quot;</span>Scala William<span class="q">&quot;</span></h2>
-
             <p>I am an experienced software engineer specialising in <a href="http://scala-lang.org"
             target="_blank">Scala</a>.</p>
 
@@ -39,21 +37,25 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
 </div>
 <br/>
 
-    <div class="section" id="projects">
-        <h2 id="talks">Talks</h2>
-        <ul>
-        <li><a href="http://xmllondon.com/2014/presentations/narmontas" target="_blank">XML Processing in Scala,
-                XML London 2014</a> (<a href="https://scala.contractors/xml_processing_in_scala.pdf"
-                                        target="_blank">PDF</a>), June 2014
-        </li>
-
-        <li><a href="https://www.youtube.com/watch?v=tsR0zc6kzRk" target="_blank">An Introduction to Scala</a>,
-            April 2014
-        </li></ul>
-        <h2>Projects</h2>
+    <div class="section" id="talks">
         <section class="slide">
             <span class="img"></span>
-            <h3>Open Source projects</h3>
+            <h2>Talks</h2>
+            <ul>
+                <li><a href="/1607/quick-scala-tutorial/">YouTube Tutorial: IntelliJ 2016, Scala 2.11, ScalaTest & SBT: Quick Tutorial</a>, July 2016</li>
+                <li><a href="/1406/xml-processing-in-scala/" target="_blank">Talk, PDF, SlideShare, YouTube: XML Processing in Scala,
+                        XML London 2014</a>, June 2014
+                </li>
+
+                <li><a href="/1404/an-introduction-to-scala/" target="_blank">Talk, SlideShare, YouTube: An Introduction to Scala</a>,
+                    April 2014
+                </li></ul>
+        </section>
+    </div>
+
+    <div class="section" id="os-projects">
+        <section class="slide">
+            <h2>Open Source projects</h2>
             <ul id="os-projects-list">
                 <li><a href="https://git.watch/" target="_blank">Git Watch</a>, July 2016 to now.</li>
                 <li><a target="_blank" href="https://github.com/ScalaWilliam/ActionFPS">ActionFPS</a>,
@@ -78,7 +80,11 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                     2012 to now
                 </li>
             </ul>
-            <h3>Societies &amp; clubs</h3>
+        </section>
+    </div>
+    <div class="section" id="soc-clubs">
+        <section class="slide">
+            <h2>Societies &amp; clubs</h2>
             <ul id="societies-clubs">
 	        <li><a href="http://www.camsoclon.org/" target="_blank">Cambridge Society of London</a>,
 	        member since November 2013</li>
@@ -87,8 +93,11 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                 </li>
                 <li><a href="http://mensa.org.uk/" target="_blank">British Mensa</a>, member since May 2014</li>
             </ul>
-
-            <h3>Other projects</h3>
+        </section>
+    </div>
+    <div class="section" id="other-projects">
+        <section class="slide">
+            <h2>Other projects</h2>
             <ul id="projects-list">
                 <li><a href="http://hi-skill.us/" target="_blank">HI-SKILL rankings</a> for <a
                             href="http://assault.cubers.net/" target="_blank">AssaultCube</a>, June 2009 to December 2010
@@ -102,42 +111,4 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
             </ul>
         </section>
     </div>
-    <div class="section" id="scala">
-        <section class="slide">
-            <h2>What is Scala?</h2>
-
-            <p>Scala is an established computer programming language based on the widely popular Java platform.<br/>
-            Companies such as Twitter and LinkedIn use Scala for their websites and data processing systems.</p>
-        </section>
-    </div>
-    <section class="video">
-
-    	<h2>Tutorial: IntelliJ 2016, Scala 2.11, ScalaTest &amp; SBT: Quick Tutorial</h2>
-        <iframe id="video" width="640" height="360" src="//www.youtube-nocookie.com/embed/A2w8kBA22vo?rel=0"
-                frameborder="0" allowfullscreen></iframe>
-                <p class="permalink"><a href="/1607/quick-scala-tutorial/">Permalink</a></p>
-
-
-    </section>
-
-    <section class="video">
-        <h2>Talk &amp; paper: <a href="http://xmllondon.com/2014/presentations/narmontas/" target="_blank">XML
-                Processing in Scala at XML London 2014</a></h2>
-
-        <p>Produced <a href="https://scala.contractors/xml_processing_in_scala.pdf">the paper</a> with <a
-                href="http://felstar.com/" target="_blank">Dino Fancellu</a> and presented it at the XML London 2014
-            conference.</p>
-        <iframe id="video" width="640" height="360" src="//www.youtube-nocookie.com/embed/sgDmXU5NHXU?rel=0"
-                frameborder="0" allowfullscreen></iframe>
-                <p class="permalink"><a href="/1406/xml-processing-in-scala/">Permalink</a></p>
-    </section>
-    <br/>
-    <section class="video">
-        <h2>Talk: An Introduction to Scala</h2>
-
-        <p>March - April 2014, City of London</p>
-        <iframe id="video" width="640" height="360" src="//www.youtube-nocookie.com/embed/tsR0zc6kzRk?rel=0"
-                frameborder="0" allowfullscreen></iframe>
-                <p class="permalink"><a href="/1404/an-introduction-to-scala/">Permalink</a></p>
-    </section>
 <?php echo $foot;
