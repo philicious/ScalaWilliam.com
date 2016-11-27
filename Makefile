@@ -9,7 +9,7 @@ clean:
 serve: build
 	firebase serve -p 7071
 bs:
-	browser-sync --proxy 'localhost:7071' start --files '**/*'
+	browser-sync --proxy 'localhost:7071' start --files '**/*' --reload-delay 1000
 gems:
 	gem install github-markup
 	gem install redcarpet
