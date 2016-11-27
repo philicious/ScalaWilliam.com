@@ -11,7 +11,8 @@ install:
 script:
   - ./build.sh
 after_success:
-  - firebase deploy --token=${FIREBASE_CI_TOKEN} --project scalawilliam-ff4b2
+  - echo not deploying, we use git watch instead.
+  #- firebase deploy --token=${FIREBASE_CI_TOKEN} --project scalawilliam-ff4b2
 dist: trusty
 cache:
   directories:

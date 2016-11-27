@@ -15,4 +15,5 @@ deployment:
   production:
     branch: master
     commands:
+      - echo not deploying, using git watch to do that instead.
 #      - firebase deploy --token=$FIREBASE_CI_TOKEN --non-interactive --project scalawilliam-ff4b2
