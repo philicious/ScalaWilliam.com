@@ -4,4 +4,10 @@
 
 <https://www.scalawilliam.com>
 
-Using Firebase, PHP, Travis-CI.
+sudo gem install bundle
+
+bundle install
+
+make
+
+Using Firebase, CircleCI, Ruby, PHP, Git Watch.

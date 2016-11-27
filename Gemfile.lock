@@ -1,4 +1,5 @@
 GEM
+  remote: https://rubygems.org/
   specs:
     github-markup (1.4.0)
     redcarpet (3.3.4)
