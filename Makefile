@@ -1,5 +1,6 @@
 default: test
 test: build
+	@ htmllint out/**/*.html
 	echo It works!
 build:
 	./build.sh

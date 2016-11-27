@@ -1,18 +1,12 @@
 <?php
 define('ANALYTICS_PATH', dirname(__FILE__) . "/shared/analytics.html");
+define('BODY_CLOSE', "</body>");
+define('ANALYTICS_BODY', file_get_contents(ANALYTICS_PATH));
 libxml_use_internal_errors(true);
 function process_file($filename) {
-    $targetDom = new DOMDocument();
-    $targetDom->loadHTMLFile($filename);
-
-    $analyticsDom= new DOMDocument();
-    $analyticsDom->load(ANALYTICS_PATH);
-
-    $analyticsNode = $targetDom->importNode($analyticsDom->documentElement, true);
-
-    $body = $targetDom->getElementsByTagName("body")->item(0);
-    $body->appendChild($analyticsNode);
-    $targetDom->saveHTMLFile($filename);
+    $contents = file_get_contents($filename);
+    $contents = str_replace(BODY_CLOSE, ANALYTICS_BODY.BODY_CLOSE, $contents);
+    file_put_contents($filename, $contents);
 }
 
 $failed = false;

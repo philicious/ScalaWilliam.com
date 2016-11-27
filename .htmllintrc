@@ -1,0 +1,8 @@
+{
+    // names of npm modules to load into htmllint
+    "plugins": [],
+"indent-style": false,
+"indent-width": false,
+"tag-bans": []
+    // TODO: export htmllint's default cfg
+}
