@@ -1,0 +1,14 @@
+GEM
+  specs:
+    github-markup (1.4.0)
+    redcarpet (3.3.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  github-markup
+  redcarpet
+
+BUNDLED WITH
+   1.13.6

@@ -15,7 +15,7 @@ if [ "$REF" = "refs/heads/master" ]; then
     git pull origin "$REF"
     FETCHED=yes REF="$REF" ./push.sh
   else
-    ./build.sh
+    make
     firebase deploy --non-interactive --token "$TOKEN"
   fi
 fi
