@@ -25,13 +25,15 @@ mkdir -p out/content/
 php content/index.php > out/content/index.html
 php 1406/xml-processing-in-scala/index.php > out/1406/xml-processing-in-scala/index.html
 php 1607/quick-scala-tutorial/index.php > out/1607/quick-scala-tutorial/index.html
+mkdir -p out/1612/essential-scala-tutorial/
 mkdir -p out/1611/firebase-static-site-deploy/
+php 1612/essential-scala-tutorial/index.php > out/1612/essential-scala-tutorial/index.html
 ruby -e '
     require "github/markup"
     file = "1611/firebase-static-site-deploy/README.md"
     puts GitHub::Markup.render(file, File.read(file))
 ' > out/1611/firebase-static-site-deploy/index.html
 php surround.php out/1611/firebase-static-site-deploy/index.html
-
+php surround.php out/1612/essential-scala-tutorial/index.html
 
 php add-analytics.php $(find out -iname '*.html'|grep -v shared)

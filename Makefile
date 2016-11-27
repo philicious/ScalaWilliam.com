@@ -1,9 +1,11 @@
 default: test
 test: build
-	@ htmllint out/**/*.html
+	htmllint out/**/*.html || true
 	echo It works!
 build:
 	./build.sh
+clean:
+	rm -rf out
 serve: build
 	firebase serve
 gems:
