@@ -7,36 +7,25 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
 
             <h2><span class="q">&quot;</span>Scala William<span class="q">&quot;</span></h2>
 
-
             <p>I am an experienced software engineer specialising in <a href="http://scala-lang.org"
-            target="_blank">Scala</a> middleware and back-end application development.</p>
+            target="_blank">Scala</a>.</p>
 
-            <p>Experience with Financial Markets Data, Online Gaming and Mobile Payments.
-            I have been developing software since 2004.</p>
-            <p>Prior to moving to Singapore in 2016 I was a Contractor in London, UK.</p>
+            <p>Scala is a programming language for Java used by Twitter, LinkedIn, Netflix, Verizon, The Guardian, AirBnB and many others.</p>
 
-                <p>My most recent open source projects are
-                <a href="https://github.com/ScalaWilliam/ActionFPS/" target="_blank">ActionFPS</a>
-			and <a href="https://git.watch" target="_blank">Git Watch</a>. <a href="/cv/">View my CV here</a>.
-                </p>
+            <p>I've been building websites and software since 2004 and specialising in Scala since 2013.</p>
+
+            <p><a href="/cv/">View my latest CV here</a>.</p>
 	</section>
     </div>
-    <div class="section" id="services">
-        <section class="slide">
-            <h2>Services</h2>
+    <h2>A few testimonials...</h2>
+    <img width="611" alt="screen shot 2016-11-27 at 17 48 52" src="https://cloud.githubusercontent.com/assets/2464813/20647233/d1818480-b4c9-11e6-9c05-5f5983bde674.png">
+<br/>
+    <img width="622" alt="screen shot 2016-11-27 at 17 44 29" src="https://cloud.githubusercontent.com/assets/2464813/20647203/4b91a242-b4c9-11e6-9729-24a8e3ced9b5.png">
+    <br/>
+    <img width="620" alt="screen shot 2016-11-27 at 17 44 53" src="https://cloud.githubusercontent.com/assets/2464813/20647202/4b69630e-b4c9-11e6-83ab-3b960ce99677.png">
+<br/>
+    <p>And many more on <a href="https://www.linkedin.com/in/scalawilliam/">my LinkedIn profile</a>...</p>
 
-            <p><img src="/index/images/SW-TECHS.png"></p>
-
-            <p>Currently I consult on a contract basis offering the
-            following core software engineering skills:<br/>
-            Scala, JVM, Play, Akka, APIs, ETL, TDD, middleware, XML; data modelling, processing and analysis.</p>
-        </section>
-    </div>
-    <h2>Clients</h2>
-    <p><img src="/index/images/SW-CLIENTS.png"></p>
-    <p>I have delivered excellent work to Teralytics, On Track Retail, The Guardian, Wowcher, the BBC,
-    Barclays, UBS and other enterprises among my
-        own projects. In total 5 Scala contracts.</p>
     <div class="section" id="projects">
         <h2>Projects</h2>
         <section class="slide">

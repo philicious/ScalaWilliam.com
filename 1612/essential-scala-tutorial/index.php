@@ -9,10 +9,11 @@ require(dirname(__FILE__) . '/../../shared/render.inc.php');
     <meta name="twitter:title" content="Quick Scala Tutorial" />
     <meta name="description" content="Essentials for doing Scala by William Narmontas (Scala William). Learn how to do TDD the proper way with ScalaTest and SBT, inside the standard IntelliJ Community Edition IDE." />
     <meta property="og:description" content="Essentials for doing Scala by William Narmontas (Scala William). Learn how to do TDD the proper way with ScalaTest and SBT, inside the standard IntelliJ Community Edition IDE." />
+    <meta property="twitter:description" content="Essentials for doing Scala by William Narmontas (Scala William). Learn how to do TDD the proper way with ScalaTest and SBT, inside the standard IntelliJ Community Edition IDE." />
     <meta name="keywords" content="scala, sbt, intellij, scalatest, jvm, tdd" />
 <?php echo $top; ?>
     <section class="video">
-        <h2>Tutorial: IntelliJ 2016, Scala 2.11, ScalaTest &amp; SBT: Quick Tutorial</h2>
+        <h2>The Essential Scala Tutorial</h2>
 
 
     </section>

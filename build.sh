@@ -10,7 +10,6 @@ if [ ! -f "firebase.json" ]; then
   exit 1
 fi
 
-rm -rf out
 mkdir -p out
 rsync -a 1404 out/
 rsync -a 1406/sygments out/1406/
@@ -34,6 +33,5 @@ ruby -e '
     puts GitHub::Markup.render(file, File.read(file))
 ' > out/1611/firebase-static-site-deploy/index.html
 php surround.php out/1611/firebase-static-site-deploy/index.html
-php surround.php out/1612/essential-scala-tutorial/index.html
 
 php add-analytics.php $(find out -iname '*.html'|grep -v shared)
