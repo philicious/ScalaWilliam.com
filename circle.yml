@@ -15,4 +15,4 @@ deployment:
   production:
     branch: master
     commands:
-      - firebase deploy --token=$FIREBASE_CI_TOKEN --non-interactive --project scalawilliam-ff4b2
+#      - firebase deploy --token=$FIREBASE_CI_TOKEN --non-interactive --project scalawilliam-ff4b2
