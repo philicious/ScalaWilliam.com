@@ -12,7 +12,7 @@ function process_file($filename) {
 $failed = false;
 foreach(array_slice($argv, 1) as $filename) {
     if ( strpos($filename, ".html")) {
-        error_log("Processing file $filename");
+//        error_log("Adding analytics $filename");
         process_file($filename);
     } else {
         $failed = true;
