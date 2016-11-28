@@ -111,11 +111,22 @@ color: #3887f3;
 
 }
 
-#linkedin {
-  position: absolute;
+    header h2 {
+      padding-right:1.7em;}
+#social-icons {
+  position:absolute;
   top:0.5em;
   right:0em;
+  width:8em;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-flow: row wrap;
 
+}
+
+#linkedin {
 }
 #linkedin svg {
   opacity: 0.8;
@@ -124,37 +135,55 @@ color: #3887f3;
   opacity: 1;
 }
 #github-icon {
-  position: absolute;
-  top:2.7em;
-  right:0em;
 margin-right:-2px;
 }
 #github-icon img {
-max-height: 1.1em;
+max-height: 1em;
 opacity: 0.8;
 }
-header h2 {
-padding-right:1.7em;}
 #github-icon:hover img {
   opacity: 1;
 }
 
-#twitter {
-  position: absolute;
-  top:2.6em;
-  right:0em;
-}
 #twitter svg {
   width: 1.8em;
-  height: 1.2em;
   opacity: 0.8;
 }
 #twitter:hover svg {
   opacity: 1;
 }
+#gplus {
+}
+#gplus img {
+  width: 1.4em;
+  height: 1.4em;
+  opacity: 0.8;
+}
+#gplus:hover img {
+  opacity: 1;
+}
+#medium {
+}
+#medium img {
+  width: 2.2em;
+  height: 2.2em;
+  opacity: 0.8;
+}
+#medium:hover img {
+  opacity: 1;
+}
+#yt {
+}
+#yt img {
+  height: 1.6em;
+  opacity: 0.8;
+}
+#yt:hover img {
+  opacity: 1;
+}
 #main {
 	margin-left:auto;
-margin-right:auto;
+  margin-right:auto;
 	width:44em;
 	max-width:90%;
 	position:relative;
