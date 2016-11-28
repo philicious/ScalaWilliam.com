@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "ignore": ["*.php"],
     "public": "out",
 "redirects": [ {
   "source" : "/CV",

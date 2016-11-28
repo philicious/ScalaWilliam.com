@@ -1,18 +1,32 @@
 #!/bin/bash
 
 mkdir -p out
-rsync -a 1404 out/
-rsync -a 1406/sygments out/1406/
-mkdir -p out/1406/xml-processing-in-scala
-mkdir -p out/1607/quick-scala-tutorial
+
+mkdir -p out/1404/an-introduction-to-scala/
+php 1404/an-introduction-to-scala/index.php > out/1404/an-introduction-to-scala/index.html
+
 rsync -a 1412 out/
+mkdir -p out/1412/amazon-wishlist-api/
+php 1412/amazon-wishlist-api/index.php > out/1412/amazon-wishlist-api/index.html
+
+mkdir -p out/1406/sygments/
+php 1406/sygments/index.php > out/1406/sygments/index.php
+
+mkdir -p out/1406/xml-processing-in-scala
+php 1406/xml-processing-in-scala/index.php > out/1406/xml-processing-in-scala/index.html
+
 rsync -a cv out/
+php out/cv/index.php > out/cv/index.html
+
 rsync -a shared --exclude '*.html' out/
+
 rsync -a index out/
 php index.php > out/index.html
+
 mkdir -p out/content/
 php content/index.php > out/content/index.html
-php 1406/xml-processing-in-scala/index.php > out/1406/xml-processing-in-scala/index.html
+
+mkdir -p out/1607/quick-scala-tutorial
 php 1607/quick-scala-tutorial/index.php > out/1607/quick-scala-tutorial/index.html
 
 function do_1612() {
