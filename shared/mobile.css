@@ -28,3 +28,10 @@ ul li {
 iframe {
     max-width:100%;
 }
+#social-icons {
+    top:2.8em;
+}
+#talks .img {
+    display:none;
+}
+

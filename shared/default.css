@@ -244,13 +244,14 @@ p.permalink {
       list-style-type: square;
     }
 
-
 .testimonials {
-  height:12em;
   width:100%;
   position:relative;
 }
-.testimonials img {
+.testimonials img:nth-child(4) {
+  opacity:0;
+}
+.testimonials img:not(:nth-child(4)) {
     opacity:0;
   position:absolute;
   top:0;

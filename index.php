@@ -34,8 +34,8 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
     <img width="611" alt="screen shot 2016-11-27 at 17 48 52" src="https://cloud.githubusercontent.com/assets/2464813/20647233/d1818480-b4c9-11e6-9c05-5f5983bde674.png">
     <img width="622" alt="screen shot 2016-11-27 at 17 44 29" src="https://cloud.githubusercontent.com/assets/2464813/20647203/4b91a242-b4c9-11e6-9729-24a8e3ced9b5.png">
     <img width="620" alt="screen shot 2016-11-27 at 17 44 53" src="https://cloud.githubusercontent.com/assets/2464813/20647202/4b69630e-b4c9-11e6-83ab-3b960ce99677.png">
+    <img width="611" alt="screen shot 2016-11-27 at 17 48 52" src="https://cloud.githubusercontent.com/assets/2464813/20647233/d1818480-b4c9-11e6-9c05-5f5983bde674.png">
 </div>
-<br/>
 
     <div class="section" id="talks">
         <section class="slide">
