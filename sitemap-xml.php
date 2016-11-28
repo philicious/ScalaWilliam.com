@@ -15,7 +15,7 @@
             if ( preg_match("/<title>(.*)<\\/title>/", file_get_contents($filename), $m) ) {
                 $title = $m[1];
             }
-            echo "<loc>https://www.scalawilliam.com/$html</loc>";
+            echo "<loc>https://www.scalawilliam.com$html</loc>";
         }
         ?>
     </url>
