@@ -55,22 +55,6 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
 
     <div class="section" id="projects">
         <section class="slide">
-            <h2>Other projects</h2>
-            <ul id="projects-list">
-                <li><a href="http://hi-skill.us/" target="_blank">HI-SKILL rankings</a> for <a
-                            href="http://assault.cubers.net/" target="_blank">AssaultCube</a>, June 2009 to December 2010
-                </li>
-                <li><a href="http://acwc.woop.us/acwc0709/" target="_blank">AssaultCube World Cup 2009</a>, June 2009 to
-                    July 2009
-                </li>
-                <li><a href="http://acwc.woop.us/2010/" target="_blank">AssaultCube World Cup 2010</a>, June 2010 to
-                    August 2010
-                </li>
-            </ul>
-        </section>
-    </div>
-    <div class="section" id="os-projects">
-        <section class="slide">
             <h2>Open Source projects</h2>
             <ul id="os-projects-list">
                 <li><a href="https://git.watch/" target="_blank">Git Watch</a>, July 2016 to now.</li>
@@ -108,6 +92,22 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                     founded in March 2011, president until November 2011
                 </li>
                 <li><a href="http://mensa.org.uk/" target="_blank">British Mensa</a>, member since May 2014</li>
+            </ul>
+        </section>
+    </div>
+    <div class="section" id="other-projects">
+        <section class="slide">
+            <h2>Other projects</h2>
+            <ul id="projects-list">
+                <li><a href="http://hi-skill.us/" target="_blank">HI-SKILL rankings</a> for <a
+                            href="http://assault.cubers.net/" target="_blank">AssaultCube</a>, June 2009 to December 2010
+                </li>
+                <li><a href="http://acwc.woop.us/acwc0709/" target="_blank">AssaultCube World Cup 2009</a>, June 2009 to
+                    July 2009
+                </li>
+                <li><a href="http://acwc.woop.us/2010/" target="_blank">AssaultCube World Cup 2010</a>, June 2010 to
+                    August 2010
+                </li>
             </ul>
         </section>
     </div>
