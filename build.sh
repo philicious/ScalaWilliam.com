@@ -29,6 +29,11 @@ php content/index.php > out/content/index.html
 mkdir -p out/1607/quick-scala-tutorial
 php 1607/quick-scala-tutorial/index.php > out/1607/quick-scala-tutorial/index.html
 
+mkdir -p out/scala-for-2017
+php scala-for-2017/index.php > out/scala-for-2017/index.html
+cp scala-for-2017/videos-stream-icon.svg out/scala-for-2017/
+
+
 function do_1612() {
 mkdir -p out/1612/essential-scala-tutorial/
 mkdir -p out/1611/firebase-static-site-deploy/
