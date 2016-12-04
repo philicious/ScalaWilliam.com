@@ -75,6 +75,9 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                 <li><a target="_blank" href="https://github.com/ScalaWilliam/sygments">Sygments: Pygments for Scala</a>,
                     June 2014 to June 2016.
                 </li>
+                <li><a target="_blank" href="http://pastebox.sf.net">PasteBox: Minimalist PHP Pastebin</a>,
+                    February 2007 to July 2009.
+                </li>
 
                 <li><a href="http://www.milanohousecurtains.co.uk/" target="_blank">Milano House Curtains</a>, August
                     2012 to now
