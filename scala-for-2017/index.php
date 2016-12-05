@@ -194,8 +194,8 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
 
         <div id="references">
             <h2>References</h2>
-
-            <ol>
+<p>Not yet available.</p>
+            <ol style="display:none">
                 <li>
                     Meetup: Scala 2.12 - Scala for 2017
                     <br/>
