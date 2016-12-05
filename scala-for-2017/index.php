@@ -19,19 +19,23 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
 
 <?php echo $top; ?>
     <section class="video">
-        <h2>Scala for 2017</h2>
+        <h1>Scala for 2017</h1>
         <style>
             nav ol {
-                max-width: 50%;
                 font-weight: bold;
-                display: flex;
-                list-style-type: none;
-                justify-content: space-between;
+            }
+
+            input[type=email] {
+                border:1px solid darkred;
+                font-size:1.6em;
+                padding:3px;
+                min-width:300px;
             }
 
             #references {
                 font-size: 0.8em;
             }
+
             .btn {
                 background: #3498db;
                 background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
@@ -60,17 +64,115 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
 
         </style>
         <nav>
+            <h2>Contents</h2>
             <ol>
-                <li><a>YouTube video</a></li>
-                <li><a href="#get">Get the slides</a></li>
-                <li><a href="#references">References</a></li>
+                <li>
+                    Get the slides
+                </li>
+
+                <li>Meetup</li>
+                <li>Video</li>
+                <li>References</li>
             </ol>
+
         </nav>
+        <div id="get">
+            <h2>Get the slides</h2>
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLScM0p8XJfA6bB-zrahybK73pzdmxAJsecCkXvHwXCP0mPyZMQ/formResponse"
+                  method="POST" id="ss-form" target="_self" onsubmit="">
+                <ol role="list" class="ss-question-list" style="padding-left: 0;">
+
+                    <div class="ss-form-question errorbox-good" role="listitem">
+                        <div dir="auto" class="ss-item ss-item-required ss-text">
+                            <div class="ss-form-entry">
+                                <label class="ss-q-item-label" for="entry_1020400141">
+                                    <div class="ss-q-title">E-mail
+                                        <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
+                                        <span class="ss-required-asterisk" aria-hidden="true">*</span></div>
+                                    <div class="ss-q-help ss-secondary-text" dir="auto"></div>
+                                </label>
+
+                                <input type="email" name="entry.1020400141" value="" class="ss-q-short"
+                                       id="entry_1020400141" dir="auto"
+                                       aria-label="E-mail  Must be a valid email address"
+                                       aria-required="true" required="" title="Must be a valid email address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ss-form-question errorbox-good" role="listitem">
+                        <div dir="auto" class="ss-item  ss-checkbox">
+                            <div class="ss-form-entry">
+                                <label class="ss-q-item-label" for="entry_1743671591">
+                                    <div class="ss-q-title">Also send me...
+                                    </div>
+                                </label>
+
+
+                                <ul class="ss-choices" role="group" aria-label="Also send me...  ">
+                                    <li class="ss-choice-item">
+                                        <label><span class="ss-choice-item-control goog-inline-block"><input checked
+                                                                                                             type="checkbox"
+                                                                                                             name="entry.1034930021"
+                                                                                                             value="The video when it&#39;s ready"
+                                                                                                             id="group_1034930021_1"
+                                                                                                             role="checkbox"
+                                                                                                             class="ss-q-checkbox"></span>
+                                            <span class="ss-choice-label">The video when it&#39;s ready</span>
+                                        </label></li>
+                                    <li class="ss-choice-item">
+                                        <label><span class="ss-choice-item-control goog-inline-block"><input checked
+                                                                                                             type="checkbox"
+                                                                                                             name="entry.1034930021"
+                                                                                                             value="My guide &#39;Essential Production Scala&#39; when it&#39;s ready"
+                                                                                                             id="group_1034930021_2"
+                                                                                                             role="checkbox"
+                                                                                                             class="ss-q-checkbox"></span>
+                                            <span class="ss-choice-label">My guide &#39;Essential Production Scala&#39; when it&#39;s ready</span>
+                                        </label></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="draftResponse" value="[,,&quot;5588546134555980063&quot;]
+">
+                    <input type="hidden" name="pageHistory" value="0">
+
+
+                    <input type="hidden" name="fbzx" value="5588546134555980063">
+                    <div class="ss-send-email-receipt" style="margin-bottom: 4px;" dir="ltr"><label for="emailReceipt"
+                                                                                                    style="display:inline;"></label>
+                    </div>
+                    <div class="ss-item ss-navigate">
+                        <table id="navigation-table">
+                            <tbody>
+                            <tr>
+                                <td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
+                                    <input type="submit" name="submit" value="Request slides" id="ss-submit"
+                                           class="button-success btn ">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </ol>
+            </form>
+        </div>
+
+        <h2>Meetup</h2>
+        <blockquote class="embedly-card" data-card-key="f619efc27f4d4762b14c674b02d068c7" data-card-width="400"
+                    data-card-align="left"><h4><a
+                        href="https://www.meetup.com/Singapore-Scala-Programmers/events/235904060/">Scala 2.12 - Scala
+                    for 2017</a></h4>
+            <p>In this talk, William will cover the new Scala 2.12, Scala's use cases, drawbacks, selling points and
+                recommendations for those interested in incorporating Scala into their application stack - and tho</p>
+        </blockquote>
+        <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+
 
         <h2>Video</h2>
 
         <div id="video"
-             style="display:flex; align-items:center; justify-content: center; width:640px;height:160px; background:dimgrey;">
+             style="display:flex; align-items:center; justify-content: center; width:90%;height:20%; background:dimgrey;">
             <img src="videos-stream-icon.svg"/>
             <p style="padding:1em;font-size:1.3em;font-weight:bold;color:white;">Video coming soon...</p>
             <script src="https://apis.google.com/js/platform.js"></script>
@@ -78,94 +180,17 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
             <div class="g-ytsubscribe" data-channelid="UCRX-zcevzPPkBkUDGMxpHgQ" data-layout="default"
                  data-count="default"></div>
         </div>
-<style>
-    #get {
-        margin-top:2em;
-        background:rgb(255,250,250);
-    }
-    #get ul {
-        list-style-type: none;
+        <style>
+            #get {
+                margin-top: 2em;
+                background: rgb(255, 250, 250);
+            }
 
-    }
-</style>
-        <div id="get">
-        <h2>Get the slides</h2>
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLScM0p8XJfA6bB-zrahybK73pzdmxAJsecCkXvHwXCP0mPyZMQ/formResponse"
-              method="POST" id="ss-form" target="_self" onsubmit="">
-            <ol role="list" class="ss-question-list" style="padding-left: 0;">
+            #get ul {
+                list-style-type: none;
 
-                <div class="ss-form-question errorbox-good" role="listitem">
-                    <div dir="auto" class="ss-item ss-item-required ss-text">
-                        <div class="ss-form-entry">
-                            <label class="ss-q-item-label" for="entry_1020400141">
-                                <div class="ss-q-title">E-mail
-                                    <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
-                                    <span class="ss-required-asterisk" aria-hidden="true">*</span></div>
-                                <div class="ss-q-help ss-secondary-text" dir="auto"></div>
-                            </label>
-
-                            <input type="email" name="entry.1020400141" value="" class="ss-q-short"
-                                   id="entry_1020400141" dir="auto" aria-label="E-mail  Must be a valid email address"
-                                   aria-required="true" required="" title="Must be a valid email address">
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-form-question errorbox-good" role="listitem">
-                    <div dir="auto" class="ss-item  ss-checkbox">
-                        <div class="ss-form-entry">
-                            <label class="ss-q-item-label" for="entry_1743671591">
-                                <div class="ss-q-title">Also send me...
-                                </div>
-                            </label>
-
-
-                            <ul class="ss-choices" role="group" aria-label="Also send me...  ">
-                                <li class="ss-choice-item">
-                                    <label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox"
-                                                                                                         name="entry.1034930021"
-                                                                                                         value="The video when it&#39;s ready"
-                                                                                                         id="group_1034930021_1"
-                                                                                                         role="checkbox"
-                                                                                                         class="ss-q-checkbox"></span>
-                                        <span class="ss-choice-label">The video when it&#39;s ready</span>
-                                    </label></li>
-                                <li class="ss-choice-item">
-                                    <label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox"
-                                                                                                         name="entry.1034930021"
-                                                                                                         value="My guide &#39;Essential Production Scala&#39; when it&#39;s ready"
-                                                                                                         id="group_1034930021_2"
-                                                                                                         role="checkbox"
-                                                                                                         class="ss-q-checkbox"></span>
-                                        <span class="ss-choice-label">My guide &#39;Essential Production Scala&#39; when it&#39;s ready</span>
-                                    </label></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <input type="hidden" name="draftResponse" value="[,,&quot;5588546134555980063&quot;]
-">
-                <input type="hidden" name="pageHistory" value="0">
-
-
-                <input type="hidden" name="fbzx" value="5588546134555980063">
-                <div class="ss-send-email-receipt" style="margin-bottom: 4px;" dir="ltr"><label for="emailReceipt"
-                                                                                                style="display:inline;"></label>
-                </div>
-                <div class="ss-item ss-navigate">
-                    <table id="navigation-table">
-                        <tbody>
-                        <tr>
-                            <td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
-                                <input type="submit" name="submit" value="Request slides" id="ss-submit"
-                                       class="button-success btn ">
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </ol>
-        </form>
-        </div>
+            }
+        </style>
 
         <div id="references">
             <h2>References</h2>
@@ -245,6 +270,5 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
 
             </ol>
         </div>
-
     </section>
 <?php echo $foot;
