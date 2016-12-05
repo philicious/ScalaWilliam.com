@@ -26,10 +26,10 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
             }
 
             input[type=email] {
-                border:1px solid darkred;
-                font-size:1.6em;
-                padding:3px;
-                min-width:300px;
+                border: 1px solid darkred;
+                font-size: 1.6em;
+                padding: 3px;
+                min-width: 300px;
             }
 
             #references {
@@ -62,20 +62,40 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
                 text-decoration: none;
             }
 
+            #meetup-card {
+                float: right;
+            }
+
+            @media only screen and (max-width: 640px) {
+                #meetup-card {
+                    float: none;
+                }
+            }
         </style>
+
         <nav>
             <h2>Contents</h2>
             <ol>
-                <li>
-                    Get the slides
-                </li>
-
                 <li>Meetup</li>
+                <li>Slides</li>
                 <li>Video</li>
                 <li>References</li>
             </ol>
 
         </nav>
+        <div id="meetup-card">
+            <blockquote class="embedly-card" data-card-key="f619efc27f4d4762b14c674b02d068c7" data-card-width="380"
+                        data-card-align="left"><h4><a
+                            href="https://www.meetup.com/Singapore-Scala-Programmers/events/235904060/">Scala 2.12 -
+                        Scala
+                        for 2017</a></h4>
+                <p>In this talk, William will cover the new Scala 2.12, Scala's use cases, drawbacks, selling points and
+                    recommendations for those interested in incorporating Scala into their application stack - and
+                    tho</p>
+            </blockquote>
+            <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+        </div>
+
         <div id="get">
             <h2>Get the slides</h2>
             <form action="https://docs.google.com/forms/d/e/1FAIpQLScM0p8XJfA6bB-zrahybK73pzdmxAJsecCkXvHwXCP0mPyZMQ/formResponse"
@@ -108,28 +128,24 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
                                 </label>
 
 
-                                <ul class="ss-choices" role="group" aria-label="Also send me...  ">
-                                    <li class="ss-choice-item">
-                                        <label><span class="ss-choice-item-control goog-inline-block"><input checked
-                                                                                                             type="checkbox"
-                                                                                                             name="entry.1034930021"
-                                                                                                             value="The video when it&#39;s ready"
-                                                                                                             id="group_1034930021_1"
-                                                                                                             role="checkbox"
-                                                                                                             class="ss-q-checkbox"></span>
-                                            <span class="ss-choice-label">The video when it&#39;s ready</span>
-                                        </label></li>
-                                    <li class="ss-choice-item">
-                                        <label><span class="ss-choice-item-control goog-inline-block"><input checked
-                                                                                                             type="checkbox"
-                                                                                                             name="entry.1034930021"
-                                                                                                             value="My guide &#39;Essential Production Scala&#39; when it&#39;s ready"
-                                                                                                             id="group_1034930021_2"
-                                                                                                             role="checkbox"
-                                                                                                             class="ss-q-checkbox"></span>
-                                            <span class="ss-choice-label">My guide &#39;Essential Production Scala&#39; when it&#39;s ready</span>
-                                        </label></li>
-                                </ul>
+                                <label><span class="ss-choice-item-control goog-inline-block"><input checked
+                                                                                                     type="checkbox"
+                                                                                                     name="entry.1034930021"
+                                                                                                     value="The video when it&#39;s ready"
+                                                                                                     id="group_1034930021_1"
+                                                                                                     role="checkbox"
+                                                                                                     class="ss-q-checkbox"></span>
+                                    <span class="ss-choice-label">The video when it&#39;s ready</span>
+                                </label><br/>
+                                <label><span class="ss-choice-item-control goog-inline-block"><input checked
+                                                                                                     type="checkbox"
+                                                                                                     name="entry.1034930021"
+                                                                                                     value="My guide &#39;Essential Production Scala&#39; when it&#39;s ready"
+                                                                                                     id="group_1034930021_2"
+                                                                                                     role="checkbox"
+                                                                                                     class="ss-q-checkbox"></span>
+                                    <span class="ss-choice-label">&#39;Essential Production Scala&#39; guide when it&#39;s ready</span>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -157,18 +173,7 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
                 </ol>
             </form>
         </div>
-
-        <h2>Meetup</h2>
-        <blockquote class="embedly-card" data-card-key="f619efc27f4d4762b14c674b02d068c7" data-card-width="400"
-                    data-card-align="left"><h4><a
-                        href="https://www.meetup.com/Singapore-Scala-Programmers/events/235904060/">Scala 2.12 - Scala
-                    for 2017</a></h4>
-            <p>In this talk, William will cover the new Scala 2.12, Scala's use cases, drawbacks, selling points and
-                recommendations for those interested in incorporating Scala into their application stack - and tho</p>
-        </blockquote>
-        <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-
-
+<div style="clear:both"></div>
         <h2>Video</h2>
 
         <div id="video"
@@ -194,7 +199,7 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
 
         <div id="references">
             <h2>References</h2>
-<p>Not yet available.</p>
+            <p>Not yet available.</p>
             <ol style="display:none">
                 <li>
                     Meetup: Scala 2.12 - Scala for 2017
