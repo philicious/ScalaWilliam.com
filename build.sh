@@ -33,6 +33,8 @@ mkdir -p out/scala-for-2017
 php scala-for-2017/index.php > out/scala-for-2017/index.html
 cp scala-for-2017/videos-stream-icon.svg out/scala-for-2017/
 
+mkdir -p out/essential-sbt
+cp essential-sbt/index.html out/essential-sbt/index.html
 
 function do_1612() {
 mkdir -p out/1612/essential-scala-tutorial/
