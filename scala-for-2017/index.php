@@ -71,18 +71,22 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
                     float: none;
                 }
             }
+            
+        #video iframe {
+            width:33em;
+            max-width:100%;
+            height:18em;
+        }
         </style>
 
-        <nav>
-            <h2>Contents</h2>
-            <ol>
-                <li>Meetup</li>
-                <li>Slides</li>
-                <li>Video</li>
-                <li>References</li>
-            </ol>
+        <h2>Video</h2>
 
-        </nav>
+        <div id="video"
+             style="display:flex; align-items:center; justify-content: center; width:90%;height:20%; background:dimgrey;">
+    <iframe src="//www.youtube-nocookie.com/embed/N11rdUvcp7g?rel=0"
+                frameborder="0" allowfullscreen></iframe>
+
+        </div>
         <div id="meetup-card">
             <blockquote class="embedly-card" data-card-key="f619efc27f4d4762b14c674b02d068c7" data-card-width="380"
                         data-card-align="left"><h4><a
@@ -174,17 +178,6 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
             </form>
         </div>
 <div style="clear:both"></div>
-        <h2>Video</h2>
-
-        <div id="video"
-             style="display:flex; align-items:center; justify-content: center; width:90%;height:20%; background:dimgrey;">
-            <img src="videos-stream-icon.svg"/>
-            <p style="padding:1em;font-size:1.3em;font-weight:bold;color:white;">Video coming soon...</p>
-            <script src="https://apis.google.com/js/platform.js"></script>
-
-            <div class="g-ytsubscribe" data-channelid="UCRX-zcevzPPkBkUDGMxpHgQ" data-layout="default"
-                 data-count="default"></div>
-        </div>
         <style>
             #get {
                 margin-top: 2em;
