@@ -89,6 +89,7 @@
             background-color: beige;
         }
         
+        .filtered { display:none;}
         @media(max-width:640px) {
             .filtered {
                 display:none;
@@ -128,6 +129,16 @@
         }
         pre {
             max-width:42em;
+        }
+        @media (min-width: 1430px) {
+            #video {
+                position:fixed;
+                left:48em;
+                z-index:4;
+            }
+        }
+        #dsq-app1 {
+            z-index:5;
         }
     </style>
     <!-- thanks to https://gist.github.com/hotmeteor/5055c1dab2f1043058c2 -->
@@ -174,6 +185,12 @@
         <a href="http://www.scala-sbt.org/release/docs/Installing-sbt-on-Linux.html">Linux</a>, 
         or <a href="http://www.scala-sbt.org/release/docs/Manual-Installation.html">manual</a>. You'll also need <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Oracle JDK 8</a> or <a href="http://openjdk.java.net/install/">OpenJDK 8</a>.</p>
     </header>
+    
+    <aside id="video">
+    <iframe width="640" height="360" src="//www.youtube-nocookie.com/embed/JI0i7f2byPY?rel=0"
+                frameborder="0" allowfullscreen></iframe>
+    </aside>
+
     <nav id="contents">
         <button onclick="toggle_contents();">Toggle Contents</button>
         <ul>
@@ -221,7 +238,7 @@ class SimpleTest extends FunSuite {
 }
 EOF</code></pre>
     <h2>Make it pass</h2>
-    <pre><code>sed -i -e 's/\?\?\?/a + b/' src/test/scala/SimpleTest.scala</code></pre>
+    <pre><code>sed -i -e 's/???/a + b/' src/test/scala/SimpleTest.scala</code></pre>
     <h2>Use Scala 2.12</h2>
     <pre><code>echo 'scalaVersion := "2.12.1"' &gt;&gt; build.sbt</code></pre>
     <h2>Add the sbt-native-packager plugin</h2>
@@ -272,7 +289,7 @@ class FizzTest extends FunSuite {
 }
 EOF</code></pre>
     <h2>Pass the test</h2>
-    <pre><code>sed -i -e 's/\?\?\?/s"$n"/' \
+    <pre><code>sed -i -e 's/???/s"$n"/' \
       fizzbuzz/src/main/scala/Fizz.scala</code></pre>
     <h2>Make the app depend on the submodule</h2>
     <pre><code>echo 'dependsOn(fizzbuzz)' &gt;&gt; build.sbt</code></pre>
