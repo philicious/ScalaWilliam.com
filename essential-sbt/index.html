@@ -174,15 +174,15 @@ object SimpleApp extends App {
 }
 EOF</code></pre>
     <h2>Run continuously</h2>
-    <pre><code>sbt ~run</code></pre>
-    <h2>Verify it works</h2>
+    <pre><code>sbt '~run'</code></pre>
+    <h2>Change source to verify it works</h2>
     <pre><code>sed -i -e 's/works/definitely works/' \
       src/main/scala/SimpleApp.scala</code></pre>
     <h2>Add ScalaTest</h2>
     <pre><code>echo 'libraryDependencies += "org.scalatest" %%' \
        '"scalatest" % "3.0.1" % "test"' &gt;&gt; build.sbt</code></pre>
     <h2>Test continuously</h2>
-    <pre><code>sbt ~test</code></pre>
+    <pre><code>sbt '~test'</code></pre>
     <h2>Create a test</h2>
     <pre><code>mkdir -p src/test/scala/
 cat &gt; src/test/scala/SimpleTest.scala &lt;&lt; EOF
@@ -208,7 +208,7 @@ EOF</code></pre>
     <h2>Package the app</h2>
     <pre><code>sbt 'show dist'</code></pre>
 <h2>Run packaged app</h2>
-<pre><code>unzip -d /tmp/my-project \
+<pre><code>unzip -o -d /tmp/my-project \
         ./target/universal/new-project-0.1-SNAPSHOT.zip
 /tmp/my-project/new-project-0.1-SNAPSHOT/bin/new-project</code></pre>
 <h2>Dockerize your app</h2>
@@ -287,6 +287,7 @@ EOF</code></pre>
     </div>
         </div>
     </aside>
+    <p>This page is <a href="https://github.com/ScalaWilliam/ScalaWilliam.com/blob/master/essential-sbt/index.html">editable on GitHub</a>.</p>
     <h2>Questions? Ask below.</h2>
     <script type="text/javascript">
         [].forEach.call(document.querySelectorAll("pre > code"), function(item) {
