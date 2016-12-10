@@ -52,8 +52,11 @@
             image-resolution: snap;
             height: 11em;
         }
-        a {
+        article a{
             text-decoration: none;
+        }
+    
+        a {
             color:darkslategrey;
         }
         a:hover {
@@ -85,6 +88,9 @@
         .filtered {
             position:absolute;
             right:2em;
+        }
+        nav a {
+            text-decoration: none;
         }
         #contents button {
                 box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;
@@ -148,6 +154,12 @@
     <h1>Essential SBT</h1>
     <h2>By <a href="/">William "Scala William" Narmontas</a></h2>
     <blockquote>Don't learn how SBT works, learn how to use it.</blockquote>
+    <p>To run these commands you'll need a shell or a terminal. For Windows, you may want to install <a href="http://babun.github.io/">Babun, a Windows shell you will love</a>.</p>
+    <p>SBT installation steps: 
+        <a href="http://www.scala-sbt.org/release/docs/Installing-sbt-on-Mac.html">Mac</a>, 
+        <a href="http://www.scala-sbt.org/release/docs/Installing-sbt-on-Windows.html">Windows</a>,
+        <a href="http://www.scala-sbt.org/release/docs/Installing-sbt-on-Linux.html">Linux</a>, 
+        or <a href="http://www.scala-sbt.org/release/docs/Manual-Installation.html">manual</a>. You'll also need <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Oracle JDK 8</a> or <a href="http://openjdk.java.net/install/">OpenJDK 8</a>.</p>
     </header>
     <nav id="contents">
         <button onclick="toggle_contents();">Toggle Contents</button>
