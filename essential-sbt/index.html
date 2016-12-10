@@ -86,11 +86,25 @@
             position:absolute;
             right:2em;
         }
-        nav ul {
-            list-style-type: none;
-            
+        #contents button {
+                box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;
+    font-family: inherit;
+    font-size: 100%;
+    padding: .5em 1em;
+    color: #444;
+    border: 1px solid #999;
+    border: 0 rgba(0,0,0,0);
+    background-color: #E6E6E6;
+    text-decoration: none;
+    border-radius: 2px;
         }
-        nav ul li:before {
+        #contents.hide ul {
+            display:none;
+        }
+        #contents ul {
+            list-style-type: none;
+        }
+        #contents li:before {
             content: "— ";
         }
         pre {
@@ -117,7 +131,16 @@
 <meta name="twitter:site" content="@ScalaWilliam">
 <meta name="twitter:title" content="Essential SBT for Scala">
 <meta name="twitter:image" content="https://avatars3.githubusercontent.com/u/2464813">
-
+<script type="text/javascript">
+    function toggle_contents(){
+        var cnt = document.querySelector("#contents");
+        if ( cnt.classList.contains("hide") ) {
+            cnt.classList.remove("hide");
+        } else {
+            cnt.classList.add("hide");
+        }
+    }
+    </script>
     </head>
     
 <body>
@@ -127,9 +150,9 @@
     <blockquote>Don't learn how SBT works, learn how to use it.</blockquote>
     </header>
     <nav id="contents">
-    <h3>Contents</h3>
+        <button onclick="toggle_contents();">Toggle Contents</button>
         <ul>
-            <li> Xzxxzx</li>
+            <li> Test 1</li>
         </ul>
     </nav>
     <article>
@@ -299,6 +322,7 @@ EOF</code></pre>
     </script>
     <div id="disqus_thread"></div>
 <script>
+    toggle_contents();
 /* https://disqus.com/admin/universalcode/#configuration-variables */
 var disqus_config = function () {
 this.page.url = "https://www.scalawilliam.com/essential-sbt/";
