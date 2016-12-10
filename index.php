@@ -13,7 +13,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
             <p>I've been building websites and software since 2004 and specialising in Scala since 2013.</p>
 
             <p><a href="/cv/">Latest CV</a> &mdash;
-                <a href="https://plus.google.com/collection/oFuHlB" target="_blank">Articles</a>
+                <a href="#articles">Articles</a>
                 &mdash;
                 <a href="/content/">Social content</a>
                 &mdash;
@@ -42,16 +42,27 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
             <span class="img"></span>
             <h2>Talks</h2>
             <ul>
-                <li><a href="/1607/quick-scala-tutorial/">YouTube Tutorial: IntelliJ 2016, Scala 2.11, ScalaTest & SBT: Quick Tutorial</a>, July 2016</li>
+                <li><a href="/scala-for-2017/">Scala for 2017</a>, Singapore, December 2016</li>
                 <li><a href="/1406/xml-processing-in-scala/" target="_blank">Talk, PDF, SlideShare, YouTube: XML Processing in Scala,
-                        XML London 2014</a>, June 2014
+                        XML London 2014</a>, London, June 2014
                 </li>
 
-                <li><a href="/1404/an-introduction-to-scala/" target="_blank">Talk, SlideShare, YouTube: An Introduction to Scala</a>,
+                <li><a href="/1404/an-introduction-to-scala/" target="_blank">Talk, SlideShare, YouTube: An Introduction to Scala</a>, City of London,
                     April 2014
                 </li></ul>
         </section>
     </div>
+
+
+<div class="section" id="articles">
+<section class="slide">
+    <h2>Articles</h2>
+    <p>Also on <a href="https://plus.google.com/collection/oFuHlB" target="_blank">Google+</a>.</p>
+    <ul>
+    <li><a href="/essential-sbt/">Essential SBT</a>, December 2016</li>
+        <li><a href="https://hackernoon.com/feature-switches-inheritance-and-agile-with-scala-jmx-on-the-jvm-140b4bf94d9f?gi=d8324d17dca0#.vj0o8770w" target="_blank">Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM</a>, September 2016</li>
+    </ul>
+</section></div>
 
     <div class="section" id="projects">
         <section class="slide">
