@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900%7CRoboto+Mono" rel="stylesheet">
+<title>Essential SBT (build tool for Scala)</title>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-java.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-scala.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <style type="text/css">
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height:1.6;
+        color:rgb(5,5,5);
+        background:rgb(255,255,255);
+        max-width:60em;
+    }
+        code {
+            font-family: 'Roboto Mono', monospace;
+        }
+    </style>
+    </head>
+    
+<body>
+    <header>
+        <h1>Tournament Tree</h1>
+        <h2>Source: <a href="https://github.com/ScalaWilliam/scala-game-tournament">https://github.com/ScalaWilliam/scala-game-tournament</a></h2>
+    </header>
+    
+    <section>
+    <h2>Explanation</h2>
+        <p>This is necessary for implementing <a href="https://actionfps.com/">an online gaming system</a> that is expecting events for completed games. If an expected 'nextGame' is played, then we automatically want to advance the tournament forward.</p>
+    </section>
+    
+    <section>
+    <h2>Tournament tree</h2>
+        <p><img src="https://docs.google.com/drawings/d/19ZtyWckVlcDQODf5vjK79I_tmTAsU52WgvMX7wEdx8k/pub?w=525&amp;h=225"></p>
+    </section>
+    
+    <section>
+        <h2>The interface</h2>
+        <p><a class="source" href="https://github.com/ScalaWilliam/scala-game-tournament/blob/master/src/main/scala/sw/TournamentTree.scala#L5-L13">Source</a></p>
+        <pre><code class="language-scala">sealed trait TournamentTree[T] {
+
+  def win(player: T): TournamentTree[T]
+
+  def nextGames: Set[(T, T)]
+
+  def winner: Option[T]
+
+}</code></pre>
+    </section>
+    
+    <section>
+        <h2>The specification</h2>
+        <p><a class="source" href="https://github.com/ScalaWilliam/scala-game-tournament/blob/master/src/test/scala/sw/TournamentTreeSpec.scala#L9-L32">Source</a></p>
+        <pre><code class="language-scala">class TournamentTreeSpec extends FunSuite {
+  val Drakas = "Drakas"
+  val Lucas = "Lucas"
+  val Sanzo = "Sanzo"
+  private val tourney = TournamentTree(Drakas, Lucas, Sanzo)
+
+  test("First iteration is correct") {
+    tourney.nextGames should contain theSameElementsAs Set(Drakas -&gt; Lucas)
+    tourney.winner shouldBe empty
+  }
+  test("Sanzo win does nothing") {
+    tourney.win(Sanzo).nextGames shouldEqual tourney.nextGames
+    tourney.win(Sanzo).winner shouldEqual tourney.winner
+  }
+  test("Drakas win pushes to next stage") {
+    tourney.win(Drakas).nextGames should contain theSameElementsAs Set(Drakas -&gt; Sanzo)
+    tourney.win(Drakas).winner shouldBe empty
+  }
+  test("Drakas win 2x pushes to final stage") {
+    tourney.win(Drakas).win(Drakas).nextGames shouldBe empty
+    tourney.win(Drakas).win(Drakas).winner shouldBe Some(Drakas)
+  }
+
+}</code></pre>
+    </section>
+    <section>
+    <h2>Solutioning</h2>
+        <p>We want to meet the specification with minimal possible work. We shall represent the solution as a tree structure because it looks like a tree.</p>
+        <p>In this solution, a <code>Tournament</code> is in either an <code>Undecided</code> state or a <code>Decided</code> state. An <code>Undecided</code> state will contain two <code>Tournaments</code>, one to the left and one to the right.</p>
+    </section>
+
+    
+    <section>
+        <h2>Solution for generating the tree</h2>
+        <p><a class="source" href="https://github.com/ScalaWilliam/scala-game-tournament/blob/master/src/main/scala/sw/TournamentTree.scala#L44-L60">Source</a></p>
+        <pre><code class="language-scala">/** Bottom up build: take every 2 consecutive items, create an UndefinedPlayer,
+  * then reprocess the new list of trees until we're left with only 1.
+  */
+@tailrec
+private def buildTree[T](tournamentTree: TournamentTree[T]*): TournamentTree[T] = {
+  tournamentTree.toList match {
+    case tree :: Nil =&gt; tree
+    case other =&gt;
+      buildTree {
+        other.grouped(2).map(_.toList).map {
+          case a :: b :: Nil =&gt; UndefinedPlayer(a, b)
+          case a :: _ =&gt; a
+          case Nil =&gt; ???
+        }.toList: _*
+      }
+  }
+}</code></pre>
+    </section>
+    
+    <section>
+        <h2>Solution for a Decided state</h2>
+        <p><a class="source" href="https://github.com/ScalaWilliam/scala-game-tournament/blob/master/src/main/scala/sw/TournamentTree.scala#L21-L27">Source</a></p>
+        <pre><code class="language-scala">case class DefinedPlayer[T](player: T) extends TournamentTree[T] {
+  def win(player: T): TournamentTree[T] = this
+
+  def nextGames: Set[(T, T)] = Set.empty
+
+  def winner: Option[T] = Some(player)
+}</code></pre>
+    </section>
+    
+    <section>
+        <h2>Solution for an Undecided state</h2>
+        <p><a class="source" href="https://github.com/ScalaWilliam/scala-game-tournament/blob/master/src/main/scala/sw/TournamentTree.scala#L29-L42">Source</a></p>
+        <pre><code class="language-scala">case class UndefinedPlayer[T](left: TournamentTree[T], right: TournamentTree[T]) extends TournamentTree[T] {
+  def win(player: T): TournamentTree[T] = (left, right) match {
+    case (DefinedPlayer(`player`), DefinedPlayer(_)) =&gt; DefinedPlayer(player)
+    case (DefinedPlayer(_), DefinedPlayer(`player`)) =&gt; DefinedPlayer(player)
+    case _ =&gt; UndefinedPlayer(left.win(player), right.win(player))
+  }
+
+  def nextGames: Set[(T, T)] = (left, right) match {
+    case (DefinedPlayer(a), DefinedPlayer(b)) =&gt; Set(a -&gt; b)
+    case _ =&gt; left.nextGames ++ right.nextGames
+  }
+
+  def winner: Option[T] = None
+}</code></pre>
+    </section>
+
+</body></html>

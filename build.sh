@@ -36,6 +36,9 @@ cp scala-for-2017/videos-stream-icon.svg out/scala-for-2017/
 mkdir -p out/essential-sbt
 cp essential-sbt/index.html out/essential-sbt/index.html
 
+mkdir -p out/tournament-tree
+cp tournament-tree/index.html out/tournament-tree/index.html
+
 function do_1612() {
 mkdir -p out/1612/essential-scala-tutorial/
 mkdir -p out/1611/firebase-static-site-deploy/
