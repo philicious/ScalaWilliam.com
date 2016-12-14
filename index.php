@@ -59,6 +59,14 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
     <h2>Articles</h2>
     <p>Also on <a href="https://plus.google.com/collection/oFuHlB" target="_blank">Google+</a>.</p>
     <ul>
+	        <li><a href="/most-important-streaming-abstraction/">The most important Streaming abstraction
+
+
+
+</a>, December 2016</li>
+	        <li><a href="/tournament-tree/">Tournament Tree
+
+</a>, December 2016</li>
     <li><a href="/essential-sbt/">Essential SBT</a>, December 2016</li>
         <li><a href="https://hackernoon.com/feature-switches-inheritance-and-agile-with-scala-jmx-on-the-jvm-140b4bf94d9f?gi=d8324d17dca0#.vj0o8770w" target="_blank">Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM</a>, September 2016</li>
     </ul>
