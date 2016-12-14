@@ -13,10 +13,11 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     <dd>GitHub issue: <a href="https://github.com/nrinaudo/kantan.csv/issues/58">kantan.csv: Support Scala 2.12.0</a>.</dd>
     <dd>GitHub issue: <a href="https://github.com/nrinaudo/kantan.csv/issues/59">kantan.csv: Support for cats 0.8.0</a>.</dd>
     <dt>October 2016</dt>
+      <dd>GitHub Pull Request to <code>sbt/sbt-git</code>: <a href="https://github.com/sbt/sbt-git/pull/114">Add headCommitMessage so we can get the commit message &amp; do stuff bas...</a></dd>
     <dd>Stack Overflow: <a href="http://stackoverflow.com/a/40335314/2789308">Asset mapping outside public folder on Play framework</a></dd>
     <dd>Quora: <a href="https://www.quora.com/What-are-the-advantages-and-disadvantages-of-play-framework/answer/William-Narmontas">What are the advantages and disadvantages of play framework?</a></dd>
     <dt>September 2016</dt>
-    <dd>Medium/Hacker Noon: <a href="https://hackernoon.com/feature-switches-inheritance-and-agile-with-scala-jmx-on-the-jvm-140b4bf94d9f">Feature Switches, Inheritance and Agile with Scala & JMX on the JVM
+    <dd>Medium/Hacker Noon: <a href="https://hackernoon.com/feature-switches-inheritance-and-agile-with-scala-jmx-on-the-jvm-140b4bf94d9f">Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM
 </a></dd>
     <dd>Stack Overflow: <a href="http://stackoverflow.com/a/39705895/2789308">Transform Json with circe</a></dd>
     <dd>Stack Overflow: <a href="http://stackoverflow.com/a/39713832/2789308">How to convert two columns from a data frame to Map(col1, col2) in scala?</a></dd>
