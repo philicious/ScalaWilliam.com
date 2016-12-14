@@ -83,7 +83,7 @@
 <section>
 <p>Any mutable, side-effect free code can be rewritten into this form and be reused on any iterator with a `scanLeft` method.</p>
 <p>Any mutable, side-effecting code can be rewritten into this form, plus side-effecting code.</p>
-<p>When you write code like this, you can reuse it in mutable code, an Iterator, an akka-streams Flow,  a tail recursive function and a pure test.</p>
+<p>When you write code like this, you can reuse it in mutable code, an Iterator, an akka-streams Flow (ie Kafka!),  a tail recursive function and a pure test.</p>
 <p>Because this function is not tied to any particular streaming implementation. You can plug it into akka-stream, into an Iterator, into a List, into a ListView, into a while loop, whatever - you are never locked into any one particular way of thinking.</p>
 </section>
 
