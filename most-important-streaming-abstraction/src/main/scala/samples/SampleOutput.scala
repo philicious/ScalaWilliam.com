@@ -12,7 +12,7 @@ case class SampleOutput(inputAndStateOutput: InputAndStateOutput) extends ThreeE
   def whileLoop(): Unit = {
     var state: State = initialState
     while (true) {
-      extract(state).foreach(dump)
+      dump(extract(state))
       state = accept(state, fetchInput())
     }
   }
@@ -21,21 +21,20 @@ case class SampleOutput(inputAndStateOutput: InputAndStateOutput) extends ThreeE
     flowInput
       .scan(initialState)(accept)
       .map(extract)
-      .mapConcat(_.toList)
       .runForeach(dump)
   }
 
   def iterator(): Unit = {
     iteratorInput()
       .scanLeft(initialState)(accept)
-      .flatMap(extract)
+      .map(extract)
       .foreach(dump)
   }
 
   override def tailRecursive(): Unit = {
     @tailrec
     def go(state: State): Unit = {
-      extract(state).foreach(dump)
+      dump(extract(state))
       go(accept(state, fetchInput()))
     }
 

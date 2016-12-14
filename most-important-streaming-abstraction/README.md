@@ -1,18 +1,14 @@
-# The most important Scala abstraction
+# The most important Streaming abstraction
 
-Pure functions:
+It is the pure function:
 
 `accept: (State, Input) => State`
-
-and
-
-`extract: State => Option[Output]`
-
-Note how `State => Option[Output]` is isomorphic (= the same) as `PartialFunction[State, Output]` and `{ def unapply(input: State): Option[Output] }`
 
 Any mutable, side-effect free code can be rewritten into this form and be reused on any iterator with a `scanLeft` method.
 
 For example, mutably:
+
+
 
 Suppose you don't want to output the full state however, but just want to emit an `Output`.
 So you create a method `g: State => Option[Output]`, 

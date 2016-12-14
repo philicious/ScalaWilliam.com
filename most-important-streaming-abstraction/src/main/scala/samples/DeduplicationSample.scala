@@ -17,7 +17,7 @@ object DeduplicationSample {
   }
 
   def deduplicationSample(): Unit = {
-    Iterator.apply[String]().scanLeft(Deduplicate.initial[String])(_.next(_)).flatMap(_.extract)
+    Iterator.apply[String]("X", "Y", "Y").scanLeft(Deduplicate.initial[String])(_.next(_)).flatMap(_.extract)
   }
 
 }

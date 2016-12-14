@@ -8,5 +8,5 @@ trait InputAndStateOutput extends InputAndState {
 
   def dump(output: Output): Unit
 
-  def extract(state: State): Option[Output]
+  def extract(state: State): Output
 }
