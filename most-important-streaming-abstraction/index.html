@@ -148,19 +148,17 @@ go(initialState)</code></pre>
     <section>
     <h2>Deduplication state machine</h2>
     <p>We'll deduplicate consecutive items here. Sample usage:</p>
-        <pre class="language-scala"><code data-source="src/main/scala/samples/DeduplicationSample.scala" data-from="20" data-to="20">Iterator.apply[String]("X", "Y", "Y").scanLeft(Deduplicate.initial[String])(_.next(_)).flatMap(_.extract)</code></pre>
+        <pre class="language-scala"><code data-source="src/main/scala/samples/DeduplicationSample.scala" data-from="22" data-to="22">Iterator.apply[String]("X", "Y", "Y").scanLeft(Deduplicate.initial[String])(_.accept(_)).flatMap(_.emit)</code></pre>
         <h3>Implementation:</h3>
-        <pre class="language-scala"><code data-source="src/main/scala/samples/DeduplicationSample.scala" data-from="6" data-to="17">case class Deduplicate[T](lastSeen: Option[T], emit: Option[T]) {
-  def extract: Option[T] = emit
-
-  def next(input: T): Deduplicate[T] = lastSeen match {
-    case Some(`input`) =&gt; Deduplicate(Some(input), None)
-    case _ =&gt; Deduplicate(Some(input), Some(input))
+        <pre class="language-scala"><code data-source="src/main/scala/samples/DeduplicationSample.scala" data-from="6" data-to="15">/**
+  * accept: (Deduplicate[T], T) =&gt; Deduplicate[T]
+  * extract: emit: Deduplicate[T] =&gt; Option[T]
+  */
+case class Deduplicate[T](lastSeen: Option[T], emit: Option[T]) {
+  def accept(input: T): Deduplicate[T] = {
+    if (lastSeen.contains(input)) copy(emit = None)
+    else Deduplicate(Some(input), Some(input))
   }
-}
-
-object Deduplicate {
-  def initial[T]: Deduplicate[T] = Deduplicate(None, None)
 }</code></pre>
         <h3>Testing</h3>
         <p>Look at just how easy it is!</p>
@@ -169,22 +167,22 @@ object Deduplicate {
   import DeduplicationSample.Deduplicate.initial
 
   test("Empty is empty") {
-    initial.extract shouldBe empty
+    initial.emit shouldBe empty
   }
   test("Single is emmitted") {
-    initial.next("Stuff").extract shouldBe Some("Stuff")
+    initial.accept("Stuff").emit shouldBe Some("Stuff")
   }
   test("Two in a row makes one emit") {
-    initial.next("Stuff").next("Stuff").extract shouldBe empty
+    initial.accept("Stuff").accept("Stuff").emit shouldBe empty
   }
   test("Three in a row makes one emit") {
-    initial.next("Stuff").next("Stuff").next("Stuff").extract shouldBe empty
+    initial.accept("Stuff").accept("Stuff").accept("Stuff").emit shouldBe empty
   }
   test("X and then Y gives Y at the end") {
-    initial.next("X").next("Y").extract shouldBe Some("Y")
+    initial.accept("X").accept("Y").emit shouldBe Some("Y")
   }
   test("X and then Y and then Y gives Y") {
-    initial.next("X").next("Y").next("Y").extract shouldBe empty
+    initial.accept("X").accept("Y").accept("Y").emit shouldBe empty
   }
 }</code></pre>
     </section>
