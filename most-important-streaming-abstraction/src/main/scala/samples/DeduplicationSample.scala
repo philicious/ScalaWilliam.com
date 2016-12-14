@@ -3,12 +3,14 @@ package samples
 
 object DeduplicationSample {
 
+  /**
+    * accept: (Deduplicate[T], T) => Deduplicate[T]
+    * extract: emit: Deduplicate[T] => Option[T]
+    */
   case class Deduplicate[T](lastSeen: Option[T], emit: Option[T]) {
-    def extract: Option[T] = emit
-
-    def next(input: T): Deduplicate[T] = lastSeen match {
-      case Some(`input`) => Deduplicate(Some(input), None)
-      case _ => Deduplicate(Some(input), Some(input))
+    def accept(input: T): Deduplicate[T] = {
+      if (lastSeen.contains(input)) copy(emit = None)
+      else Deduplicate(Some(input), Some(input))
     }
   }
 
@@ -17,7 +19,6 @@ object DeduplicationSample {
   }
 
   def deduplicationSample(): Unit = {
-    Iterator.apply[String]("X", "Y", "Y").scanLeft(Deduplicate.initial[String])(_.next(_)).flatMap(_.extract)
+    Iterator.apply[String]("X", "Y", "Y").scanLeft(Deduplicate.initial[String])(_.accept(_)).flatMap(_.emit)
   }
-
 }
