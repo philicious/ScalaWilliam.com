@@ -150,7 +150,7 @@ go(initialState)</code></pre>
     <p>We'll deduplicate consecutive items here. Sample usage:</p>
         <pre class="language-scala"><code data-source="src/main/scala/samples/DeduplicationSample.scala" data-from="22" data-to="22">Iterator.apply[String]("X", "Y", "Y").scanLeft(Deduplicate.initial[String])(_.accept(_)).flatMap(_.emit)</code></pre>
         <h3>Implementation:</h3>
-        <pre class="language-scala"><code data-source="src/main/scala/samples/DeduplicationSample.scala" data-from="6" data-to="15">/**
+        <pre class="language-scala"><code data-source="src/main/scala/samples/DeduplicationSample.scala" data-from="6" data-to="19">/**
   * accept: (Deduplicate[T], T) =&gt; Deduplicate[T]
   * extract: emit: Deduplicate[T] =&gt; Option[T]
   */
@@ -159,6 +159,10 @@ case class Deduplicate[T](lastSeen: Option[T], emit: Option[T]) {
     if (lastSeen.contains(input)) copy(emit = None)
     else Deduplicate(Some(input), Some(input))
   }
+}
+
+object Deduplicate {
+  def initial[T]: Deduplicate[T] = Deduplicate(None, None)
 }</code></pre>
         <h3>Testing</h3>
         <p>Look at just how easy it is!</p>
