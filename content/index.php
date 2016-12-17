@@ -8,6 +8,9 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
       <p>Contributions to Quora, Stack Overflow and GitHub. Excluding my open source projects. <a href="https://www.scalawilliam.com/cv/">My CV is here</a>.</p>
     </header>
   <dl>
+    <dt>December 2016</dt>
+    <dd>Medium: <a href="https://medium.com/@ScalaWilliam/limit-degrees-of-freedom-in-development-4c543bb6f806">Limit degrees of freedom in what you do
+</a></dd>
     <dt>November 2016</dt>
     <dd>Slideshare: <a href="http://www.slideshare.net/WilliamNarmontas/git-watch">Git Watch</a></dd>
     <dd>GitHub issue: <a href="https://github.com/nrinaudo/kantan.csv/issues/58">kantan.csv: Support Scala 2.12.0</a>.</dd>
