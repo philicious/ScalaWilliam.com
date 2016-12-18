@@ -43,11 +43,10 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
             <h2>Talks</h2>
             <ul>
                 <li><a href="/scala-for-2017/">Scala for 2017</a>, Singapore, December 2016</li>
-                <li><a href="/1406/xml-processing-in-scala/" target="_blank">Talk, PDF, SlideShare, YouTube: XML Processing in Scala,
+                <li><a href="/1406/xml-processing-in-scala/" target="_blank">XML Processing in Scala,
                         XML London 2014</a>, London, June 2014
                 </li>
-
-                <li><a href="/1404/an-introduction-to-scala/" target="_blank">Talk, SlideShare, YouTube: An Introduction to Scala</a>, City of London,
+                <li><a href="/1404/an-introduction-to-scala/" target="_blank">An Introduction to Scala</a>, City of London,
                     April 2014
                 </li></ul>
         </section>
