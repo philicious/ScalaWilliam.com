@@ -33,11 +33,22 @@
             border-color: firebrick;
             text-align: center;
             padding:0.6em;
+            overflow-x:scroll;
         }
         header code {
             font-size:1.6em;
             font-weight:bold;
         }
+        ul {
+            list-style-type: square;
+        }
+                a {
+            color:darkslategrey;
+        }
+        a:hover {
+            color:darkslateblue;
+        }
+
     
     </style>
     
@@ -50,7 +61,7 @@
 <meta property="article:published_time" content="2016-12-14">
 <meta property="article:modified_time" content="2016-12-14">
 <meta property="og:title" content="The most important Streaming abstraction">
-<meta property="og:image" content="https://avatars3.githubusercontent.com/u/2464813">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/2464813/21297891/f9e3ac96-c5c2-11e6-868c-2dd405e7b028.png">
 <meta property="og:description" content="The most important streaming abstraction: how do you separate out the pure from the impure to create extremely reusable code?">
 <meta itemprop="description" content="The most important streaming abstraction: how do you separate out the pure from the impure to create extremely reusable code?">
 <meta name="description" content="The most important streaming abstraction: how do you separate out the pure from the impure to create extremely reusable code?">
@@ -59,13 +70,13 @@
     <link rel="author" href="https://plus.google.com/u/0/103489630517643950426/">
 <link rel="publisher" href="https://plus.google.com/u/0/103489630517643950426/">
 <meta itemprop="name" content="The most important Streaming abstraction">
-<meta itemprop="image" content="https://avatars3.githubusercontent.com/u/2464813">
+<meta itemprop="image" content="https://cloud.githubusercontent.com/assets/2464813/21297891/f9e3ac96-c5c2-11e6-868c-2dd405e7b028.png">
 <meta name="author" content="William Narmontas">
 <link rel="canonical" href="https://www.scalawilliam.com/most-important-streaming-abstraction/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@ScalaWilliam">
 <meta name="twitter:title" content="The most important Streaming abstraction">
-<meta name="twitter:image" content="https://avatars3.githubusercontent.com/u/2464813">
+<meta name="twitter:image" content="https://cloud.githubusercontent.com/assets/2464813/21297891/f9e3ac96-c5c2-11e6-868c-2dd405e7b028.png">
 
     
     
@@ -83,9 +94,18 @@
 
 <section>
 <p>Any mutable, side-effect free code can be rewritten into this form and be reused on any iterator with a `scanLeft` method.</p>
-<p>Any mutable, side-effecting code can be rewritten into this form, plus side-effecting code.</p>
-<p>When you write code like this, you can reuse it in mutable code, an Iterator, an akka-streams Flow (ie Kafka!),  a tail recursive function and a pure test.</p>
-<p>Because this function is not tied to any particular streaming implementation. You can plug it into akka-stream, into an Iterator, into a List, into a ListView, into a while loop, whatever - you are never locked into any one particular way of thinking.</p>
+<p>Any mutable, side-effecting code can be rewritten into this form, followed by your side-effecting code.</p>
+    <p>Because this function is not tied to any particular streaming implementation,
+        you can plug it into <a href="http://doc.akka.io/docs/akka/2.4/scala/stream/index.html">akka-streams</a> <a href="http://doc.akka.io/docs/akka/2.4/scala/stream/stream-quickstart.html">Flow</a> 
+        (and thus <a href="http://doc.akka.io/docs/akka-stream-kafka/current/home.html">akka-streams-kafka</a>),
+        into an <a href="http://www.scala-lang.org/api/2.12.0/scala/collection/Iterator.html#scanLeft[B](z:B)(op:(B,A)=&gt;B):Iterator[B]">Iterator</a>,
+        into a <a href="http://www.scala-lang.org/api/2.12.0/scala/collection/immutable/List.html#scanLeft[B,That](z:B)(op:(B,A)=&gt;B)(implicitbf:scala.collection.generic.CanBuildFrom[Repr,B,That]):That">List</a>,
+        into a <a href="http://www.scala-lang.org/api/2.12.0/scala/collection/SeqView.html#scanLeft[B,That](z:B)(op:(B,A)=&gt;B)(implicitbf:scala.collection.generic.CanBuildFrom[This,B,That]):That">SeqView</a>,
+        into a mutable while loop,
+        a pure test, 
+        a <a href="http://alvinalexander.com/scala/scala-recursion-examples-recursive-programming">tail recursive </a> function,
+        whatever &mdash; you are never locked into any one particular orchestration.</p>
+    <p>I shall give you some examples of this:</p>
 </section>
 
     <section>
@@ -202,4 +222,30 @@ Because it's simple and is the minimal necessary abstraction to get most work do
 
 <p>These things can also be called State Machines. Separate pure logic from side effects, that's all.</p>
         </section>
+    <section>
+        <h2>Social media</h2>
+    <h3>Share on Twitter</h3>
+    <blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr">Just wrote this: <a href="https://t.co/TXQbzeKL2y">https://t.co/TXQbzeKL2y</a> <br>It&#39;s a draft but important enough to go out :) <a href="https://twitter.com/hashtag/streaming?src=hash">#streaming</a> <a href="https://twitter.com/hashtag/kafka?src=hash">#kafka</a> <a href="https://twitter.com/hashtag/reactive?src=hash">#reactive</a> <a href="https://twitter.com/hashtag/akka?src=hash">#akka</a> <a href="https://twitter.com/hashtag/scala?src=hash">#scala</a> <a href="https://twitter.com/hashtag/jvm?src=hash">#jvm</a></p>&mdash; William Narmontas (@ScalaWilliam) <a href="https://twitter.com/ScalaWilliam/status/808830321743433728">December 14, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+        <h3>Share</h3>
+                <div class="addthis_inline_share_toolbox"></div>
+        <h3>Follow</h3>
+        <style type="text/css">
+        #atftbx > p > span { display:none; }
+        </style>
+        <div class="addthis_inline_follow_toolbox"></div>
+
+        <h3>My other articles</h3>
+        <ul>
+        	    <li><a href="https://medium.com/@ScalaWilliam/limit-degrees-of-freedom-in-development-4c543bb6f806#.xmrcpl8rg">Limit degrees of freedom in development
+		    </a></li>
+    <li><a href="https://www.scalawilliam.com/essential-sbt/">Essential SBT</a></li>
+        <li><a href="https://hackernoon.com/feature-switches-inheritance-and-agile-with-scala-jmx-on-the-jvm-140b4bf94d9f?gi=d8324d17dca0#.vj0o8770w" target="_blank">Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM</a></li>
+
+        </ul>
+        
+        <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-584b716cc10a0e3c"></script>
+
+    </section>
 </body></html>
