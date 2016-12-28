@@ -210,7 +210,12 @@ object Deduplicate {
   }
 }</code></pre>
     </section>
-
+<section>
+	<h2>Corollary</h2>
+	<p>The input type can be a <code>List[I]</code>, so now you can support batching. 
+		Your lists can have size 0, size 1 or size <i>n</i>.
+	</p>
+	</section>
     <section>
     <h2>Conclusion</h2>
 <p>By using this pure immutable approach, your code can be used from multiple places and even extremely easily tested. Overcomplicate it, and your wiring becomes your "domain logic".</p>
