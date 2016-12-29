@@ -42,6 +42,9 @@ cp tournament-tree/index.html out/tournament-tree/index.html
 mkdir -p out/most-important-streaming-abstraction
 cp most-important-streaming-abstraction/index.html out/most-important-streaming-abstraction/index.html
 
+mkdir -p out/scala-nashorn-interaction
+cp scala-nashorn-interaction/index.html out/scala-nashorn-interaction/index.html
+
 function do_1612() {
 mkdir -p out/1612/essential-scala-tutorial/
 mkdir -p out/1611/firebase-static-site-deploy/
