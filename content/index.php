@@ -8,7 +8,11 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
       <p>Contributions to Quora, Stack Overflow and GitHub. Excluding my open source projects. <a href="https://www.scalawilliam.com/cv/">My CV is here</a>.</p>
     </header>
   <dl>
+    <dt>January 2017</dt>
+    <dd>Medium: <a href="https://medium.com/@ScalaWilliam/java-8-nashorn-cli-use-case-prepending-iso-instant-to-csv-from-unix-timestamp-3685b6ee746">Java 8 Nashorn CLI use case: prepending ISO instant to CSV from UNIX timestamp
+</a></dd>
     <dt>December 2016</dt>
+    <dd>GitHub issue: <a href="https://github.com/typesafehub/config/issues/447">Typesafe Config: NullPointerException in ConfigBeanImpl.isOptionalProperty when using ConfigBeanFactory.create</a></dd>
     <dd>Medium: <a href="https://medium.com/@ScalaWilliam/limit-degrees-of-freedom-in-development-4c543bb6f806">Limit degrees of freedom in what you do
 </a></dd>
     <dt>November 2016</dt>
