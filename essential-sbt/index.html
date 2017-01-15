@@ -243,12 +243,15 @@ nav li:before {
                 <button onclick="toggle_changelog();">Toggle Changelog</button>
 
     <ul>
+        <li><strong>January 15, 2017</strong>: Take in
+            <a href="https://groups.google.com/d/msg/scala-user/Dn43rIVVIpM/P1yIzgcGCgAJ">Валерий Байбосынов's feedback</a>.
+        <br/>Added clearer steps with the continuous stuff.</li>
       <li><strong>December 13, 2016</strong>: Add references and a changelog</li>
 <li><strong>December 10, 2016</strong>: Initial release</li>
     </ul>
   </nav>
   <article>
-    <h2>Create a unit project</h2>
+    <h2>Create an basic empty SBT project</h2>
         <div class="filtered">AHH</div>
     <pre><code>mkdir -p new-project
 cd new-project
@@ -266,6 +269,7 @@ object SimpleApp extends App {
 }
 EOF</code></pre>
     <h2>Run continuously</h2>
+      <p>Run <code>~</code> commands in another terminal window. Press <kbd>Enter</kbd> to exit.</p>
     <pre><code>sbt '~run'</code></pre>
     <h2>Change source to verify it works</h2>
     <pre><code>sed -i -e 's/works/definitely works/' \
