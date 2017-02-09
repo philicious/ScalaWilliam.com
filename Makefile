@@ -31,3 +31,8 @@ watch:
 	make
 	fswatch -l 0.2 --exclude 'out' --exclude '.idea' --exclude '.git' --exclude '.*___jb_.*' . \
 	| xargs -n1 -I {} 'make'
+push: 
+	git pull origin master
+	make clean
+	make
+	firebase deploy --non-interactive --token "$TOKEN"
