@@ -35,4 +35,4 @@ push:
 	git pull origin master
 	make clean
 	make
-	firebase deploy --non-interactive --token "$TOKEN"
+	firebase deploy --non-interactive --token "$$TOKEN"
