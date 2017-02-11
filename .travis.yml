@@ -2,11 +2,12 @@ sudo: required
 dist: trusty
 install:
   - npm install -g firebase-tools
+  - npm install -g htmllint
 script:
   - make clean
   - make
 after_success:
-  - firebase deploy --non-interactive --token "$$FIREBASE_TOKEN" --project scalawilliam-ff4b2
+  - firebase deploy --non-interactive --token $FIREBASE_TOKEN --project scalawilliam-ff4b2
 cache:
   directories:
     - $HOME/.npm
