@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 default: test
 test-only:
 	htmllint out/**/*.html || true
