@@ -9,7 +9,8 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     </header>
   <dl>
     <dt>February 2017</dt>
-    <dd><a href="https://groups.google.com/forum/#!msg/play-framework/imf51EsYU08/tDk0sEfPCgAJ">Technical Feedback to Play Framework 2.6.0-M1 milestone release</a></dd>
+    <dd>Stack Overflow: <a href="http://stackoverflow.com/a/42313651/2789308">Answer to: &quot;Create and fill a JsArray with play-json transformer&quot;</a></dd>
+    <dd>Google Groups: <a href="https://groups.google.com/forum/#!msg/play-framework/imf51EsYU08/tDk0sEfPCgAJ">Technical Feedback to Play Framework 2.6.0-M1 milestone release</a></dd>
     <dt>January 2017</dt>
     <dd>Medium: <a href="https://medium.com/@ScalaWilliam/java-8-nashorn-cli-use-case-prepending-iso-instant-to-csv-from-unix-timestamp-3685b6ee746">Java 8 Nashorn CLI use case: prepending ISO instant to CSV from UNIX timestamp
 </a></dd>
