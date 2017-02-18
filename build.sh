@@ -39,6 +39,9 @@ cp essential-sbt/index.html out/essential-sbt/index.html
 mkdir -p out/tournament-tree
 cp tournament-tree/index.html out/tournament-tree/index.html
 
+mkdir -p out/scala-json
+cp scala-json/index.html out/scala-json/index.html
+
 mkdir -p out/most-important-streaming-abstraction
 cp most-important-streaming-abstraction/index.html out/most-important-streaming-abstraction/index.html
 
