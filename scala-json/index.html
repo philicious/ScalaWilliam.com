@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>Scala JSON</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900%7CRoboto+Mono" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: rgb(5, 5, 5);
+            background: rgb(255, 255, 255);
+            max-width: 60em;
+        }
+
+        code {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        ul {
+            list-style-type: square;
+        }
+
+        a {
+            color: darkslategrey;
+        }
+
+        a:hover {
+            color: darkslateblue;
+        }
+
+    </style>
+
+    <meta property="og:url" content="https://www.scalawilliam.com/scala-json/">
+    <!-- http://ogp.me/ -->
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2017-02-18">
+    <meta property="article:modified_time" content="2017-02-18">
+    <meta property="og:site_name" content="Scala William">
+    <link rel="author" href="https://plus.google.com/u/0/103489630517643950426/">
+    <link rel="publisher" href="https://plus.google.com/u/0/103489630517643950426/">
+    <meta name="author" content="William Narmontas">
+    <link rel="canonical" href="https://www.scalawilliam.com/scala-json/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ScalaWilliam">
+    <meta name="twitter:title" content="Scala JSON for 2017">
+
+</head>
+
+<body>
+<header>
+    <h1>My Scala JSON usage (2017)</h1>
+    <h2>By <a href="/">William "Scala William" Narmontas</a></h2>
+    <p>Saturday, 18 February 2017</p>
+    <p><em>There are many JSON libraries for Scala, so which one do I choose?</em></p>
+</header>
+    <section>
+        <p>I'll be talking about the following libraries that I used:</p>
+        <ul>
+            <li>play-json</li>
+            <li>circe</li>
+            <li>rapture-json</li>
+            <li>jackson</li>
+            <li>json4s</li>
+        </ul>
+        
+        <p>There are others as well, such as Argonaut and Upickle but I've not found the need to use them yet.</p>
+        
+        <p>Each of them can be used in different situations and even combined.</p>
+        <p>A typical use case for JSON in Scala is to convert between a JSON object and a Scala case class, though there will be other use cases as well.</p>
+    </section>
+    
+    <section>
+    <h2>json4s: the oldie</h2>
+    <p>json4s uses reflection to serialise your objects. This means rapid prototyping, but
+        when you need power and customisation it'll fail you.</p>
+    <p>Offers the choice of a native Scala parser and a fasterxml-jackson backend.</p>
+        <p>Usage can be a bit confusing.</p>
+    </section>
+    <section>
+    <h2>play-json: the workhorse</h2>
+    <p>Well integrated with the Play Framework. Uses jackson underneath.</p>
+        <p>Uses Read/Write formats to serialise and deserialise your objects.
+        They are generated via macros so it's more explicit than json4s.</p>
+        <p>Usage is very explicit and documentation is very good.</p>
+    </section>
+    <section>
+    <h2>circe: the type-saviour</h2>
+    <p>All the derivations are transparent and it uses the latest Scala techniques to 
+        derive Decoders and Encoders (ie play-json's Read/Write).</p>
+    <p>Documentation not totally up to scratch, Play's is better at the time of writing.</p>
+        <p>circe has a very bright future indeed. circe-yaml is out there as well.</p>
+    </section>
+    <section>
+    <h2>rapture-json: unifying Scala JSON</h2>
+    <p>rapture-json provides a wrapper layer around many of Scala's JSON libraries,
+        and also comes with other nice pluses, such as JSON interpolation. This lets you 
+        write your JSON without intermediate case classes such as:</p>
+    <pre><code><small>import rapture.json._
+import rapture.json.jsonBackends.play._
+val postBody: JsObject = json"""{
+  "app_id": $appId,
+  "ttl": 300,
+  "template_id": "cebb4561-07d7-4b61-a0fd-3077c36f8e51",
+  "included_segments": ["All"],
+  "headings": {"en":${s"Inter @ ${validServer.name}, ${interOut.userMessage.nickname}"}},
+  "url": ${s"https://actionfps.com/servers/?join=${addr}"}
+}""".as[JsObject]</small></code></pre>
+        <p>It even comes with mutable and immutable interfaces, so you
+        don't have to be stuck in only one way of thinking!</p>
+        <p>You are not stuck in rapture's model either - it's very easy to move inbetween different
+        models.</p>
+        <p>One unusual thing about rapture is that it provides different modes, such as 
+        throwing an exception - or returning an <code>Either</code> - or returning an <code>Option</code>, so you're never stuck in a single paradigm.</p>
+        <p>The documentation is not great to read and can be confusing.</p>
+    </section>
+    <section>
+    <h2>jackson</h2>
+    <p>jackson is a Java JSON library, one of the fastest, one of the best.</p>
+    <p>Typically you won't be using it but when you need the performance and power, consider it.</p>
+    </section>
+    <section>
+    <h2>My usage / summary</h2>
+    <p>play-json inside a Play app, circe outside of it. rapture-json when I want to
+        enjoy do more fancy things.</p>
+        <p>json4s if I don't want to build custom encoders/decoders.</p>
+        <p>In the long run IMO circe will come out on top because of the heavy community backing.</p>
+    </section>
+    
+
+    <h3>Follow on Social Media</h3>
+    <style type="text/css">
+        #atftbx > p > span {
+            display: none;
+        }
+    </style>
+    <div class="addthis_inline_follow_toolbox"></div>
+
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-584b716cc10a0e3c"></script>
+
+</body>
+</html>
