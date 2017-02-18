@@ -8,6 +8,8 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
       <p>Contributions to Quora, Stack Overflow and GitHub. Excluding my open source projects. <a href="https://www.scalawilliam.com/cv/">My CV is here</a>.</p>
     </header>
   <dl>
+    <dt>February 2017</dt>
+    <dd><a href="https://groups.google.com/forum/#!msg/play-framework/imf51EsYU08/tDk0sEfPCgAJ">Technical Feedback to Play Framework 2.6.0-M1 milestone release</a></dd>
     <dt>January 2017</dt>
     <dd>Medium: <a href="https://medium.com/@ScalaWilliam/java-8-nashorn-cli-use-case-prepending-iso-instant-to-csv-from-unix-timestamp-3685b6ee746">Java 8 Nashorn CLI use case: prepending ISO instant to CSV from UNIX timestamp
 </a></dd>
