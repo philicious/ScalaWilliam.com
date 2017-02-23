@@ -34,6 +34,7 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     <dd>Stack Overflow: <a href="http://stackoverflow.com/a/39713832/2789308">How to convert two columns from a data frame to Map(col1, col2) in scala?</a></dd>
     <dd>Slideshare: <a href="http://www.slideshare.net/WilliamNarmontas/xml-processing-in-scala-xml-london-2014">XML Processing in Scala (XML London 2014)</a></dd>
     <dd>Slideshare: <a href="http://www.slideshare.net/WilliamNarmontas/an-introduction-to-scala-2014">An Introduction to Scala (2014)</a></dd>
+    <dd>GitHub Issue: <a href="https://github.com/sirthias/swave/issues/13">Feature request to swave.io: predefined "PushSpout"</a></dd>
     <dt>August 2016</dt>
     <dd>Blog comment: <a href="https://novelist.xyz/tech/hugo-site-deployment-workflow/#comment-2805196952">How I deploy my Hugo site to my webserver</a></dd>
     <dt>July 2016</dt>
