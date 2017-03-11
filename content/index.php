@@ -7,7 +7,10 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
       <h2>Public Social Content</h2>
       <p>Contributions to Quora, Stack Overflow and GitHub. Excluding my open source projects. <a href="https://www.scalawilliam.com/cv/">My CV is here</a>.</p>
     </header>
-  <dl>
+    <dl>
+      <dt>March 2017</dt>
+      <dd>GitHub issue: <a href="https://github.com/playframework/playframework/issues/7067">Play Framework: 2.6.0-M2 http request times out after 20 seconds, returns response when it should continue waiting</a></dd>
+      <dd>GitHub issue: <a href="https://github.com/sbt/sbt/issues/3005">SBT: [0.13.14-RC1] Initialization exception on OpenJDK 9 (Docker)</a></dd>
     <dt>February 2017</dt>
     <dd>Quora: <a href="https://www.quora.com/Which-programming-language-should-I-use-for-my-startup/answer/William-Narmontas">&quot;Which programming language should I use for my startup?&quot;</a></dd>
     <dd>Stack Overflow: <a href="http://stackoverflow.com/a/42313651/2789308">Answer to: &quot;Create and fill a JsArray with play-json transformer&quot;</a></dd>
