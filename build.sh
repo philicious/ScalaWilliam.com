@@ -42,6 +42,9 @@ cp tournament-tree/index.html out/tournament-tree/index.html
 mkdir -p out/scala-json
 cp scala-json/index.html out/scala-json/index.html
 
+mkdir -p out/scala-native-libpcap
+cp scala-native-libpcap/index.html out/scala-native-libpcap/index.html
+
 mkdir -p out/most-important-streaming-abstraction
 cp most-important-streaming-abstraction/index.html out/most-important-streaming-abstraction/index.html
 
