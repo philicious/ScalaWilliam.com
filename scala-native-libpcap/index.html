@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900%7CRoboto+Mono" rel="stylesheet">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-java.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-scala.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <style type="text/css">
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height:1.6;
+        color:rgb(5,5,5);
+        background:rgb(255,255,255);
+        max-width:60em;
+    }
+        code {
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        header pre {
+            border:2px solid;
+            border-color: firebrick;
+            text-align: center;
+            padding:0.6em;
+            overflow-x:scroll;
+        }
+        header code {
+            font-size:1.6em;
+            font-weight:bold;
+        }
+        ul {
+            list-style-type: square;
+        }
+                a {
+            color:darkslategrey;
+        }
+        a:hover {
+            color:darkslateblue;
+        }
+
+    
+    </style>
+    
+    
+    <title>Capturing Packets with Scala natively with libpcap</title>
+
+<meta name="twitter:title" content="Capturing Packets with Scala natively with libpcap">
+<meta property="og:title" content="Capturing Packets with Scala natively with libpcap">
+<!-- temporary until we release the work -->
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<meta property="og:url" content="https://www.scalawilliam.com/scala-native-libpcap/">
+<link rel="canonical" href="https://www.scalawilliam.com/scala-native-libpcap/">
+  <!-- http://ogp.me/ -->
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-12-14">
+<meta property="article:modified_time" content="2016-12-14">
+<!--<meta property="og:description" content="The most important streaming abstraction: how do you separate out the pure from the impure to create extremely reusable code?">
+<meta itemprop="description" content="The most important streaming abstraction: how do you separate out the pure from the impure to create extremely reusable code?">
+<meta name="description" content="The most important streaming abstraction: how do you separate out the pure from the impure to create extremely reusable code?">
+<meta name="twitter:description" content="The most important streaming abstraction: how do you separate out the pure from the impure to create extremely reusable code?">
+-->
+<meta property="og:site_name" content="Scala William">
+<link rel="author" href="https://plus.google.com/u/0/103489630517643950426/">
+<link rel="publisher" href="https://plus.google.com/u/0/103489630517643950426/">
+<meta itemprop="name" content="The most important Streaming abstraction">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/2464813/21297891/f9e3ac96-c5c2-11e6-868c-2dd405e7b028.png">
+<meta itemprop="image" content="https://cloud.githubusercontent.com/assets/2464813/21297891/f9e3ac96-c5c2-11e6-868c-2dd405e7b028.png">
+<meta name="twitter:image" content="https://cloud.githubusercontent.com/assets/2464813/21297891/f9e3ac96-c5c2-11e6-868c-2dd405e7b028.png">
+<meta name="author" content="William Narmontas">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@ScalaWilliam">
+</head>
+<body>
+    <header>
+        <h1>Capturing Packets with Scala natively with libpcap</h1>
+        <h2>By <a href="/">William "Scala William" Narmontas</a></h2>
+        <pre><code>accept: (State, Input) =&gt; State</code></pre>
+        <p>You can browse all the Scala code relating to this here: <a href="https://github.com/ScalaWilliam/scala-native-libpcap">GitHub repository</a></p>
+    </header>
+
+<section>
+<p>libpcap is a UNIX library that implements the pcap interface to capture packets (messages) travelling between your computer and other computers. Typical use case for packet capture is to inspect contents of the packets and do analysis on those.</p>
+    <p>Last year I wrote an application to parse GTPv2 (4G) packets on a 20Gbps network interface on a Linux server
+    that lets you find which cell towers people are connecting to with their mobile phones.
+        And when you have the cell tower's location, you can determine the whereabouts of the person.
+    </p>
+    <p>I implemented this application using pure Scala code on the JVM with a small JNI interface (sbt-jni).
+    JNA proved too slow to use so I tried JNI which would give me direct memory access to avoid copying any of the
+    packet data - and read it with pure Scala code. I also tried Pcap4j which was a good 25x slower. 
+    </p>
+    <p>You can analyse the packets in two ways - offline and online. Typically you would capture
+    some data to analyse it offline, write some code against the offline pcap file, and then 
+    run it against a live interface.</p>
+    
+    <p>As soon as I saw scala-native 0.1 announced, I rushed to see how well it'd work with 
+    pcap. I loaded up a docker image, installed a bunch of dependencies and got to work.
+    <br>
+    First part was just seeing how I deal with null pointers.
+    <br>
+    Second part was understanding all the mappings between Scala and C.
+        <br>
+    Downloaded a random pcap off the internet (there are quite a few for you).
+        <br>
+    Then I tried to open a file, which worked.
+        Docs for libpcap are not super good so it took a while to get familiar with it again.
+        <br>
+        I managed to read one packet. But timestamps were odd. Turns out I was reading Int and not Long (this even happens in Java where people dislike using java.time...).
+        <br>
+        
+        Then I read multiple packets. Nice.
+        <br>
+        Now harder part, I've never tried pcap in Docker. Install tcpdump, and curl'ed. It works, yay!
+        <br>
+        So I must definitely be able to do this.
+        <br>
+        There is a slight difference between offline and online modes - in online if you get a null for 'next packet'
+        you just retry later. in offline this typically means file end.
+        <br>
+        Now onto pointer manipulation... Well, we only really need this if we want high performance (zero-copy).
+        <br>
+        So if we want high performance we must never copy the data and read it as it is.
+        Unfortunately you'll face limitations even in this circumstance, as kernel does copy the data from kernel space to user space.
+        But if you wanted more awesome, you can buy some commercial libraries to do zero-copy packet capture.
+        <br>
+        Back to the code and domain:
+        
+        packet capture is a funny thing. You're reading bits and bytes, there's a lot that can go wrong.
+        Can never be too careful, or you risk crashing your app. So bound checking is super important!
+        
+        So now that I know that I'm reading the data - let's show YOU that we are reading it. Output timestamp, source IP, destination IP, and a few bytes.
+        <br>
+        All nice and dandy, so I think scala-native is promising and something that I'll consider
+        when my application cannot scale out of the JVM due to the JNI boundary.
+        Or when I cannot afford to deploy a rather big JVM.<br>
+        It's good to have choice.
+    </p>
+</section>
+    
+
+    <section>
+    <h2>Base example</h2>
+        <h3>while-loop</h3>
+        <pre class="language-scala"><code data-source="src/main/scala/samples/SampleBasic.scala" data-from="13" data-to="17">var state: State = initialState
+while (true) {
+  dumpState(state)
+  state = accept(state, fetchInput())
+}</code></pre>
+    <section>
+        <h2>Social media</h2>
+    <h3>Share on Twitter</h3>
+    <blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr">Just wrote this: <a href="https://t.co/TXQbzeKL2y">https://t.co/TXQbzeKL2y</a> <br>It&#39;s a draft but important enough to go out :) <a href="https://twitter.com/hashtag/streaming?src=hash">#streaming</a> <a href="https://twitter.com/hashtag/kafka?src=hash">#kafka</a> <a href="https://twitter.com/hashtag/reactive?src=hash">#reactive</a> <a href="https://twitter.com/hashtag/akka?src=hash">#akka</a> <a href="https://twitter.com/hashtag/scala?src=hash">#scala</a> <a href="https://twitter.com/hashtag/jvm?src=hash">#jvm</a></p>&mdash; William Narmontas (@ScalaWilliam) <a href="https://twitter.com/ScalaWilliam/status/808830321743433728">December 14, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+        <h3>Share</h3>
+                <div class="addthis_inline_share_toolbox"></div>
+        <h3>Follow</h3>
+        <style type="text/css">
+        #atftbx > p > span { display:none; }
+        </style>
+        <div class="addthis_inline_follow_toolbox"></div>
+
+        <h3>My other articles</h3>
+        <ul>
+        	    <li><a href="https://medium.com/@ScalaWilliam/limit-degrees-of-freedom-in-development-4c543bb6f806#.xmrcpl8rg">Limit degrees of freedom in development
+		    </a></li>
+    <li><a href="https://www.scalawilliam.com/essential-sbt/">Essential SBT</a></li>
+        <li><a href="https://hackernoon.com/feature-switches-inheritance-and-agile-with-scala-jmx-on-the-jvm-140b4bf94d9f?gi=d8324d17dca0#.vj0o8770w" target="_blank">Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM</a></li>
+
+        </ul>
+        
+        <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-584b716cc10a0e3c"></script>
+
+    </section>
+</body></html>
