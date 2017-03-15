@@ -12,7 +12,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
 
             <p>I've been building websites and software since 2004 and specialising in Scala since 2013.</p>
 
-            <p>
+		<p><a href="/cv/">Latest CV</a> &mdash;
                 <a href="#articles">Articles</a>
                 &mdash;
                 <a href="/content/">Social content</a>

@@ -7,9 +7,14 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
       <h2>Public Social Content</h2>
       <p>Contributions to Quora, Stack Overflow and GitHub. Excluding my open source projects. <a href="https://www.scalawilliam.com/cv/">My CV is here</a>.</p>
     </header>
-  <dl>
+    <dl>
+      <dt>March 2017</dt>
+      <dd>GitHub issue: <a href="https://github.com/playframework/playframework/issues/7067">Play Framework: 2.6.0-M2 http request times out after 20 seconds, returns response when it should continue waiting</a></dd>
+      <dd>GitHub issue: <a href="https://github.com/sbt/sbt/issues/3005">SBT: [0.13.14-RC1] Initialization exception on OpenJDK 9 (Docker)</a></dd>
     <dt>February 2017</dt>
-    <dd><a href="https://groups.google.com/forum/#!msg/play-framework/imf51EsYU08/tDk0sEfPCgAJ">Technical Feedback to Play Framework 2.6.0-M1 milestone release</a></dd>
+    <dd>Quora: <a href="https://www.quora.com/Which-programming-language-should-I-use-for-my-startup/answer/William-Narmontas">&quot;Which programming language should I use for my startup?&quot;</a></dd>
+    <dd>Stack Overflow: <a href="http://stackoverflow.com/a/42313651/2789308">Answer to: &quot;Create and fill a JsArray with play-json transformer&quot;</a></dd>
+    <dd>Google Groups: <a href="https://groups.google.com/forum/#!msg/play-framework/imf51EsYU08/tDk0sEfPCgAJ">Technical Feedback to Play Framework 2.6.0-M1 milestone release</a></dd>
     <dt>January 2017</dt>
     <dd>Medium: <a href="https://medium.com/@ScalaWilliam/java-8-nashorn-cli-use-case-prepending-iso-instant-to-csv-from-unix-timestamp-3685b6ee746">Java 8 Nashorn CLI use case: prepending ISO instant to CSV from UNIX timestamp
 </a></dd>
@@ -32,6 +37,7 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     <dd>Stack Overflow: <a href="http://stackoverflow.com/a/39713832/2789308">How to convert two columns from a data frame to Map(col1, col2) in scala?</a></dd>
     <dd>Slideshare: <a href="http://www.slideshare.net/WilliamNarmontas/xml-processing-in-scala-xml-london-2014">XML Processing in Scala (XML London 2014)</a></dd>
     <dd>Slideshare: <a href="http://www.slideshare.net/WilliamNarmontas/an-introduction-to-scala-2014">An Introduction to Scala (2014)</a></dd>
+    <dd>GitHub Issue: <a href="https://github.com/sirthias/swave/issues/13">Feature request to swave.io: predefined "PushSpout"</a></dd>
     <dt>August 2016</dt>
     <dd>Blog comment: <a href="https://novelist.xyz/tech/hugo-site-deployment-workflow/#comment-2805196952">How I deploy my Hugo site to my webserver</a></dd>
     <dt>July 2016</dt>
