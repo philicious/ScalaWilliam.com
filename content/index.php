@@ -9,6 +9,8 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     </header>
     <dl>
       <dt>March 2017</dt>
+        <dd>Google Groups: <a href="https://groups.google.com/d/msg/play-framework/IRVgowWxE58/4SIQZ_ksCAAJ">Answer to: &quot;Play Framework ›
+Good for API gateway?&quot;</a></dd>
       <dd>GitHub issue: <a href="https://github.com/playframework/playframework/issues/7067">Play Framework: 2.6.0-M2 http request times out after 20 seconds, returns response when it should continue waiting</a></dd>
       <dd>GitHub issue: <a href="https://github.com/sbt/sbt/issues/3005">SBT: [0.13.14-RC1] Initialization exception on OpenJDK 9 (Docker)</a></dd>
     <dt>February 2017</dt>
