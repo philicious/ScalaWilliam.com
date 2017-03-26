@@ -91,10 +91,10 @@
     <h2>Background</h2>
     <p><a href="https://en.wikipedia.org/wiki/Pcap">libcap</a> (also: <a href="http://www.tcpdump.org/pcap.html">pcap</a>) is a <a href="https://en.wikipedia.org/wiki/Packet_analyzer">network traffic capture library</a>. Packet analysis has <a href="https://en.wikipedia.org/wiki/Packet_analyzer#Uses">many use cases</a>, good and bad.</p>
     <p>Last year for a client I wrote a packet analyser to extract current cell tower IDs for mobile network subscribers.
-        The <a href="https://en.wikipedia.org/wiki/GPRS_Tunnelling_Protocol">GPRS Tunnelling Protocol (GTP)</a> runs over UDP and is mostly binary encoded (see the <a href="http://www.etsi.org/deliver/etsi_ts/129200_129299/129274/12.06.00_60/ts_129274v120600p.pdf">GTPv2 PDF</a> specification), and in this particular use case the extraction had to be done real-time.</p>
+        The <a href="https://en.wikipedia.org/wiki/GPRS_Tunnelling_Protocol">GPRS Tunnelling Protocol (GTP)</a> runs over UDP and is mostly binary encoded (see the <a href="http://www.etsi.org/deliver/etsi_ts/129200_129299/129274/12.06.00_60/ts_129274v120600p.pdf">GTPv2 specification</a> &mdash; large PDF!), and in this particular use case the extraction had to be done real-time.</p>
     <p><a href="https://www.pcap4j.org/">Pcap4j</a> has a nice usable API but its performance didn't match the performance expectation.
         Pcap4j uses <a href="https://github.com/java-native-access/jna/blob/master/README.md">Java Native Access (JNA)</a>
-        as the native access layer, which is <a href="http://stackoverflow.com/a/22289269/2789308">slower but easier</a> than <a href="https://en.wikipedia.org/wiki/Java_Native_Interface">JNI (Java Native Interface)</a>. Using JNI gave a good 25x performance boost but required a bit of C-Java interfacing. Fortunately, Scala people have made it easy with the <a href="https://github.com/jodersky/sbt-jni">sbt-jni</a> <a href="https://www.scalawilliam.com/essential-sbt/">SBT (Scala Build Tool)</a> plugin.</p>
+        as the native access layer, which is <a href="http://stackoverflow.com/a/22289269/2789308">slower but easier</a> than <a href="https://en.wikipedia.org/wiki/Java_Native_Interface">JNI (Java Native Interface)</a>. JNI gives a good 25x performance boost over JNA  but required a bit of C-Java interfacing. Fortunately, Scala people have made it easy with the <a href="https://github.com/jodersky/sbt-jni">sbt-jni</a> <a href="https://www.scalawilliam.com/essential-sbt/">SBT (Scala Build Tool)</a> plugin.</p>
     <p>I was then able to test-drive my development <a href="https://www.youtube.com/watch?v=6e89HsqJtXQ">with ScalaTest</a> and Scala's <a href="http://danielwestheide.com/blog/2013/02/06/the-neophytes-guide-to-scala-part-12-type-classes.html">type classes</a>. The type classes let me write a purely functional access layer to both <a href="http://doc.akka.io/api/akka/2.4/akka/util/ByteString.html">ByteString</a> and zero-copy direct high performance memory access via <a href="https://dzone.com/articles/understanding-sunmiscunsafe">using sun.misc.Unsafe</a>.</p>
     <p>You can run your analysis online against a live interface or offline against a file that you would capture with <a href="https://danielmiessler.com/study/tcpdump/">tcpdump</a>. To visually analyse the packets you'd use <a href="https://www.wireshark.org/">Wireshark</a>.</p>
     </section>
@@ -107,19 +107,22 @@
     </section>
     <section>
         <h2>Getting to work</h2>
-        <p>There were a few things I had to figure out on the way:</p>
-        <dl>
-        <dt>Dealing with null pointers.</dt>
-        <dd>This wasn't too bad, <code>NULL</code> is <code>null</code>!</dd>
-        <dd><pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="93" data-to="93">if (pcapHandle == null) {</code></pre></dd>
-            <dt>Understanding <a href="http://www.scala-native.org/en/latest/user/interop.html">the mappings between Scala and C</a>.</dt>
-            <dd>The documentation was good and helpful, there was not much surprise.</dd>
-            <dt>Mapping libpcap to Scala</dt>
-            <dd>Was a bit more effort initially - <a href="https://linux.die.net/man/3/pcap_open_live">some</a> <a href="http://www.tcpdump.org/manpages/pcap_open_live.3pcap.html">manpages</a>.
-            </dd>
-            <dd>
+        <section>
+            <h3>Dealing with null pointers</h3>
+        <p>This wasn't too bad, <code>NULL</code> is <code>null</code>!</p>
+        <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="93" data-to="93">if (pcapHandle == null) {</code></pre>
+        </section>
+        <section>
+            <h3>Understanding Scala-C mappings</h3>
+            <p><a href="http://www.scala-native.org/en/latest/user/interop.html">The documentation</a> (<a href="https://media.readthedocs.org/pdf/scala-native/latest/scala-native.pdf">PDF</a>) was good and helpful, there was not much surprise.</p>
+        </section>
+        <section>
+            <h3>Mapping libpcap to Scala</h3>
+            <p>Was a bit more effort initially - <a href="https://linux.die.net/man/3/pcap_open_live">some</a> <a href="http://www.tcpdump.org/manpages/pcap_open_live.3pcap.html">manpages</a>.
+            </p>
+            <p>
         <a href="https://fossies.org/dox/libpcap-1.8.1/pcap_2pcap_8h_source.html#l00163">Reading the source</a> was the most helpful thing and 
-                from this I managed to build a good simple mapping:
+                from this I managed to build a good simple mapping:</p>
             <pre class="language-scala"><code data-source="src/main/scala/pcap.scala" data-from="9" data-to="36">@native.link("pcap")
 @native.extern
 object pcap {
@@ -148,25 +151,33 @@ object pcap {
   def pcap_close(p: native.Ptr[Unit]): Unit = native.extern
 
 }</code></pre>
-            </dd>
-            <dt>Testing offline first</dt>
-            <dd>I wanted to make sure I can read from a simple static file. Producing one isn't too difficult - just run a <a href="http://www.speedtest.net/">speed test</a> while capturing your packets with <a href="http://www.tcpdump.org/">tcpdump</a>.</dd>
-            <dd>For offline reading, you need <a href="http://www.tcpdump.org/manpages/pcap_open_offline.3pcap.html"><code>pcap_open_offline</code></a>.</dd>
-            <dd>With every code change, my app would <a href="https://www.scalawilliam.com/essential-sbt/#run-continuously">run continuously</a> using <a href="http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html">SBT's triggered execution</a> but there would be nasty crashes (exit code 139 and such) if I got something wrong with memory access.</dd>
-            <dt>Reading the first packet</dt>
-            <dd>Now that I managed to read one packet without crashing, I finally got access to the timestamps, but the results were odd - turns out I was reading <code>Int</code> and not <code>Long</code>. But this happens even in Java where developers dislike using <code>java.time.*</code>.</dd>
-            <dt>Online vs Offline</dt>
-            <dd>In online, reading the next packet you may get a <code>null</code> as result, telling you you just need to retry for the next packet - whereas in offline this means the end of the file.</dd>
-            <dt>Pointer manipulation</dt>
-            <dd>To read the data, and in a high performance manner, we have to deal with pointer manipulation and be super extremely safe when doing so. Poor understanding of pointers is where <a href="https://en.wikipedia.org/wiki/Dangling_pointer">many bugs come from</a>.</dd>
-            <dd>Data copying has a huge performance penalty so by accessing the memory directly we don't copy very much.
-            pcap however does copy from kernel to user space and if you wanted to avoid that there are <a href="https://en.wikipedia.org/wiki/Netsniff-ng">solutions</a> <a href="http://www.ntop.org/products/packet-capture/pf_ring/pf_ring-zc-zero-copy/">for that</a> but it's beyond scope.
-            </dd>
-            <dt>Printing IP addresses</dt>
-            <dd>This was one thing that was easier in native land than in JVM land. As far as I'm aware there is no <a href="https://linux.die.net/man/3/inet_ntoa"><code>inet_ntoa</code></a> in the JVM to convert an IP address from Int into text form.
+            </section>
+        <section>
+        <h3>Testing offline</h3>
+            
+            <p>I wanted to make sure I can read from a simple static file. Producing one isn't too difficult - just run a <a href="http://www.speedtest.net/">speed test</a> while capturing your packets with <a href="http://www.tcpdump.org/">tcpdump</a>.</p>
+            <p>For offline reading, you need <a href="http://www.tcpdump.org/manpages/pcap_open_offline.3pcap.html"><code>pcap_open_offline</code></a>.</p>
+            <p>With every code change, my app would <a href="https://www.scalawilliam.com/essential-sbt/#run-continuously">run continuously</a> using <a href="http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html">SBT's triggered execution</a> but there would be nasty crashes (exit code 139 and such) if I got something wrong with memory access.</p>
+            </section>
+        <section>
+            <h3>Reading the first packet</h3>
+            <p>Now that I managed to read one packet without crashing, I finally got access to the timestamps, but the results were odd - turns out I was reading <code>Int</code> and not <code>Long</code>. But this happens even in Java where developers dislike using <code>java.time.*</code>.</p>
+        </section>
+        <section>
+            <h3>Online vs Offline</h3>
+            <p>In online, reading the next packet you may get a <code>null</code> as result, telling you you just need to retry for the next packet - whereas in offline this means the end of the file.</p>
+        </section>
+        <section>
+            <h3>Pointer manipulation</h3>
+            <p>To read the data, and in a high performance manner, we have to deal with pointer manipulation and be super extremely safe when doing so. Poor understanding of pointers is where <a href="https://en.wikipedia.org/wiki/Dangling_pointer">many bugs come from</a>.</p>
+            <p>Data copying has a huge performance penalty so by accessing the memory directly we don't copy very much.
+                pcap however does copy from kernel to user space and if you wanted to avoid that there are <a href="https://en.wikipedia.org/wiki/Netsniff-ng">solutions</a> <a href="http://www.ntop.org/products/packet-capture/pf_ring/pf_ring-zc-zero-copy/">for that</a> but it's beyond scope.</p>
+        </section>
+        <section>
+            <h3>Printing IP addresses</h3>
+            <p>This was one thing that was easier in native land than in JVM land. As far as I'm aware there is no <a href="https://linux.die.net/man/3/inet_ntoa"><code>inet_ntoa</code></a> in the JVM to convert an IP address from Int into text form.
                 This was easily achievable by native binding.
-            </dd>
-            <dd>
+            </p>
              <pre class="language-scala"><code data-source="src/main/scala/inet.scala" data-from="6" data-to="15">/**
   * We use this to avoid our own byte manipulation.
   * Ironically I have to do this with bytes in Java, so scala-native is already proving itself!
@@ -177,57 +188,69 @@ object inet {
   def inet_ntoa(input: CUnsignedInt): native.CString = native.extern
 
 }</code></pre>
-            </dd>
-            <dd>And a bit of conversion to a Scala String:</dd>
-            <dd>
+            <p>And a bit of conversion to a Scala String:</p>
              <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="61" data-to="65">val destIp = {
   val ip = !(data + PcapDestinationIpv4AddressOffset + offsetBytes)
     .cast[Ptr[CUnsignedInt]]
   fromCString(inet.inet_ntoa(ip))
 }</code></pre>
-            </dd>
-            <dt>Running against a live interface</dt>
-            <dd><pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="82" data-to="88">pcap.pcap_open_live(
+        </section>
+        <section>
+            <h3>Running against a live interface</h3>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="82" data-to="88">pcap.pcap_open_live(
   deviceName = toCString("any"),
   snapLen = Short.MaxValue,
   promisc = 0,
   to_ms = 10,
   errbuf = errorBuffer
-)</code></pre></dd>
-            <dd>If you're capturing from all interfaces on Linux, be aware of the <a href="https://wiki.wireshark.org/SLL">Linux cooked-mode capture (SLL)</a> which <a href="https://ask.wireshark.org/questions/21562/editcap-from-linux-cooked-capture-to-ethernet-packet">can be</a> <a href="https://www.wireshark.org/lists/ethereal-users/200412/msg00314.html">confusing</a>.</dd>
-        </dl>
+)</code></pre>
+            <p>If you're capturing from all interfaces on Linux, be aware of the <a href="https://wiki.wireshark.org/SLL">Linux cooked-mode capture (SLL)</a> which <a href="https://ask.wireshark.org/questions/21562/editcap-from-linux-cooked-capture-to-ethernet-packet">can be</a> <a href="https://www.wireshark.org/lists/ethereal-users/200412/msg00314.html">confusing</a>.</p>
+        </section>
         
-        So now that I know that I'm reading the data - let's show YOU that we are reading it. Output timestamp, source IP, destination IP, and a few bytes.
-        <br>
-        
-        <br>
-        All nice and dandy, so I think scala-native is promising and something that I'll consider
-        when my application cannot scale out of the JVM due to the JNI boundary.
-        Or when I cannot afford to deploy a rather big JVM.<br>
-        
-        https://ask.wireshark.org/questions/21562/editcap-from-linux-cooked-capture-to-ethernet-packet
-        
-        https://www.wireshark.org/lists/ethereal-users/200412/msg00314.html
-        
-        https://wiki.wireshark.org/SLL
-        
-        http://www.tcpdump.org/manpages/pcap_open_live.3pcap.html
-        
-        <p>I learned also that <a href="https://linuxconfig.org/how-to-install-missing-ifconfig-command-on-debian-linux">ifconfig is missing from latest Debian</a>!</p>
-        
-        https://media.readthedocs.org/pdf/scala-native/latest/scala-native.pdf
-        
-        
-        
-    
-    <p>What other opportunities does this provide?
-        You could natively interoperate with Python and Lua - and from JVM via Luaj and jyp - as well as Jython.
-        You can easily have access to the most bleeding edge libraries out there since they first come out as native C interfaces (unless you're blessed with a nice vendor).
-    You can write TDD your application in Scala-JVM and then implement your interfaces in scala-native.
-    </p>
 </section>
     
-
+        <section>
+        <h2>Running for yourself</h2>
+        <p>...so you can reproduce this yourself</p>
+        <h3>1. Capture some packets</h3>
+            <pre class="language-bash"><code>$ tcpdump -i [interface] -w sample.pcap</code></pre>
+        <p>Terminate the command when you wish.</p>
+        <h3>2. Clone the repository</h3>
+            <pre class="language-bash"><code>$ git clone https://github.com/ScalaWilliam/scala-native-libpcap</code></pre>
+        <h3>3. Run the app in Docker against the captured file</h3>
+        <pre class="language-bash"><code>$ docker run -v $PWD:/me -w /me/scala-native-libpcap -it scalawilliam/scala-native-sbt
+root@0c957f870d61:/me/scala-native-libpcap# apt-get -y install libpcap-dev
+root@0c957f870d61:/me/scala-native-libpcap# sbt clean 'show nativeLink'
+...
+[info] /me/scala-native-libpcap/target/scala-2.11/scala-native-libpcap-out
+[success] Total time: 37 s, completed Mar 26, 2017 3:49:38 AM
+root@0c957f870d61:/me/scala-native-libpcap# /me/scala-native-libpcap/target/scala-2.11/scala-native-libpcap-out /me/sample.pcap |head
+Time: 1490492402, 192.168.1.53 --&gt; 74.125.68.149, 790 bytes: [1C872...]       &lt;-- Google
+Time: 1490492402, 74.125.68.149 --&gt; 192.168.1.53, 579 bytes: [38C9E...]       &lt;-- Google
+Time: 1490492403, 192.168.1.53 --&gt; 104.16.59.5, 54 bytes: [1C872...]          &lt;-- CloudFare
+Time: 1490492403, 104.16.59.5 --&gt; 192.168.1.53, 64 bytes: [38C98...]          &lt;-- CloudFare
+...</code></pre>
+        <h3>4. Running against a live interface</h3>
+        <p>Exercise for the reader!</p>
+        </section>
+    
+    <section>
+        <h2>Impact</h2>
+        <p>scala-native opens up a plethora of integration opportunities: you are no longer restricted to using
+        JVM-only libraries or waiting for those wrappers, no longer restricted to using C++/C for lower level or high performance programming. You can now rapidly iterate and test your code in JVM mode and port it to native easily.</p>
+        <p>This opens up the possibility of native interoperation with Python and Lua - and from JVM via Luaj, jyp and Jython.</p>
+        <p>You can write your application in the JVM first knowing you can potentially scale it out later, should the JVM be the pain point. Though in my experience it really isn't, but still worth having that possibility.</p>
+    </section>
+    
+    <section>
+        <h2>Conclusion</h2>
+        <p>We managed to read offline and online packets using a native packet capture library and Scala.</p>
+        <p>There were no major difficulties while doing so, proving scala-native is a viable platform for native applications in future.</p>
+        
+        
+        <p>I also came across some interesting (<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.194.18&amp;rep=rep1&amp;type=pdf">PDF</a>) reading about packet capture. and learned that <a href="https://linuxconfig.org/how-to-install-missing-ifconfig-command-on-debian-linux">ifconfig is missing from latest Debian</a>!</p>
+        
+    </section>
     <section>
     <h2>Base example</h2>
         <h3>while-loop</h3>
