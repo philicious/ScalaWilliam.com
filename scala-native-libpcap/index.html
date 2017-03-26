@@ -205,6 +205,7 @@ root@0c957f870d61:/dev# apt-get -y install libpcap-dev</code></pre>
         <section>
         
         <h3>Minimal native mapping</h3>
+        <p>In order to call native methods we need some sort of interface definition. It's similar to defining a C header file which then is then <code>#import</code>'ed.</p>
         <p>This was not particularly difficult achieve with the resources. Will be obvious to anyone who's done some C.</p>
             <pre class="language-scala"><code data-source="src/main/scala/pcap.scala" data-from="9" data-to="36">@native.link("pcap")
 @native.extern
@@ -382,6 +383,7 @@ Time: 1490492403, 104.16.59.5 --&gt; 192.168.1.53, 64 bytes: [38C98...]         
         <p>This opens up the possibility of native interoperation with <a href="https://docs.python.org/3/extending/extending.html">Python</a> and <a href="http://www.lua.org/manual/5.1/manual.html#3">Lua</a> - and from JVM via <a href="http://www.luaj.org/luaj/3.0/README.html">Luaj</a>, <a href="https://github.com/mrj0/jep">jep</a> and <a href="http://www.jython.org/">Jython</a>. Good article: <a href="https://sushant-hiray.me/posts/python-in-scala-stack/">Integrating Python into Scala Stack</a>.</p>
         <p>You can write your application in the JVM first knowing you can potentially scale it out later, should the JVM be the pain point. Though in my experience it really isn't, but still worth having that possibility.</p>
         <p>Of course there will be many other use cases, and I'd like to mention them here as well - so why not <a href="https://twitter.com/ScalaWilliam">Tweet me</a> about them?</p>
+        <p>Make sure to watch <a href="https://twitter.com/den_sh">Denys Shabalin</a>'s <a href="http://scaladays.org/">Scala Days</a> talk <a href="https://www.youtube.com/watch?v=ArWWlwQl37A">&quot;Scala Goes Native&quot;</a> (<a href="https://github.com/densh/talks/blob/517b20c30dd4aaf390785039cdd002f623eaa91e/2016-05-11-scala-goes-native.pdf">slides</a>).</p>
     </section>
     
     <section>
