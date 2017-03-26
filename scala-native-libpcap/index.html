@@ -48,7 +48,33 @@
             color:darkslateblue;
         }
 
-    
+        .token.operator { 
+        background:none;
+        }
+        
+        
+             nav button {
+                box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;
+    font-family: inherit;
+    font-size: 100%;
+    padding: .5em 1em;
+    color: #444;
+    border: 1px solid #999;
+    border: 0 rgba(0,0,0,0);
+    background-color: #E6E6E6;
+    text-decoration: none;
+    border-radius: 2px;
+        }
+        nav.hide ul {
+            display:none;
+        }
+nav ul {
+            list-style-type: none;
+        }
+nav li:before {
+            content: "&#8212; ";
+        }
+        
     </style>
     
     
@@ -87,6 +113,13 @@
         <p>You can browse all the Scala code relating to this here: <a href="https://github.com/ScalaWilliam/scala-native-libpcap">GitHub repository</a></p>
     </header>
 
+    <nav id="contents">
+        <button onclick="toggle_contents();">Toggle Index / Table of Contents</button>
+        <ul>
+            <li> Test 1</li>
+        </ul>
+    </nav>
+    <article>
 <section>
     <h2>Background</h2>
     <p><a href="https://en.wikipedia.org/wiki/Pcap">libcap</a> (also: <a href="http://www.tcpdump.org/pcap.html">pcap</a>) is a <a href="https://en.wikipedia.org/wiki/Packet_analyzer">network traffic capture library</a>. Packet capture and analysis has <a href="https://en.wikipedia.org/wiki/Packet_analyzer#Uses">many use cases</a>.</p>
@@ -105,8 +138,8 @@
     
     <h2>Relevance for me</h2>
     <ol>
-        <li>A client needed a high performance online packet analyser for the binary-encoded <a href="https://en.wikipedia.org/wiki/GPRS_Tunnelling_Protocol">GPRS Tunnelling Protocol (GTP)</a> which runs over UDP (see the <a href="http://www.etsi.org/deliver/etsi_ts/129200_129299/129274/12.06.00_60/ts_129274v120600p.pdf">GTPv2 specification</a> &mdash; large PDF!), to determine mobile subscriber whereabouts.</li>
-        <li>Other Scala <a href="https://github.com/ScalaWilliam/duel.gg">projects</a> <a href="https://github.com/ScalaWilliam/ActionFPS">of mine</a> needed an interface layer to <a href="http://enet.bespin.org/">ENet, &quot;Reliable UDP networking library&quot;</a> and lots of binary parsing.</li>
+        <li>A client needed a high performance online packet analyser for the binary-encoded <a href="https://en.wikipedia.org/wiki/GPRS_Tunnelling_Protocol">GPRS Tunnelling Protocol (GTP)</a> which runs over UDP (see the <a href="http://www.etsi.org/deliver/etsi_ts/129200_129299/129274/12.06.00_60/ts_129274v120600p.pdf">GTPv2 specification</a> &#8212; large PDF!), to determine mobile subscriber whereabouts.</li>
+        <li>Other Scala <a href="https://github.com/ScalaWilliam/duel.gg">projects</a> <a href="https://github.com/ScalaWilliam/ActionFPS">of mine</a> needed an interface layer to <a href="http://enet.bespin.org/">ENet, "Reliable UDP networking library"</a> and lots of binary parsing.</li>
     </ol>
     
 </section>
@@ -199,15 +232,42 @@ object pcap {
         
         <section>
         <h3>Minimal code for opening a pcap handle</h3>
-        <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="81" data-to="92">@native.link("pcap")
-</code></pre>
+        <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="81" data-to="92">val pcapHandle = if (live) {
+  pcap.pcap_open_live(
+    deviceName = toCString("any"),
+    snapLen = Short.MaxValue,
+    promisc = 0,
+    to_ms = 10,
+    errbuf = errorBuffer
+  )
+} else {
+  pcap.pcap_open_offline(fname = toCString(args.last),
+                         errbuf = errorBuffer)
+}</code></pre>
         </section>
         
         <section>
             <h3>Minimal code for continuously reading the handle</h3>
             <p>At this point, I was getting closer to pointers and the like and if I did something wrong, I'd get a segfault with exit code 139. Still dislike Java exceptions?</p>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="97" data-to="115">@native.link("pcap")
-</code></pre>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="97" data-to="115">val packetHeaderPointer: native.Ptr[pcap.pcap_pkthdr] =
+  native.stackalloc[pcap.pcap_pkthdr]
+var packetReadData = pcap.pcap_next(pcapHandle, packetHeaderPointer)
+var continue = true
+while (continue) {
+  if (packetReadData != null) {
+    process_packet(
+      epochSecond = (!packetHeaderPointer._1).toLong,
+      dataLength = (!packetHeaderPointer._3).toInt,
+      data = packetReadData,
+      cooked = cooked
+    )
+  } else if (!live) {
+    continue = false
+  }
+  if (continue) {
+    packetReadData = pcap.pcap_next(pcapHandle, packetHeaderPointer)
+  }
+}</code></pre>
 
         </section>
         
@@ -216,22 +276,37 @@ object pcap {
             <p>So at this point we have extracted the key information and pass a C-style string (pointer) to the method.</p>
             <p>Note that this C-string is NOT a <a href="https://en.wikipedia.org/wiki/Null-terminated_string">null-terminated string</a> because packets may contain the byte 0x00 anywhere.
             So you have to rely on input length to manipulate the incoming data.</p>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="31" data-to="40">@native.link("pcap")</code></pre>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="31" data-to="40">/**
+  * We have a separate processing function to separate out the plumbing.
+  *
+  * @param data remember this is a pointer! But note that it may contain byte 0x00
+  *             which is typically a string termination character - so we must pass dataLength explicitly.
+  */
+def process_packet(epochSecond: Long,
+                   dataLength: Int,
+                   data: CString,
+                   cooked: Boolean): Unit = {</code></pre>
         </section>
         <section>
-            <h3>Consider Linux Cooked Capture</h3>
-            <li>Consider <a href="https://wiki.wireshark.org/SLL">Linux cooked-mode capture (SLL)</a> which <a href="https://ask.wireshark.org/questions/21562/editcap-from-linux-cooked-capture-to-ethernet-packet">can be</a> <a href="https://www.wireshark.org/lists/ethereal-users/200412/msg00314.html">confusing</a>.</li>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="42" data-to="42">@native.link("pcap")</code></pre>
+            <h3>Linux Cooked Capture</h3>
+            <p>Consider <a href="https://wiki.wireshark.org/SLL">Linux cooked-mode capture (SLL)</a> which <a href="https://ask.wireshark.org/questions/21562/editcap-from-linux-cooked-capture-to-ethernet-packet">can be</a> <a href="https://www.wireshark.org/lists/ethereal-users/200412/msg00314.html">confusing</a>.</p>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="42" data-to="42">val offsetBytes = if (cooked) 2 else 0</code></pre>
         </section>
             
         <section>
             <h3>Check bounds and verify it's IPv4</h3>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="44" data-to="49">@native.link("pcap")</code></pre>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="44" data-to="49">val hasEnoughData = dataLength &gt; (offsetBytes + PcapDestinationIpv4AddressOffset + 4)
+if (!hasEnoughData) return
+
+/** IP version is stored in the first nibble of the target byte **/
+val isIpv4 = (!(data + IpVersionByteOffset + offsetBytes) &gt;&gt; 4) == 4
+if (!isIpv4) return</code></pre>
         </section>
             
         <section>
             <h3>Read source and destination IPs</h3>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="57" data-to="58">@native.link("pcap")</code></pre>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="57" data-to="58">val ip = !(data + PcapSourceIpv4AddressOffset + offsetBytes)
+  .cast[Ptr[CUnsignedInt]]</code></pre>
         </section>
         <section>
             <h3>Make an IP human readable</h3>
@@ -247,14 +322,26 @@ object inet {
   def inet_ntoa(input: CUnsignedInt): native.CString = native.extern
 
 }</code></pre>
-            
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="59" data-to="59">@native.link("pcap")</code></pre>
+            <p>The usage is super simple:</p>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="56" data-to="60">val sourceIp = {
+  val ip = !(data + PcapSourceIpv4AddressOffset + offsetBytes)
+    .cast[Ptr[CUnsignedInt]]
+  fromCString(inet.inet_ntoa(ip))
+}</code></pre>
         </section>
         
         <section>
             <h3>Printing the deal</h3>
             <p>With some byte data, in hex.</p>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="66" data-to="74">@native.link("pcap")</code></pre>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="66" data-to="74">print(s"Time: $epochSecond, $sourceIp --&gt; $destIp, $dataLength bytes: [")
+(0 to Math.min(dataLength, 12))
+  .map { n =&gt;
+    !(data + offsetBytes + n)
+  }
+  .foreach { v =&gt;
+    native.stdio.printf(toCString("%02X"), v)
+  }
+println("...]")</code></pre>
         </section>
     </section>
     
@@ -265,7 +352,7 @@ object inet {
         
         After cloning the <a href="https://github.com/ScalaWilliam/scala-native-libpcap"><code>ScalaWilliam/scala-native-libpcap</code></a> repository,
             do:
-        <pre class="language-bash"><code># root@0c957f870d61:/dev/scala-native-libpcap# sbt clean 'show nativeLink'
+        </p><pre class="language-bash"><code>root@0c957f870d61:/dev/scala-native-libpcap# sbt clean 'show nativeLink'
 ...
 [info] /dev/scala-native-libpcap/target/scala-2.11/scala-native-libpcap-out
 [success] Total time: 37 s, completed Mar 26, 2017 3:49:38 AM
@@ -283,19 +370,17 @@ Time: 1490492403, 104.16.59.5 --&gt; 192.168.1.53, 64 bytes: [38C98...]         
         <h2>Impact</h2>
         <p>scala-native opens up a plethora of integration opportunities: you are no longer restricted to using
         JVM-only libraries or waiting for those wrappers, no longer restricted to using C++/C for lower level or high performance programming. You can now rapidly iterate and test your code in JVM mode and port it to native easily.</p>
-        <p>This opens up the possibility of native interoperation with Python and Lua - and from JVM via Luaj, jyp and Jython.</p>
+        <p>This opens up the possibility of native interoperation with <a href="https://docs.python.org/3/extending/extending.html">Python</a> and <a href="http://www.lua.org/manual/5.1/manual.html#3">Lua</a> - and from JVM via <a href="http://www.luaj.org/luaj/3.0/README.html">Luaj</a>, <a href="https://github.com/mrj0/jep">jep</a> and <a href="http://www.jython.org/">Jython</a>. Good article: <a href="https://sushant-hiray.me/posts/python-in-scala-stack/">Integrating Python into Scala Stack</a>.</p>
         <p>You can write your application in the JVM first knowing you can potentially scale it out later, should the JVM be the pain point. Though in my experience it really isn't, but still worth having that possibility.</p>
     </section>
     
     <section>
         <h2>Conclusion</h2>
         <p>We managed to read offline and online packets using a native packet capture library and Scala.</p>
-        <p>There were no major difficulties while doing so, proving scala-native is a viable platform for native applications in future.</p>
-        
-        
+        <p>There were no major difficulties while doing so, proving scala-native is a viable platform for native applications for an existing JVM development team who should strongly consider Scala.</p>
         <p>I also came across some interesting (<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.194.18&amp;rep=rep1&amp;type=pdf">PDF</a>) reading about packet capture. and learned that <a href="https://linuxconfig.org/how-to-install-missing-ifconfig-command-on-debian-linux">ifconfig is missing from latest Debian</a>!</p>
-        
     </section>
+</article>
     <section>
         <h2>Social media</h2>
     <h3>Share on Twitter</h3>
@@ -320,5 +405,53 @@ Time: 1490492403, 104.16.59.5 --&gt; 192.168.1.53, 64 bytes: [38C98...]         
         </ul>
         
         <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-584b716cc10a0e3c"></script>
+            <script type="text/javascript">
+        var ul = document.querySelector("#contents ul");
+        while ( ul.firstChild ) {
+            ul.removeChild(ul.firstChild);
+       };
+        [].forEach.call(document.querySelectorAll("article h2, article h3"),function(item) {
+            var title = item.textContent;
+            var id = item.getAttribute("id");
+            if ( !id ) {
+                id = title.toLowerCase()
+                    .replace(/[^a-z]/g, "-")
+                .replace(/-+/g,"-");
+                item.setAttribute("id", id);
+            }
+            var li = document.createElement("li");
+            var a = document.createElement("a");
+            a.appendChild(document.createTextNode(title));
+            a.setAttribute("href", "#" + id);
+            li.appendChild(a);
+            ul.appendChild(li);
+            var a2 = document.createElement("a");
+            a2.setAttribute("href", "#" + id);
+            a2.appendChild(document.createTextNode(title));
+            while(item.firstChild) {
+                item.removeChild(item.firstChild);
+            }
+            item.appendChild(a2);
+        });
+    </script>
+
+        
+        <script type="text/javascript">
+  function toggle(cnt){
+
+        if ( cnt.classList.contains("hide") ) {
+            cnt.classList.remove("hide");
+        } else {
+            cnt.classList.add("hide");
+        }
+  }
+    function toggle_contents(){
+        return toggle(document.querySelector("#contents"));
+    }
+            
+            toggle_contents();
+    </script>
+
+        
 
 </section></body></html>
