@@ -89,40 +89,84 @@
 
 <section>
     <h2>Background</h2>
-    <p><a href="https://en.wikipedia.org/wiki/Pcap">libcap</a> (also: <a href="http://www.tcpdump.org/pcap.html">pcap</a>) is a <a href="https://en.wikipedia.org/wiki/Packet_analyzer">network traffic capture library</a>. Packet analysis has <a href="https://en.wikipedia.org/wiki/Packet_analyzer#Uses">many use cases</a>, good and bad.</p>
-    <p>Last year for a client I wrote a packet analyser to extract current cell tower IDs for mobile network subscribers.
-        The <a href="https://en.wikipedia.org/wiki/GPRS_Tunnelling_Protocol">GPRS Tunnelling Protocol (GTP)</a> runs over UDP and is mostly binary encoded (see the <a href="http://www.etsi.org/deliver/etsi_ts/129200_129299/129274/12.06.00_60/ts_129274v120600p.pdf">GTPv2 specification</a> &mdash; large PDF!), and in this particular use case the extraction had to be done real-time.</p>
-    <p><a href="https://www.pcap4j.org/">Pcap4j</a> has a nice usable API but its performance didn't match the performance expectation.
-        Pcap4j uses <a href="https://github.com/java-native-access/jna/blob/master/README.md">Java Native Access (JNA)</a>
-        as the native access layer, which is <a href="http://stackoverflow.com/a/22289269/2789308">slower but easier</a> than <a href="https://en.wikipedia.org/wiki/Java_Native_Interface">JNI (Java Native Interface)</a>. JNI gives a good 25x performance boost over JNA  but required a bit of C-Java interfacing. Fortunately, Scala people have made it easy with the <a href="https://github.com/jodersky/sbt-jni">sbt-jni</a> <a href="https://www.scalawilliam.com/essential-sbt/">SBT (Scala Build Tool)</a> plugin.</p>
-    <p>I was then able to test-drive my development <a href="https://www.youtube.com/watch?v=6e89HsqJtXQ">with ScalaTest</a> and Scala's <a href="http://danielwestheide.com/blog/2013/02/06/the-neophytes-guide-to-scala-part-12-type-classes.html">type classes</a>. The type classes let me write a purely functional access layer to both <a href="http://doc.akka.io/api/akka/2.4/akka/util/ByteString.html">ByteString</a> and zero-copy direct high performance memory access via <a href="https://dzone.com/articles/understanding-sunmiscunsafe">using sun.misc.Unsafe</a>.</p>
-    <p>You can run your analysis online against a live interface or offline against a file that you would capture with <a href="https://danielmiessler.com/study/tcpdump/">tcpdump</a>. To visually analyse the packets you'd use <a href="https://www.wireshark.org/">Wireshark</a>.</p>
-    </section>
+    <p><a href="https://en.wikipedia.org/wiki/Pcap">libcap</a> (also: <a href="http://www.tcpdump.org/pcap.html">pcap</a>) is a <a href="https://en.wikipedia.org/wiki/Packet_analyzer">network traffic capture library</a>. Packet capture and analysis has <a href="https://en.wikipedia.org/wiki/Packet_analyzer#Uses">many use cases</a>.</p>
+    
+    <p><a href="http://www.scala-native.org/">Scala Native</a> is an ahead-of-time compiler for <a href="http://www.scala-lang.org/">Scala</a> targeting <a href="http://llvm.org/">LLVM</a> and so capable of producing native binaries. This brings the promise of high performance coding using existing Scala skills and high quality tooling such as <a href="https://www.scalawilliam.com/essential-sbt/">SBT (Scala Build Tool)</a> and <a href="http://www.scalatest.org/">ScalaTest</a> as well as availability of patterns like <a href="http://danielwestheide.com/blog/2013/02/06/the-neophytes-guide-to-scala-part-12-type-classes.html">type classes</a>.</p>
+    
+    <p>Scala, which runs on the JVM, can interact with pcap in two ways: <a href="https://github.com/java-native-access/jna/blob/master/README.md">JNA (Java Native Access)</a>
+        and <a href="https://en.wikipedia.org/wiki/Java_Native_Interface">JNI (Java Native Interface)</a>. <a href="http://stackoverflow.com/a/22289269/2789308">JNA slower but easier than JNI</a>.
+    For JNA you need nothing more <a href="http://mvnrepository.com/artifact/net.java.dev.jna/jna"> than a dependency</a> but for JNI you need <a href="https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html">to write native code</a>. When doing in Scala, you can benefit from the <a href="https://github.com/jodersky/sbt-jni">sbt-jni plugin</a> that automates this compilation. Scala Native's interop is similar to JNA.</p>
+    
+    <p><a href="https://www.pcap4j.org/">Pcap4j</a> is an actively maintained library that wraps libpcap using JNA. Then there is <a href="http://jnetpcap.com/">jNetPcap</a> which appears inactive and is <a href="http://jnetpcap.com/docs/javadoc/jnetpcap-1.3/index.html">based on JNI</a> and <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/ByteBuffer.html">ByteBuffer</a>. And a last way would be to use JNI with <a href="http://www.javaworld.com/article/2952869/java-platform/understanding-sun-misc-unsafe.html">Unsafe</a> <a href="https://vilasathavale.wordpress.com/2015/05/10/what-is-better-unsafe-bytebuffer-or-direct-bytebuffer/">for the highest performance</a>. The performance is difference is huge, a good 25x.</p>
+    
+    <p>There are <a href="https://en.wikipedia.org/wiki/Netsniff-ng">solutions</a> <a href="http://www.ntop.org/products/packet-capture/pf_ring/pf_ring-zc-zero-copy/">for pure zero-copy</a> approach but it's beyond the scope of this article.</p>
+    
+    <p>Packets can be captured in live mode using <a href="https://danielmiessler.com/study/tcpdump/">tcpdump</a>, replayed with <a href="http://tcpreplay.appneta.com/">tcpreplay</a> and visually analysed with <a href="https://www.wireshark.org/">Wireshark</a>. libpcap supports live capture and reading from files.</p>
+    
+    <h2>Relevance for me</h2>
+    <ol>
+        <li>A client needed a high performance online packet analyser for the binary-encoded <a href="https://en.wikipedia.org/wiki/GPRS_Tunnelling_Protocol">GPRS Tunnelling Protocol (GTP)</a> which runs over UDP (see the <a href="http://www.etsi.org/deliver/etsi_ts/129200_129299/129274/12.06.00_60/ts_129274v120600p.pdf">GTPv2 specification</a> &mdash; large PDF!), to determine mobile subscriber whereabouts.</li>
+        <li>Other Scala <a href="https://github.com/ScalaWilliam/duel.gg">projects</a> <a href="https://github.com/ScalaWilliam/ActionFPS">of mine</a> needed an interface layer to <a href="http://enet.bespin.org/">ENet, &quot;Reliable UDP networking library&quot;</a> and lots of binary parsing.</li>
+    </ol>
+    
+</section>
+    
     <section>
-        <h2><a href="http://www.scala-native.org/">scala-native</a></h2>
-        <p>As soon as I saw <a href="http://www.scala-lang.org/blog/2017/03/14/scala-native-0.1-is-here.html">scala-native 0.1</a> announced, I rushed to see how well it'd work with libpcap. I loaded up a <a href="https://github.com/ScalaWilliam/scala-native-sbt-docker">Docker image</a>, installed <code>libpcap-dev</code> and got to work.</p>
-        <p>This was significant for me because it means it's possible to go beyond even the limits of JVM-JNI bridge and simply work natively with zero performance impact while still benefitting from potentially testing your code in fast iterations with ScalaTest.</p>
-        <p>scala-native's native library interface is pretty much the same as JNA, but I'd expect very high performance.
-        So you would not need to write any C code to get the native access.</p>
-    </section>
-    <section>
-        <h2>Getting to work</h2>
+        <h2>Developing a program</h2>
+        
+        
+        <p>Goal of the program would be to output packet information from files and also from a live interface. Minimal packet information would be:
+            Timestamp, source IP, destination IP, packet length, a few bytes of the packet in hexadecimal.</p>
+        
         <section>
-            <h3>Dealing with null pointers</h3>
-        <p>This wasn't too bad, <code>NULL</code> is <code>null</code>!</p>
-        <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="93" data-to="93">if (pcapHandle == null) {</code></pre>
+        <h3>Resources</h3>
+        <ul>
+            <li>Scala Native <a href="http://www.scala-native.org/en/latest/user/interop.html">The documentation</a> (<a href="https://media.readthedocs.org/pdf/scala-native/latest/scala-native.pdf">PDF</a>)</li>
+            <li>libpcap manpages, <a href="https://linux.die.net/man/3/pcap_open_live">linux.die.net</a> and <a href="http://www.tcpdump.org/manpages/pcap_open_live.3pcap.html">tcpdump.org</a></li>
+            <li><a href="https://fossies.org/dox/libpcap-1.8.1/pcap_2pcap_8h_source.html#l00163">libpcap sources</a></li>
+        </ul>
         </section>
+        
         <section>
-            <h3>Understanding Scala-C mappings</h3>
-            <p><a href="http://www.scala-native.org/en/latest/user/interop.html">The documentation</a> (<a href="https://media.readthedocs.org/pdf/scala-native/latest/scala-native.pdf">PDF</a>) was good and helpful, there was not much surprise.</p>
+            <h3>Preparing some reference data</h3>
+            <p>Which is basically a pcap file. Using tcpdump:</p>
+            <pre class="language-bash"><code>$ tcpdump -i [interface] -w sample.pcap</code></pre>
         </section>
+        
         <section>
-            <h3>Mapping libpcap to Scala</h3>
-            <p>Was a bit more effort initially - <a href="https://linux.die.net/man/3/pcap_open_live">some</a> <a href="http://www.tcpdump.org/manpages/pcap_open_live.3pcap.html">manpages</a>.
-            </p>
-            <p>
-        <a href="https://fossies.org/dox/libpcap-1.8.1/pcap_2pcap_8h_source.html#l00163">Reading the source</a> was the most helpful thing and 
-                from this I managed to build a good simple mapping:</p>
+            <h3>Tools</h3>
+            <p>I use SBT to <a href="https://www.scalawilliam.com/essential-sbt/#run-continuously">continuously run the program</a> using <a href="http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html">Triggered Execution</a>.</p>
+            <p>I use Docker and my own Docker image to get an isolated Linux execution environment:</p>
+            <pre class="language-bash"><code>$ docker run -v $PWD:/dev -w /dev -it <a href="https://github.com/ScalaWilliam/scala-native-sbt-docker">scalawilliam/scala-native-sbt</a>
+root@0c957f870d61:/dev# apt-get -y install libpcap-dev</code></pre>
+            <p>And of course IntelliJ IDEA for its <a href="https://www.jetbrains.com/idea/whatsnew/#v2017-1-scala">excellent Scala support</a>.</p>
+        </section>
+        
+        <section>
+        <h3>Minimal required application flow</h3>
+            <ol>
+                <li>Open reader (live - use <code>pcap_open_live</code>, offline - use <code>pcap_open_offline</code>).</li>
+                <li>Read next packet</li>
+                <li>If no packet and offline, terminate</li>
+                <li>If no packet and online, go to 2.</li>
+                <li>If packet, process packet, then go to 2.</li>
+            </ol>
+            <h4>Processing packet</h4>
+            <ol>
+                <li>Read timestamp</li>
+                <li>Read packet length</li>
+                <li>Determine whether packet is IPv4</li>
+                <li>Read source IP</li>
+                <li>Read destination IP</li>
+                <li>Read some bytes of data</li>
+                <li>And at every step of the way, bound-check.</li>
+            </ol>
+        </section>
+        
+        <section>
+        
+        <h3>Minimal mapping</h3>
+        <p>This was not particularly difficult achieve with the resources:</p>
             <pre class="language-scala"><code data-source="src/main/scala/pcap.scala" data-from="9" data-to="36">@native.link("pcap")
 @native.extern
 object pcap {
@@ -152,31 +196,46 @@ object pcap {
 
 }</code></pre>
             </section>
+        
         <section>
-        <h3>Testing offline</h3>
+        <h3>Minimal code for opening a pcap handle</h3>
+        <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="81" data-to="92">@native.link("pcap")
+</code></pre>
+        </section>
+        
+        <section>
+            <h3>Minimal code for continuously reading the handle</h3>
+            <p>At this point, I was getting closer to pointers and the like and if I did something wrong, I'd get a segfault with exit code 139. Still dislike Java exceptions?</p>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="97" data-to="115">@native.link("pcap")
+</code></pre>
+
+        </section>
+        
+        <section>
+            <h3>Packet processor method header</h3>
+            <p>So at this point we have extracted the key information and pass a C-style string (pointer) to the method.</p>
+            <p>Note that this C-string is NOT a <a href="https://en.wikipedia.org/wiki/Null-terminated_string">null-terminated string</a> because packets may contain the byte 0x00 anywhere.
+            So you have to rely on input length to manipulate the incoming data.</p>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="31" data-to="40">@native.link("pcap")</code></pre>
+        </section>
+        <section>
+            <h3>Consider Linux Cooked Capture</h3>
+            <li>Consider <a href="https://wiki.wireshark.org/SLL">Linux cooked-mode capture (SLL)</a> which <a href="https://ask.wireshark.org/questions/21562/editcap-from-linux-cooked-capture-to-ethernet-packet">can be</a> <a href="https://www.wireshark.org/lists/ethereal-users/200412/msg00314.html">confusing</a>.</li>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="42" data-to="42">@native.link("pcap")</code></pre>
+        </section>
             
-            <p>I wanted to make sure I can read from a simple static file. Producing one isn't too difficult - just run a <a href="http://www.speedtest.net/">speed test</a> while capturing your packets with <a href="http://www.tcpdump.org/">tcpdump</a>.</p>
-            <p>For offline reading, you need <a href="http://www.tcpdump.org/manpages/pcap_open_offline.3pcap.html"><code>pcap_open_offline</code></a>.</p>
-            <p>With every code change, my app would <a href="https://www.scalawilliam.com/essential-sbt/#run-continuously">run continuously</a> using <a href="http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html">SBT's triggered execution</a> but there would be nasty crashes (exit code 139 and such) if I got something wrong with memory access.</p>
-            </section>
         <section>
-            <h3>Reading the first packet</h3>
-            <p>Now that I managed to read one packet without crashing, I finally got access to the timestamps, but the results were odd - turns out I was reading <code>Int</code> and not <code>Long</code>. But this happens even in Java where developers dislike using <code>java.time.*</code>.</p>
+            <h3>Check bounds and verify it's IPv4</h3>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="44" data-to="49">@native.link("pcap")</code></pre>
+        </section>
+            
+        <section>
+            <h3>Read source and destination IPs</h3>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="57" data-to="58">@native.link("pcap")</code></pre>
         </section>
         <section>
-            <h3>Online vs Offline</h3>
-            <p>In online, reading the next packet you may get a <code>null</code> as result, telling you you just need to retry for the next packet - whereas in offline this means the end of the file.</p>
-        </section>
-        <section>
-            <h3>Pointer manipulation</h3>
-            <p>To read the data, and in a high performance manner, we have to deal with pointer manipulation and be super extremely safe when doing so. Poor understanding of pointers is where <a href="https://en.wikipedia.org/wiki/Dangling_pointer">many bugs come from</a>.</p>
-            <p>Data copying has a huge performance penalty so by accessing the memory directly we don't copy very much.
-                pcap however does copy from kernel to user space and if you wanted to avoid that there are <a href="https://en.wikipedia.org/wiki/Netsniff-ng">solutions</a> <a href="http://www.ntop.org/products/packet-capture/pf_ring/pf_ring-zc-zero-copy/">for that</a> but it's beyond scope.</p>
-        </section>
-        <section>
-            <h3>Printing IP addresses</h3>
-            <p>This was one thing that was easier in native land than in JVM land. As far as I'm aware there is no <a href="https://linux.die.net/man/3/inet_ntoa"><code>inet_ntoa</code></a> in the JVM to convert an IP address from Int into text form.
-                This was easily achievable by native binding.
+            <h3>Make an IP human readable</h3>
+            <p>This was one thing that was easier in native land than in JVM land. As far as I'm aware there is no <a href="https://linux.die.net/man/3/inet_ntoa"><code>inet_ntoa</code></a> in the JVM to convert an IP address from Int into text form. This was easily achievable by native binding.
             </p>
              <pre class="language-scala"><code data-source="src/main/scala/inet.scala" data-from="6" data-to="15">/**
   * We use this to avoid our own byte manipulation.
@@ -188,51 +247,37 @@ object inet {
   def inet_ntoa(input: CUnsignedInt): native.CString = native.extern
 
 }</code></pre>
-            <p>And a bit of conversion to a Scala String:</p>
-             <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="61" data-to="65">val destIp = {
-  val ip = !(data + PcapDestinationIpv4AddressOffset + offsetBytes)
-    .cast[Ptr[CUnsignedInt]]
-  fromCString(inet.inet_ntoa(ip))
-}</code></pre>
-        </section>
-        <section>
-            <h3>Running against a live interface</h3>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="82" data-to="88">pcap.pcap_open_live(
-  deviceName = toCString("any"),
-  snapLen = Short.MaxValue,
-  promisc = 0,
-  to_ms = 10,
-  errbuf = errorBuffer
-)</code></pre>
-            <p>If you're capturing from all interfaces on Linux, be aware of the <a href="https://wiki.wireshark.org/SLL">Linux cooked-mode capture (SLL)</a> which <a href="https://ask.wireshark.org/questions/21562/editcap-from-linux-cooked-capture-to-ethernet-packet">can be</a> <a href="https://www.wireshark.org/lists/ethereal-users/200412/msg00314.html">confusing</a>.</p>
+            
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="59" data-to="59">@native.link("pcap")</code></pre>
         </section>
         
-</section>
-    
         <section>
+            <h3>Printing the deal</h3>
+            <p>With some byte data, in hex.</p>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="66" data-to="74">@native.link("pcap")</code></pre>
+        </section>
+    </section>
+    
+    <section>
         <h2>Running for yourself</h2>
-        <p>...so you can reproduce this yourself</p>
-        <h3>1. Capture some packets</h3>
-            <pre class="language-bash"><code>$ tcpdump -i [interface] -w sample.pcap</code></pre>
-        <p>Terminate the command when you wish.</p>
-        <h3>2. Clone the repository</h3>
-            <pre class="language-bash"><code>$ git clone https://github.com/ScalaWilliam/scala-native-libpcap</code></pre>
-        <h3>3. Run the app in Docker against the captured file</h3>
-        <pre class="language-bash"><code>$ docker run -v $PWD:/me -w /me/scala-native-libpcap -it scalawilliam/scala-native-sbt
-root@0c957f870d61:/me/scala-native-libpcap# apt-get -y install libpcap-dev
-root@0c957f870d61:/me/scala-native-libpcap# sbt clean 'show nativeLink'
+        <p>...so you can reproduce this yourself.</p>
+        <p>Let's assume you've already started the Docker container as earlier in the article, and produced a sample pcap file.
+        
+        After cloning the <a href="https://github.com/ScalaWilliam/scala-native-libpcap"><code>ScalaWilliam/scala-native-libpcap</code></a> repository,
+            do:
+        <pre class="language-bash"><code># root@0c957f870d61:/dev/scala-native-libpcap# sbt clean 'show nativeLink'
 ...
-[info] /me/scala-native-libpcap/target/scala-2.11/scala-native-libpcap-out
+[info] /dev/scala-native-libpcap/target/scala-2.11/scala-native-libpcap-out
 [success] Total time: 37 s, completed Mar 26, 2017 3:49:38 AM
-root@0c957f870d61:/me/scala-native-libpcap# /me/scala-native-libpcap/target/scala-2.11/scala-native-libpcap-out /me/sample.pcap |head
+root@0c957f870d61:/dev/scala-native-libpcap# /dev/scala-native-libpcap/target/scala-2.11/scala-native-libpcap-out /dev/sample.pcap |head
 Time: 1490492402, 192.168.1.53 --&gt; 74.125.68.149, 790 bytes: [1C872...]       &lt;-- Google
 Time: 1490492402, 74.125.68.149 --&gt; 192.168.1.53, 579 bytes: [38C9E...]       &lt;-- Google
 Time: 1490492403, 192.168.1.53 --&gt; 104.16.59.5, 54 bytes: [1C872...]          &lt;-- CloudFare
 Time: 1490492403, 104.16.59.5 --&gt; 192.168.1.53, 64 bytes: [38C98...]          &lt;-- CloudFare
 ...</code></pre>
-        <h3>4. Running against a live interface</h3>
-        <p>Exercise for the reader!</p>
-        </section>
+        <h3>Running live</h3>
+        <p>Exercise for the reader... just read the source :-)</p>
+    </section>
     
     <section>
         <h2>Impact</h2>
@@ -251,9 +296,6 @@ Time: 1490492403, 104.16.59.5 --&gt; 192.168.1.53, 64 bytes: [38C98...]         
         <p>I also came across some interesting (<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.194.18&amp;rep=rep1&amp;type=pdf">PDF</a>) reading about packet capture. and learned that <a href="https://linuxconfig.org/how-to-install-missing-ifconfig-command-on-debian-linux">ifconfig is missing from latest Debian</a>!</p>
         
     </section>
-    <section>
-    <h2>Base example</h2>
-        <h3>while-loop</h3>
     <section>
         <h2>Social media</h2>
     <h3>Share on Twitter</h3>
@@ -279,5 +321,4 @@ Time: 1490492403, 104.16.59.5 --&gt; 192.168.1.53, 64 bytes: [38C98...]         
         
         <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-584b716cc10a0e3c"></script>
 
-    </section>
 </section></body></html>
