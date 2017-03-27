@@ -123,7 +123,7 @@ nav li:before {
 
     <p><a href="http://www.scala-native.org/">Scala Native</a> is an ahead-of-time compiler for <a href="http://www.scala-lang.org/">Scala</a> targeting <a href="http://llvm.org/">LLVM</a> and so capable of producing native binaries. This brings the promise of high performance coding using existing Scala skills and high quality tooling such as <a href="https://www.scalawilliam.com/essential-sbt/">SBT (Scala Build Tool)</a> and <a href="http://www.scalatest.org/">ScalaTest</a> as well as availability of patterns like <a href="http://danielwestheide.com/blog/2013/02/06/the-neophytes-guide-to-scala-part-12-type-classes.html">type classes</a>.</p>
 
-    <p>Scala, which runs on the JVM, can interact with pcap in two ways: <a href="https://github.com/java-native-access/jna/blob/master/README.md">JNA (Java Native Access)</a>
+    <p>Scala, which runs on the JVM, can interact with native libraries in two ways: <a href="https://github.com/java-native-access/jna/blob/master/README.md">JNA (Java Native Access)</a>
         and <a href="https://en.wikipedia.org/wiki/Java_Native_Interface">JNI (Java Native Interface)</a>. <a href="http://stackoverflow.com/a/22289269/2789308">JNA slower but easier than JNI</a>.
     For JNA you need nothing more <a href="http://mvnrepository.com/artifact/net.java.dev.jna/jna"> than a dependency</a> but for JNI you need <a href="https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html">to write native code</a>. When doing in Scala, you can benefit from the <a href="https://github.com/jodersky/sbt-jni">sbt-jni plugin</a> that automates this compilation. Scala Native's interop is similar to JNA.</p>
 
