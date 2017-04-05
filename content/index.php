@@ -8,6 +8,8 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
       <p>Contributions to Quora, Stack Overflow and GitHub. Excluding my open source projects. <a href="https://www.scalawilliam.com/cv/">My CV is here</a>.</p>
     </header>
     <dl>
+      <dt>April 2017</dt>
+      <dd>GitHub issue: <a href="https://github.com/playframework/playframework/issues/7194">Play Framework bug report: ServerResultException when sending an empty file due to akka-http body size requirement.</a></dd>
       <dt>March 2017</dt>
         <dd>Google Groups: <a href="https://groups.google.com/d/msg/play-framework/IRVgowWxE58/4SIQZ_ksCAAJ">Answer to: &quot;Play Framework ›
 Good for API gateway?&quot;</a></dd>
