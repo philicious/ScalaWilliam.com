@@ -175,8 +175,8 @@ nav li:before {
             <h3>Tools</h3>
             <p>I use SBT to <a href="https://www.scalawilliam.com/essential-sbt/#run-continuously">continuously run the program</a> using <a href="http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html">Triggered Execution</a>.</p>
             <p>I use Docker and <a href="https://github.com/ScalaWilliam/scala-native-sbt-docker">ScalaWilliam/scala-native-sbt Docker image</a> to get an isolated Linux execution environment:</p>
-            <pre class="language-bash"><code>$ docker run -v $PWD:/dev -w /dev -it <a href="https://github.com/ScalaWilliam/scala-native-sbt-docker">scalawilliam/scala-native-sbt</a>
-root@0c957f870d61:/dev# apt-get -y install libpcap-dev</code></pre>
+            <pre class="language-bash"><code>$ docker run -v $PWD:/workspace -w /workspace -it <a href="https://github.com/ScalaWilliam/scala-native-sbt-docker">scalawilliam/scala-native-sbt</a>
+root@0c957f870d61:/workspace# apt-get -y install libpcap-dev</code></pre>
             <p>And of course IntelliJ IDEA for its <a href="https://www.jetbrains.com/idea/whatsnew/#v2017-1-scala">excellent Scala support</a>.</p>
         </section>
 
@@ -363,11 +363,11 @@ println("...]")</code></pre>
 
         After cloning the <a href="https://github.com/ScalaWilliam/scala-native-libpcap"><code>ScalaWilliam/scala-native-libpcap</code></a> repository,
             do:
-        </p><pre class="language-bash"><code>root@0c957f870d61:/dev/scala-native-libpcap# sbt clean 'show nativeLink'
+        </p><pre class="language-bash"><code>root@0c957f870d61:/workspace/scala-native-libpcap# sbt clean 'show nativeLink'
 ...
-[info] /dev/scala-native-libpcap/target/scala-2.11/scala-native-libpcap-out
+[info] /workspace/scala-native-libpcap/target/scala-2.11/scala-native-libpcap-out
 [success] Total time: 37 s, completed Mar 26, 2017 3:49:38 AM
-root@0c957f870d61:/dev/scala-native-libpcap# /dev/scala-native-libpcap/target/scala-2.11/scala-native-libpcap-out /dev/sample.pcap |head
+root@0c957f870d61:/workspace/scala-native-libpcap# /workspace/scala-native-libpcap/target/scala-2.11/scala-native-libpcap-out /workspace/sample.pcap |head
 Time: 1490492402, 192.168.1.53 --&gt; 74.125.68.149, 790 bytes: [1C872...]       &lt;-- Google
 Time: 1490492402, 74.125.68.149 --&gt; 192.168.1.53, 579 bytes: [38C9E...]       &lt;-- Google
 Time: 1490492403, 192.168.1.53 --&gt; 104.16.59.5, 54 bytes: [1C872...]          &lt;-- CloudFare
