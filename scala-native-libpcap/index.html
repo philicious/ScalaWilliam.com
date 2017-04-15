@@ -206,19 +206,17 @@ root@0c957f870d61:/workspace# apt-get -y install libpcap-dev</code></pre>
         <section>
         <h3>Minimal required application flow</h3>
             <h4>Packet-reading flows</h4>
-            <p>We shall combine two flows into one app: Live and Offline (File).</p>
-            <section style="column-count:2">
-            <figure>
+            <figure style="float:right">
     <p><img src="pcap-offline-app-flow.svg"></p>
     <figcaption>libpcap offline flow</figcaption>
     </figure>
-            <figure>
+            <figure style="float:right">
     <p><img src="pcap-live-app-flow.svg"></p>
     <figcaption>libpcap live flow</figcaption>
     </figure>
+            <p>We shall combine two flows into one app: Live and Offline (File).</p>
                 
-            </section>
-            <h4>Processing packet</h4>
+            <h4>Processing the packet</h4>
             <p><code>tshark</code> can give you this output already, but we're not interested in replacing <code>tshark</code>.</p>
             <ol>
                 <li>Read timestamp</li>
@@ -229,22 +227,27 @@ root@0c957f870d61:/workspace# apt-get -y install libpcap-dev</code></pre>
                 <li>Read some bytes of data</li>
                 <li>... and at every step of the way, bound-check</li>
             </ol>
+            
+            
+            <figure>
+    <p><img src="wireshark.png"></p>
+    <figcaption>How a packet looks in Wireshark</figcaption>
+    </figure>
+            
         </section>
 
         <section>
 
         <h3>Minimal native mapping</h3>
             
-            <section style="column-count:2">
-            <figure>
+            <figure style="float:right">
     <p><img src="pcap-header.svg"></p>
                 <figcaption>It's the same in memory and in storage</figcaption>
     </figure>
                 
         <p>In order to call native methods we need some sort of interface definition. It's similar to defining a C header file which then is then <code>#import</code>'ed.</p>
         <p>This was not particularly difficult achieve with the resources. Will be obvious to anyone who's done some C.</p>
-                </section>
-            
+            <div class="clear"></div>
             <pre class="language-scala"><code data-source="src/main/scala/pcap.scala" data-from="9" data-to="36">@native.link("pcap")
 @native.extern
 object pcap {
