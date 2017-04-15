@@ -74,7 +74,19 @@ nav ul {
 nav li:before {
             content: "- ";
         }
-
+figure {
+    display:inline-block;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+    box-shadow: 1px 1px 3px black;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+        .clear { clear:both;}
+        
     </style>
 
 
@@ -120,6 +132,8 @@ nav li:before {
     <article>
 <section>
     <h2>Background</h2>
+    
+    <section style="column-count:2">
     <p><a href="https://en.wikipedia.org/wiki/Pcap">libcap</a> (also: <a href="http://www.tcpdump.org/pcap.html">pcap</a>) is a <a href="https://en.wikipedia.org/wiki/Packet_analyzer">network traffic packet capture library</a> that enables real-time and offline packet capture and analysis. Packet capture and analysis has <a href="https://en.wikipedia.org/wiki/Packet_analyzer#Uses">many use cases</a>.</p>
 
     <p><a href="http://www.scala-native.org/">Scala Native</a> is an ahead-of-time compiler for <a href="http://www.scala-lang.org/">Scala</a> targeting <a href="http://llvm.org/">LLVM</a> and so capable of producing native binaries. This brings the promise of high performance coding using existing Scala skills and high quality tooling such as <a href="https://www.scalawilliam.com/essential-sbt/">SBT (Scala Build Tool)</a> and <a href="http://www.scalatest.org/">ScalaTest</a> as well as availability of patterns like <a href="http://danielwestheide.com/blog/2013/02/06/the-neophytes-guide-to-scala-part-12-type-classes.html">type classes</a>.</p>
@@ -130,10 +144,19 @@ nav li:before {
 
     <p><a href="https://www.pcap4j.org/">Pcap4j</a> is an actively maintained library that wraps libpcap using JNA. Then there is <a href="http://jnetpcap.com/">jNetPcap</a> which as a project appears inactive and <a href="http://jnetpcap.com/docs/javadoc/jnetpcap-1.3/index.html">uses JNI</a> and <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/ByteBuffer.html">ByteBuffer</a>. And a last way would be to use JNI with <a href="http://www.javaworld.com/article/2952869/java-platform/understanding-sun-misc-unsafe.html">Unsafe</a> <a href="https://vilasathavale.wordpress.com/2015/05/10/what-is-better-unsafe-bytebuffer-or-direct-bytebuffer/">for the highest performance</a>. The performance is difference is huge. There may be other even higher performance ways, but this is beyond the scope - if you have ideas do let me know <a href="https://twitter.com/ScalaWilliam">on Twitter</a>.</p>
 
-    <p>There are <a href="https://en.wikipedia.org/wiki/Netsniff-ng">solutions</a> <a href="http://www.ntop.org/products/packet-capture/pf_ring/pf_ring-zc-zero-copy/">for pure zero-copy</a> approach but it's beyond the scope of this article.</p>
-
     <p>Packets can be captured in live mode using <a href="https://danielmiessler.com/study/tcpdump/">tcpdump</a>, replayed with <a href="http://tcpreplay.appneta.com/">tcpreplay</a> and visually analysed with <a href="https://www.wireshark.org/">Wireshark</a>. libpcap supports live capture and reading from files.</p>
-
+    
+    
+    <figure>
+    <p><img src="pcap-flow.svg"></p>
+    <figcaption>libpcap flow involving data copy from kernel to user space</figcaption>
+    </figure>
+    <p>In live capture mode, the Kernel will look for the next packet at the pcap_next call, pass through any defined filters, and then copy the data into user-space.</p>
+    
+    <p>There are <a href="https://en.wikipedia.org/wiki/Netsniff-ng">solutions</a> <a href="http://www.ntop.org/products/packet-capture/pf_ring/pf_ring-zc-zero-copy/">for pure zero-copy</a> approach but it's beyond the scope of this article.</p>
+    
+        </section>
+    
     <h2>Why this interests me</h2>
     <ol>
         <li>A client needed a high performance online packet analyser for the binary-encoded <a href="https://en.wikipedia.org/wiki/GPRS_Tunnelling_Protocol">GPRS Tunnelling Protocol (GTP)</a> which runs over UDP (see the <a href="http://www.etsi.org/deliver/etsi_ts/129200_129299/129274/12.06.00_60/ts_129274v120600p.pdf">GTPv2 specification</a> &#8212; large PDF!) and contains cell tower identifiers for 4G mobile subscribers. I implemented one solution with Scala &amp; libpcap.</li>
@@ -182,14 +205,19 @@ root@0c957f870d61:/workspace# apt-get -y install libpcap-dev</code></pre>
 
         <section>
         <h3>Minimal required application flow</h3>
-            <p>This is the most basic flow in reading packets online and offline.</p>
-            <ol>
-                <li>Open reader (live - use <code>pcap_open_live</code>, offline - use <code>pcap_open_offline</code>).</li>
-                <li>Read next packet</li>
-                <li>If no packet and offline, terminate</li>
-                <li>If no packet and online, go to 2.</li>
-                <li>If packet, process packet, then go to 2.</li>
-            </ol>
+            <h4>Packet-reading flows</h4>
+            <p>We shall combine two flows into one app: Live and Offline (File).</p>
+            <section style="column-count:2">
+            <figure>
+    <p><img src="pcap-offline-app-flow.svg"></p>
+    <figcaption>libpcap offline flow</figcaption>
+    </figure>
+            <figure>
+    <p><img src="pcap-live-app-flow.svg"></p>
+    <figcaption>libpcap live flow</figcaption>
+    </figure>
+                
+            </section>
             <h4>Processing packet</h4>
             <p><code>tshark</code> can give you this output already, but we're not interested in replacing <code>tshark</code>.</p>
             <ol>
@@ -206,8 +234,17 @@ root@0c957f870d61:/workspace# apt-get -y install libpcap-dev</code></pre>
         <section>
 
         <h3>Minimal native mapping</h3>
+            
+            <section style="column-count:2">
+            <figure>
+    <p><img src="pcap-header.svg"></p>
+                <figcaption>It's the same in memory and in storage</figcaption>
+    </figure>
+                
         <p>In order to call native methods we need some sort of interface definition. It's similar to defining a C header file which then is then <code>#import</code>'ed.</p>
         <p>This was not particularly difficult achieve with the resources. Will be obvious to anyone who's done some C.</p>
+                </section>
+            
             <pre class="language-scala"><code data-source="src/main/scala/pcap.scala" data-from="9" data-to="36">@native.link("pcap")
 @native.extern
 object pcap {
