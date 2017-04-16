@@ -192,6 +192,12 @@ figure {
             <pre class="language-bash"><code>$ tcpdump -i [interface] -w sample.pcap</code></pre>
             <p>Capture some packets, maybe do a <a href="http://www.speedtest.net/">speed test</a>, then terminate the app and now you have a pcap file which you can consume later.</p>
             <p>Use <code>capinfos</code> to get basic information about your pcap file. You can also look at it visually with Wireshark.</p>
+            
+            
+            <figure>
+    <p><img src="wireshark.png"></p>
+    <figcaption>How a packet from sample.pcap looks in Wireshark</figcaption>
+    </figure>
         </section>
 
         <section>
@@ -228,11 +234,6 @@ root@0c957f870d61:/workspace# apt-get -y install libpcap-dev</code></pre>
                 <li>... and at every step of the way, bound-check</li>
             </ol>
             
-            
-            <figure>
-    <p><img src="wireshark.png"></p>
-    <figcaption>How a packet looks in Wireshark</figcaption>
-    </figure>
             
         </section>
 
