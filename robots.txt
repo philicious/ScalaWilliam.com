@@ -1,4 +1,1 @@
 Sitemap: https://www.scalawilliam.com/sitemap.xml
-User-agent: *
-Disallow: /cv/
-Disallow: /CV/
