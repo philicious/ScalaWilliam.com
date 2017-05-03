@@ -9,6 +9,8 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     </header>
     <dl>
       <dt>April 2017</dt>
+      <dd>dev.to: <a href="https://dev.to/scalawilliam/certifications-im-considering-as-an-experienced-software-engineer">Certifications I'm considering, as an experienced software engineer</a></dd>
+      <dd>dev.to: <a href="https://dev.to/scalawilliam/2017-freelance-development-platforms">2017 freelance development platforms</a></dd>
       <dd>GitHub issue: <a href="https://github.com/playframework/playframework/issues/7194">Play Framework bug report: ServerResultException when sending an empty file due to akka-http body size requirement.</a></dd>
       <dt>March 2017</dt>
         <dd>Google Groups: <a href="https://groups.google.com/d/msg/play-framework/IRVgowWxE58/4SIQZ_ksCAAJ">Answer to: &quot;Play Framework ›
