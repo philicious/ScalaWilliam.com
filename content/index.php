@@ -9,12 +9,14 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     </header>
     <dl>
       <dt>May 2017</dt>
+      <dd>LinkedIn: <a href="https://www.linkedin.com/pulse/my-simple-trick-7x-less-recruiter-spam-william-vykintas-narmontas">My simple trick for 7x less recruiter spam</a></dd>
       <dd>dev.to: <a href="https://dev.to/scalawilliam/unit-testing-is-simple">Unit testing is simple.</a></dd>
       <dt>April 2017</dt>
       <dd>dev.to: <a href="https://dev.to/scalawilliam/certifications-im-considering-as-an-experienced-software-engineer">Certifications I'm considering, as an experienced software engineer</a></dd>
       <dd>dev.to: <a href="https://dev.to/scalawilliam/2017-freelance-development-platforms">2017 freelance development platforms</a></dd>
       <dd>GitHub issue: <a href="https://github.com/playframework/playframework/issues/7194">Play Framework bug report: ServerResultException when sending an empty file due to akka-http body size requirement.</a></dd>
       <dt>March 2017</dt>
+      <dd>LinkedIn: <a href="https://www.linkedin.com/pulse/walk-dont-sprint-breathe-burn-out-william-vykintas-narmontas">Walk, don't sprint. Breathe, don't burn out.</a></dd>
         <dd>Google Groups: <a href="https://groups.google.com/d/msg/play-framework/IRVgowWxE58/4SIQZ_ksCAAJ">Answer to: &quot;Play Framework ›
 Good for API gateway?&quot;</a></dd>
       <dd>GitHub issue: <a href="https://github.com/playframework/playframework/issues/7067">Play Framework: 2.6.0-M2 http request times out after 20 seconds, returns response when it should continue waiting</a></dd>
