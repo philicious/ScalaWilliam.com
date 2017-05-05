@@ -9,7 +9,8 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     </header>
     <dl>
       <dt>May 2017</dt>
-      <dd>LinkedIn: <a href="https://www.linkedin.com/pulse/my-simple-trick-7x-less-recruiter-spam-william-vykintas-narmontas">My simple trick for 7x less recruiter spam</a></dd>
+      <dd>Medium: <a href="https://medium.com/@ScalaWilliam/how-i-deal-with-greenfield-technical-debt-1a35be33dc71">How I deal with greenfield technical debt</a></dd>
+      <dd>LinkedIn: <a href="https://www.linkedin.com/pulse/my-simple-trick-7x-less-recruiter-spam-william-vykintas-narmontas">My simple trick for 7x less mismatching recruiter messages</a></dd>
       <dd>dev.to: <a href="https://dev.to/scalawilliam/unit-testing-is-simple">Unit testing is simple.</a></dd>
       <dt>April 2017</dt>
       <dd>dev.to: <a href="https://dev.to/scalawilliam/certifications-im-considering-as-an-experienced-software-engineer">Certifications I'm considering, as an experienced software engineer</a></dd>
