@@ -59,6 +59,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
     <p>Also on <a href="https://plus.google.com/collection/oFuHlB" target="_blank">Google+</a>.</p>
 	
     <ul>
+	          <li><a href="https://medium.com/@ScalaWilliam/how-i-deal-with-greenfield-technical-debt-1a35be33dc71">How I deal with greenfield technical debt</a></li>
 <li><a href="/scala-native-libpcap/">Capturing Packets with Scala Native and libpcap</a></li>
 	    <li><a href="https://medium.com/@ScalaWilliam/java-8-nashorn-cli-use-case-prepending-iso-instant-to-csv-from-unix-timestamp-3685b6ee746">Java 8 Nashorn CLI use case: prepending ISO instant to CSV from UNIX timestamp</a></li>
 	    	    <li><a href="https://www.scalawilliam.com/scala-nashorn-interaction/">Scala Nashorn Interaction</a></li>
