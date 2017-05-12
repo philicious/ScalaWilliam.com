@@ -29,6 +29,7 @@ Good for API gateway?&quot;</a></dd>
     <dd>Stack Overflow: <a href="http://stackoverflow.com/a/42313651/2789308">Answer to: &quot;Create and fill a JsArray with play-json transformer&quot;</a></dd>
     <dd>Google Groups: <a href="https://groups.google.com/forum/#!msg/play-framework/imf51EsYU08/tDk0sEfPCgAJ">Technical Feedback to Play Framework 2.6.0-M1 milestone release</a></dd>
     <dt>January 2017</dt>
+      <dd>GitHub Issue Comment: <a href="https://github.com/sbt/sbt/issues/2622#issuecomment-275016809">Passing <code>PlayKeys.devSettings</code></a></dd>
     <dd>Medium: <a href="https://medium.com/@ScalaWilliam/java-8-nashorn-cli-use-case-prepending-iso-instant-to-csv-from-unix-timestamp-3685b6ee746">Java 8 Nashorn CLI use case: prepending ISO instant to CSV from UNIX timestamp
 </a></dd>
     <dt>December 2016</dt>
