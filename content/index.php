@@ -10,6 +10,7 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     <dl>
       <dt>May 2017</dt>
       <dd>Medium: <a href="https://medium.com/@ScalaWilliam/why-scala-didnt-miss-the-android-opportunity-92eaaf63c339">Why Scala didn't miss the Android opportunity</a></dd>
+      <dd>GitHub Issue: <a href="https://github.com/travis-ci/travis-ci/issues/7703">travis-ci: Scala build broken: /usr/local/bin/sbt: Permission denied</a></dd>
       <dd>Disqus comment: <a href="http://disq.us/p/1ink6mx">TechBeacon &mdash; 13 programming languages defining the future of coding</a></dd>
       <dd>GitHub Pull Request: <a href="https://github.com/EventSource/eventsource/pull/74">Eventsource 50x support</a></dd>
       <dd>Medium: <a href="https://medium.com/@ScalaWilliam/how-i-deal-with-greenfield-technical-debt-1a35be33dc71">How I deal with greenfield technical debt</a></dd>
