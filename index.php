@@ -59,6 +59,8 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
     <p>Also on <a href="https://plus.google.com/collection/oFuHlB" target="_blank">Google+</a>.</p>
 	
     <ul>
+	    <li><a href="https://www.quora.com/What-are-advantages-of-Scala-over-Kotlin/answer/William-Narmontas?srid=DB6V">What are advantages of Scala over Kotlin?
+		    </a></li>
 	          <li><a href="https://medium.com/@ScalaWilliam/why-scala-didnt-miss-the-android-opportunity-92eaaf63c339">Why Scala didn't miss the Android opportunity</a></li>
 	          <li><a href="https://medium.com/@ScalaWilliam/how-i-deal-with-greenfield-technical-debt-1a35be33dc71">How I deal with greenfield technical debt</a></li>
 <li><a href="/scala-native-libpcap/">Capturing Packets with Scala Native and libpcap</a></li>
