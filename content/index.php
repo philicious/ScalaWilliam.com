@@ -9,6 +9,7 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     </header>
     <dl>
       <dt>May 2017</dt>
+      <dd>Quora: <a href="https://www.quora.com/What-are-advantages-of-Scala-over-Kotlin/answer/William-Narmontas?srid=DB6V">What are advantages of Scala over Kotlin?</a></dd>
       <dd>Medium: <a href="https://medium.com/@ScalaWilliam/why-scala-didnt-miss-the-android-opportunity-92eaaf63c339">Why Scala didn't miss the Android opportunity</a></dd>
       <dd>GitHub Issue: <a href="https://github.com/travis-ci/travis-ci/issues/7703">travis-ci: Scala build broken: /usr/local/bin/sbt: Permission denied</a></dd>
       <dd>Disqus comment: <a href="http://disq.us/p/1ink6mx">TechBeacon &mdash; 13 programming languages defining the future of coding</a></dd>
