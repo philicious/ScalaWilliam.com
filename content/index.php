@@ -9,6 +9,7 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     </header>
     <dl>
       <dt>May 2017</dt>
+      <dd>Disqus comment: <a href="http://blog.kunicki.org/blog/2016/07/20/implementing-a-custom-akka-streams-graph-stage/#comment-3323891068">Implementing a Custom Akka Streams Graph Stage</a> - I show how to do it without Graph Stage</dd>
       <dd>dev.to: <a href="https://dev.to/scalawilliam/web-standards-for-content-syndication">Web standards for content syndication</a></dd>
       <dd>Quora: <a href="https://www.quora.com/What-are-advantages-of-Scala-over-Kotlin/answer/William-Narmontas?srid=DB6V">What are advantages of Scala over Kotlin?</a></dd>
       <dd>Medium: <a href="https://medium.com/@ScalaWilliam/why-scala-didnt-miss-the-android-opportunity-92eaaf63c339">Why Scala didn't miss the Android opportunity</a></dd>
