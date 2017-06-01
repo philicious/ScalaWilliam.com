@@ -9,6 +9,7 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
     </header>
     <dl>
       <dt>May 2017</dt>
+      <dd>GitHub Pull Request: <a href="https://github.com/lampepfl/dotty/pull/2643">lampepfl/dotty: Fix misspelling: update intersection-types.md in docs</a></dd>
       <dd>Quora answer: <a href="https://www.quora.com/What-IDE-can-I-comfortably-use-Python-on-Mac/answer/William-Narmontas">What IDE can I comfortably use Python on Mac?</a></dd>
       <dd>Disqus comment: <a href="http://blog.kunicki.org/blog/2016/07/20/implementing-a-custom-akka-streams-graph-stage/#comment-3323891068">Implementing a Custom Akka Streams Graph Stage</a> - I show how to do it without Graph Stage</dd>
       <dd>dev.to: <a href="https://dev.to/scalawilliam/web-standards-for-content-syndication">Web standards for content syndication</a></dd>
