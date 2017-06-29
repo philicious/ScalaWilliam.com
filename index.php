@@ -5,12 +5,10 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
         <section class="slide">
             <span class="img"></span>
 
-            <p>I am an experienced software engineer specialising in <a href="http://scala-lang.org"
-            target="_blank">Scala</a>.</p>
+            <p>I a specialist in <a href="http://scala-lang.org"
+            target="_blank">Scala</a>, a programming language for the JVM.</p>
 
-            <p>Scala is a programming language for Java used to make Twitter, LinkedIn, Netflix, Verizon, The Guardian, AirBnB and many others.</p>
-
-            <p>I've been building websites and software since 2004 and specialising in Scala since 2013.</p>
+		<p>I've been building websites and software since 2004 and specialising in Scala since 2013.</p>
 
 		<p><a href="/cv/">Latest CV</a> &mdash;
                 <a href="#articles">Articles</a>
@@ -28,18 +26,8 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
 	</section>
     </div>
 
-    <h2>A few testimonials...</h2>
-    <p>... and many more on <a href="https://www.linkedin.com/in/scalawilliam/">my LinkedIn profile</a>.</p>
-<div class="testimonials">
-    <img width="611" alt="screen shot 2016-11-27 at 17 48 52" src="https://cloud.githubusercontent.com/assets/2464813/20647233/d1818480-b4c9-11e6-9c05-5f5983bde674.png">
-    <img width="622" alt="screen shot 2016-11-27 at 17 44 29" src="https://cloud.githubusercontent.com/assets/2464813/20647203/4b91a242-b4c9-11e6-9729-24a8e3ced9b5.png">
-    <img width="620" alt="screen shot 2016-11-27 at 17 44 53" src="https://cloud.githubusercontent.com/assets/2464813/20647202/4b69630e-b4c9-11e6-83ab-3b960ce99677.png">
-    <img width="611" alt="screen shot 2016-11-27 at 17 48 52" src="https://cloud.githubusercontent.com/assets/2464813/20647233/d1818480-b4c9-11e6-9c05-5f5983bde674.png">
-</div>
-
     <div class="section" id="talks">
         <section class="slide">
-            <span class="img"></span>
             <h2>Talks</h2>
             <ul>
                 <li><a href="/scala-for-2017/">Scala for 2017</a>, Singapore, December 2016</li>
