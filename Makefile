@@ -1,7 +1,6 @@
 SHELL := /bin/bash
 default: test
 test-only:
-	htmllint out/**/*.html || true
 	grep hello@scalawilliam.com out/index.html > /dev/null
 	grep GitHub out/index.html > /dev/null
 	grep LinkedIn out/index.html > /dev/null
