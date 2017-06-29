@@ -5,7 +5,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
         <section class="slide">
             <span class="img"></span>
 
-            <p>I a specialist in <a href="http://scala-lang.org"
+            <p>I specialise in <a href="http://scala-lang.org"
             target="_blank">Scala</a>, a programming language for the JVM.</p>
 
 		<p>I've been building websites and software since 2004 and specialising in Scala since 2013.</p>
