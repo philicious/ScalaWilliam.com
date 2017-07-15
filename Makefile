@@ -2,8 +2,8 @@ SHELL := /bin/bash
 default: test
 test-only:
 	grep hello@scalawilliam.com out/index.html > /dev/null
-	grep GitHub out/index.html > /dev/null
-	grep LinkedIn out/index.html > /dev/null
+	grep -i GitHub out/index.html > /dev/null
+	grep -i LinkedIn out/index.html > /dev/null
 	grep google.com out/cv/index.html > /dev/null
 	find out -iname '*.html' -print0 | while read -d '' -r file; do \
 	    grep analytics $$file > /dev/null; \
