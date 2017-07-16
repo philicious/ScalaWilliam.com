@@ -101,82 +101,8 @@ require(dirname(__FILE__) . '/../shared/render.inc.php');
         </div>
 
         <div id="get">
-            <h2>Get the slides</h2>
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLScM0p8XJfA6bB-zrahybK73pzdmxAJsecCkXvHwXCP0mPyZMQ/formResponse"
-                  method="POST" id="ss-form" target="_self" onsubmit="">
-                <ol role="list" class="ss-question-list" style="padding-left: 0;">
-
-                    <div class="ss-form-question errorbox-good" role="listitem">
-                        <div dir="auto" class="ss-item ss-item-required ss-text">
-                            <div class="ss-form-entry">
-                                <label class="ss-q-item-label" for="entry_1020400141">
-                                    <div class="ss-q-title">E-mail
-                                        <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
-                                        <span class="ss-required-asterisk" aria-hidden="true">*</span></div>
-                                    <div class="ss-q-help ss-secondary-text" dir="auto"></div>
-                                </label>
-
-                                <input type="email" name="entry.1020400141" value="" class="ss-q-short"
-                                       id="entry_1020400141" dir="auto"
-                                       aria-label="E-mail  Must be a valid email address"
-                                       aria-required="true" required="" title="Must be a valid email address">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ss-form-question errorbox-good" role="listitem">
-                        <div dir="auto" class="ss-item  ss-checkbox">
-                            <div class="ss-form-entry">
-                                <label class="ss-q-item-label" for="entry_1743671591">
-                                    <div class="ss-q-title">Also send me...
-                                    </div>
-                                </label>
-
-
-                                <label><span class="ss-choice-item-control goog-inline-block"><input checked
-                                                                                                     type="checkbox"
-                                                                                                     name="entry.1034930021"
-                                                                                                     value="The video when it&#39;s ready"
-                                                                                                     id="group_1034930021_1"
-                                                                                                     role="checkbox"
-                                                                                                     class="ss-q-checkbox"></span>
-                                    <span class="ss-choice-label">The video when it&#39;s ready</span>
-                                </label><br/>
-                                <label><span class="ss-choice-item-control goog-inline-block"><input checked
-                                                                                                     type="checkbox"
-                                                                                                     name="entry.1034930021"
-                                                                                                     value="My guide &#39;Essential Production Scala&#39; when it&#39;s ready"
-                                                                                                     id="group_1034930021_2"
-                                                                                                     role="checkbox"
-                                                                                                     class="ss-q-checkbox"></span>
-                                    <span class="ss-choice-label">&#39;Essential Production Scala&#39; guide when it&#39;s ready</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="hidden" name="draftResponse" value="[,,&quot;5588546134555980063&quot;]
-">
-                    <input type="hidden" name="pageHistory" value="0">
-
-
-                    <input type="hidden" name="fbzx" value="5588546134555980063">
-                    <div class="ss-send-email-receipt" style="margin-bottom: 4px;" dir="ltr"><label for="emailReceipt"
-                                                                                                    style="display:inline;"></label>
-                    </div>
-                    <div class="ss-item ss-navigate">
-                        <table id="navigation-table">
-                            <tbody>
-                            <tr>
-                                <td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
-                                    <input type="submit" name="submit" value="Request slides" id="ss-submit"
-                                           class="button-success btn ">
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </ol>
-            </form>
-        </div>
+            <h2>Slides</h2>
+<iframe src="https://docs.google.com/presentation/d/1cExY8soFgL8zdTiEmJwepDuYHmNk2SVEbUflA-vGL3k/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>        </div>
 <div style="clear:both"></div>
         <style>
             #get {
