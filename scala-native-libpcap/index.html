@@ -284,7 +284,7 @@ object pcap {
         <p>Here we'll capture from <code>any</code> interface by default.</p>
         <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="82" data-to="93">val pcapHandle = if (live) {
   pcap.pcap_open_live(
-    deviceName = toCString("any"),
+    deviceName = c"any",
     snapLen = Short.MaxValue,
     promisc = 0,
     to_ms = 10,
@@ -391,7 +391,7 @@ object inet {
     !(data + offsetBytes + n)
   }
   .foreach { v =&gt;
-    native.stdio.printf(toCString("%02X"), v)
+    native.stdio.printf(c"%02X", v)
   }
 println("...]")</code></pre>
         </section>
@@ -425,7 +425,7 @@ Time: 1490492403, 104.16.59.5 --&gt; 192.168.1.53, 64 bytes: [38C98...]         
         <p>This opens up the possibility of native interoperation with <a href="https://docs.python.org/3/extending/extending.html">Python</a> and <a href="http://www.lua.org/manual/5.1/manual.html#3">Lua</a> - and from JVM via <a href="http://www.luaj.org/luaj/3.0/README.html">Luaj</a>, <a href="https://github.com/mrj0/jep">jep</a> and <a href="http://www.jython.org/">Jython</a>. Good article: <a href="https://sushant-hiray.me/posts/python-in-scala-stack/">Integrating Python into Scala Stack</a>.</p>
         <p>You can write your application in the JVM first knowing you can potentially scale it out later, should the JVM be the pain point. Though in my experience it really isn't, but still worth having that possibility.</p>
         <p>Of course there will be many other use cases, and I'd like to mention them here as well - so why not <a href="https://twitter.com/ScalaWilliam">Tweet me</a> about them?</p>
-        <p>Make sure to watch <a href="https://twitter.com/den_sh">Denys Shabalin</a>'s <a href="http://scaladays.org/">Scala Days</a> talk <a href="https://www.youtube.com/watch?v=ArWWlwQl37A">&quot;Scala Goes Native&quot;</a> (<a href="https://github.com/densh/talks/blob/517b20c30dd4aaf390785039cdd002f623eaa91e/2016-05-11-scala-goes-native.pdf">slides</a>).</p>
+        <p>Make sure to watch <a href="https://twitter.com/den_sh">Denys Shabalin</a>'s <a href="http://scaladays.org/">Scala Days</a> talk <a href="https://www.youtube.com/watch?v=ArWWlwQl37A">"Scala Goes Native"</a> (<a href="https://github.com/densh/talks/blob/517b20c30dd4aaf390785039cdd002f623eaa91e/2016-05-11-scala-goes-native.pdf">slides</a>).</p>
     </section>
 
     <section>
@@ -437,13 +437,13 @@ Time: 1490492403, 104.16.59.5 --&gt; 192.168.1.53, 64 bytes: [38C98...]         
         
         <section id="copy">
             <p>Big thanks for free graphing software <a href="https://www.draw.io">draw.io</a>.</p>
-        <p>&copy; William Vykintas Narmontas.</p>
+        <p>&#169; William Vykintas Narmontas.</p>
         </section>
 </article>
     <section>
         <h2>Social media</h2>
     <h3>Share on Twitter</h3>
-        <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">New! Capturing Packets with <a href="https://twitter.com/scala_native">@scala_native</a> and <a href="https://twitter.com/hashtag/libpcap?src=hash">#libpcap</a>.<br>See: <a href="https://t.co/F4A5Y4CBlz">https://t.co/F4A5Y4CBlz</a> <a href="https://twitter.com/scala_lang">@scala_lang</a> <a href="https://twitter.com/hashtag/scala?src=hash">#scala</a></p>&mdash; William Narmontas (@ScalaWilliam) <a href="https://twitter.com/ScalaWilliam/status/845994368892747777">March 26, 2017</a></blockquote>
+        <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">New! Capturing Packets with <a href="https://twitter.com/scala_native">@scala_native</a> and <a href="https://twitter.com/hashtag/libpcap?src=hash">#libpcap</a>.<br>See: <a href="https://t.co/F4A5Y4CBlz">https://t.co/F4A5Y4CBlz</a> <a href="https://twitter.com/scala_lang">@scala_lang</a> <a href="https://twitter.com/hashtag/scala?src=hash">#scala</a></p>&#8212; William Narmontas (@ScalaWilliam) <a href="https://twitter.com/ScalaWilliam/status/845994368892747777">March 26, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
         <h3>Share</h3>
