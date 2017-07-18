@@ -282,7 +282,7 @@ object pcap {
         <section>
         <h3>Minimal code for opening a pcap handle</h3>
         <p>Here we'll capture from <code>any</code> interface by default.</p>
-        <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="81" data-to="92">val pcapHandle = if (live) {
+        <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="82" data-to="93">val pcapHandle = if (live) {
   pcap.pcap_open_live(
     deviceName = toCString("any"),
     snapLen = Short.MaxValue,
@@ -299,7 +299,7 @@ object pcap {
         <section>
             <h3>Minimal code for continuously reading the handle</h3>
             <p>At this point, I was getting closer to pointers and the like and if I did something wrong, I'd get a segfault with exit code 139. Still dislike Java exceptions and verbose stack traces?</p>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="97" data-to="115">val packetHeaderPointer: native.Ptr[pcap.pcap_pkthdr] =
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="98" data-to="116">val packetHeaderPointer: native.Ptr[pcap.pcap_pkthdr] =
   native.stackalloc[pcap.pcap_pkthdr]
 var packetReadData = pcap.pcap_next(pcapHandle, packetHeaderPointer)
 var continue = true
@@ -326,7 +326,7 @@ while (continue) {
             <p>So at this point we have extracted the key information and pass a C-style string (pointer) to the method.</p>
             <p>Note that this C-string is NOT a <a href="https://en.wikipedia.org/wiki/Null-terminated_string">null-terminated string</a> because packets may contain the byte 0x00 anywhere.
             So you have to rely on input length to manipulate the incoming data.</p>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="31" data-to="40">/**
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="25" data-to="34">/**
   * We have a separate processing function to separate out the plumbing.
   *
   * @param data remember this is a pointer! But note that it may contain byte 0x00
@@ -341,13 +341,13 @@ def process_packet(epochSecond: Long,
             <h3>Linux Cooked Capture</h3>
             <p>IF we're capturing on Linux, consider <a href="https://wiki.wireshark.org/SLL">Linux cooked-mode capture (SLL)</a> which <a href="https://ask.wireshark.org/questions/21562/editcap-from-linux-cooked-capture-to-ethernet-packet">can be</a> <a href="https://www.wireshark.org/lists/ethereal-users/200412/msg00314.html">confusing</a>.</p>
             <p>When we're in Cooked mode, there are 2 extra bytes at the front of the packet.</p>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="42" data-to="42">val offsetBytes = if (cooked) 2 else 0</code></pre>
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="36" data-to="36">val offsetBytes = if (cooked) 2 else 0</code></pre>
         </section>
 
         <section>
             <h3>Check bounds and verify it's IPv4</h3>
             <p>Dealing with IPv6 and and others is a different matter. Here we start incrementing pointers, in a pure manner, mind you.</p>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="44" data-to="49">val hasEnoughData = dataLength &gt; (offsetBytes + PcapDestinationIpv4AddressOffset + 4)
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="38" data-to="43">val hasEnoughData = dataLength &gt; (offsetBytes + PcapDestinationIpv4AddressOffset + 4)
 if (!hasEnoughData) return
 
 /** IP version is stored in the first nibble of the target byte **/
@@ -357,7 +357,7 @@ if (!isIpv4) return</code></pre>
 
         <section>
             <h3>Read source and destination IPs</h3>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="57" data-to="58">val ip = !(data + PcapSourceIpv4AddressOffset + offsetBytes)
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="51" data-to="52">val ip = !(data + PcapSourceIpv4AddressOffset + offsetBytes)
   .cast[Ptr[CUnsignedInt]]</code></pre>
         </section>
         <section>
@@ -375,7 +375,7 @@ object inet {
 
 }</code></pre>
             <p>The usage is super simple:</p>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="56" data-to="60">val sourceIp = {
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="50" data-to="54">val sourceIp = {
   val ip = !(data + PcapSourceIpv4AddressOffset + offsetBytes)
     .cast[Ptr[CUnsignedInt]]
   fromCString(inet.inet_ntoa(ip))
@@ -385,7 +385,7 @@ object inet {
         <section>
             <h3>Printing the packet summary</h3>
             <p>One line, one packet - with some data bytes in hex.</p>
-            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="66" data-to="74">print(s"Time: $epochSecond, $sourceIp --&gt; $destIp, $dataLength bytes: [")
+            <pre class="language-scala"><code data-source="src/main/scala/PcapExample.scala" data-from="60" data-to="68">print(s"Time: $epochSecond, $sourceIp --&gt; $destIp, $dataLength bytes: [")
 (0 to Math.min(dataLength, 12))
   .map { n =&gt;
     !(data + offsetBytes + n)
