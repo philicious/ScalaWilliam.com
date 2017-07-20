@@ -47,6 +47,8 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
     <p>Also on <a href="https://plus.google.com/collection/oFuHlB" target="_blank">Google+</a>.</p>
 	
     <ul>
+	    <li><a href="https://dev.to/scalawilliam/unit-testing-is-simple">Unit testing is simple</a></li>
+	    <li><a href="https://dev.to/scalawilliam/2017-freelance-development-platforms">2017 freelance development platforms		    </a></li>
 	    <li><a href="https://dev.to/scalawilliam/certifications-im-considering-as-an-experienced-software-engineer">Certifications I'm considering, as an experienced software engineer
 		    </a></li>
 	    <li><a href="https://www.quora.com/What-are-advantages-of-Scala-over-Kotlin/answer/William-Narmontas?srid=DB6V">What are advantages of Scala over Kotlin?
