@@ -9,6 +9,8 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
             target="_blank">Scala</a>, a programming language for the JVM.</p>
 
 		<p>I've been building websites and software since 2004 and specialising in Scala since 2013.</p>
+		
+		<p>I'm <a href="http://www.aptelements.com/">IT consulting through Apt Elements since 2013</a>.</p>
 
 		<p><a href="/cv/">Latest CV</a> &mdash;
                 <a href="#articles">Articles</a>
