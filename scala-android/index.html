@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900%7CRoboto+Mono" rel="stylesheet">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-java.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-scala.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <style type="text/css">
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height:1.6;
+        color:rgb(5,5,5);
+        background:rgb(255,255,255);
+        max-width:60em;
+    }
+        code {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        header pre {
+            border:2px solid;
+            border-color: firebrick;
+            text-align: center;
+            padding:0.6em;
+            overflow-x:scroll;
+        }
+        header code {
+            font-size:1.6em;
+            font-weight:bold;
+        }
+        ul {
+            list-style-type: square;
+        }
+                a {
+            color:darkslategrey;
+        }
+        a:hover {
+            color:darkslateblue;
+        }
+
+        .token.operator {
+        background:none;
+        }
+
+
+             nav button {
+                box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;
+    font-family: inherit;
+    font-size: 100%;
+    padding: .5em 1em;
+    color: #444;
+    border: 1px solid #999;
+    border: 0 rgba(0,0,0,0);
+    background-color: #E6E6E6;
+    text-decoration: none;
+    border-radius: 2px;
+        }
+        nav.hide ul {
+            display:none;
+        }
+nav ul {
+            list-style-type: none;
+        }
+nav li:before {
+            content: "- ";
+        }
+figure {
+    display:inline-block;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+    box-shadow: 1px 1px 3px black;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+.clear { clear:both; }
+.twitter-tweet {
+    margin: auto !important;
+    font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 400;
+    color: #333332;
+    font-size: 18px;
+    line-height: 1.4;
+    background-color: white;
+    overflow: hidden;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+.twitter-tweet a {
+    color: rgb(0, 0, 238);
+}
+    </style>
+
+
+    <title>Why Scala didn't miss the Android opportunity</title>
+
+<meta name="twitter:title" content="Why Scala didn't miss the Android opportunity">
+<meta property="og:title" content="Why Scala didn't miss the Android opportunity">
+<meta property="og:url" content="https://www.scalawilliam.com/scala-native-libpcap/">
+<link rel="canonical" href="https://www.scalawilliam.com/scala-native-libpcap/">
+<!-- http://ogp.me/ -->
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-03-26">
+<meta property="article:modified_time" content="2017-03-26">
+<meta property="og:description" content="William Narmontas explains why Scala didn't miss the Android opportunity.">
+<meta itemprop="description" content="William Narmontas explains why Scala didn't miss the Android opportunity.">
+<meta name="description" content="William Narmontas explains why Scala didn't miss the Android opportunity.">
+<meta name="twitter:description" content="William Narmontas explains why Scala didn't miss the Android opportunity.">
+<meta property="og:site_name" content="Scala William">
+<link rel="author" href="https://plus.google.com/u/0/103489630517643950426/">
+<link rel="publisher" href="https://plus.google.com/u/0/103489630517643950426/">
+<meta itemprop="name" content="The most important Streaming abstraction">
+<meta property="og:image" content="https://avatars2.githubusercontent.com/u/2464813">
+<meta itemprop="image" content="https://avatars2.githubusercontent.com/u/2464813">
+<meta name="twitter:image" content="https://avatars2.githubusercontent.com/u/2464813">
+<meta name="author" content="William Narmontas">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@ScalaWilliam">
+</head>
+<body>
+  <article class="h-entry">
+    <header>
+      <h1>Why Scala didn't miss the Android opportunity</h1>
+      <h2>By <a href="/" class="p-author h-card">William Narmontas</a>, <time class="dt-published" datetime="2016-05-18 12:00:00">May 18, 20xx</time></h2>
+      This page can be <a href="https://github.com/ScalaWilliam/ScalaWilliam.com/blob/master/scala-android/index.html">edited on GitHub</a>.
+    </header>
+
+    <section class="e-content">
+  <p><a href="https://android-developers.googleblog.com/2017/05/android-announces-support-for-kotlin.html" target="_blank">Kotlin and Android
+  just tied the knot</a>. This is a disappointment for us Scala users, but let me explain to you perhaps why it is not a disappointment to me.</p>
+
+  <blockquote class="twitter-tweet" data-conversation="none" data-align="center" data-dnt="true">
+    <p>This seems like a pretty big missed opportunity for <a href="http://twitter.com/lightbend" target="_blank" title="Twitter profile for @lightbend">@lightbend</a> and scala. <a rel="nofollow" href="https://t.co/fvImu8ncjB">https://t.co/fvImu8ncjB</a></p>
+    <p>— <a href="https://twitter.com/posco/status/865025562745511936">@posco</a></p>
+  </blockquote>
+
+  <p>I had tried out Scala and Android in 2015 and it was not fun because of countless interferences against Scala on Android there:</p>
+  <ol>
+    <li>Android (more specifically Android Studio) prefers Gradle as a build tool, which is the first interference against Scala. I cannot use my
+    existing SBT knowledge and standard Scala ways of doing things.</li>
+    <li>When I tried SBT, for which an Android plugin exists, I ran into many roadblocks as well. Usability was poor and I couldn't use any Android
+    Gradle plugins. And SBT on IntelliJ was terribly slow whereas Gradle fast.</li>
+    <li>Scala wrappers did not match any of the existing Android base of knowledge, and writing Java-like Scala did not appeal either.</li>
+  </ol>
+  <p>Some people also complained of the large size of Scala library.</p>
+  <p>Kotlin on the other hands deals with Java's collections directly and supports enough things to make people happier, but not have to face a steep
+  learning curve that is Scala.</p>
+  <blockquote>
+    You can migrate to Kotlin on Android incrementally.
+  </blockquote>
+  <p>Scala, unlike Kotlin, pushes JVM boundaries to create a better programming environment, whereas Kotlin fixes the immediate problem of Java being
+  verbose. That is what most developers want, and they absolutely do not care about type classes and implicits that Scala is capable of, because they
+  were still stuck in the dark ages of Java 6 &amp; Android which doesn't even provide basic oxygen like Lambdas.</p>
+  <p>When Scala 2.12 came out, rightfully targeting only Java 8, Android did not support Java 8 features, and this was the nail in the coffin.</p>
+  <h3>Historical reminder</h3>
+  <p>As soon as Java 8 came out, <a href="https://www.youtube.com/watch?v=tsR0zc6kzRk" target="_blank">people were asking whether this
+  is going to kill Scala</a>. It wasn't going to, and it didn't. The Java platform doesn't compete against itself, but enhances itself.</p>
+  <p>Java 8 brought native lambdas meaning Scala was able to shed some skin and compile faster and leaner. A better JVM, invokedynamic and many other
+  goodies. Best of all, it brought functional awareness into the lives of millions of developers, who are now capable of appreciating what Scala
+  offers.</p>
+  <h3>Great potential</h3>
+  <p>The same is going to happen with Kotlin. Kotlin brings a better Java, and Dalvik will provide features that make it <strong>easier</strong> to
+  support and promote Scala in future. "Here's how you do X in Kotlin, and here's how you do Y in Scala".</p>
+  <p>With completion of Dotty (Scala 3.0), we will have a far more proven programming language that is easier to work with. It'd only be premature to
+  promote what is not ready yet. We're in merely in a transition phase, so there is nothing to worry about.</p>
+  <h4>Refocusing</h4>
+  <p>There is a great lot that the Scala community can learn from this, and create a far better product in future. Now we have the data points which
+  we did not have before.</p>
+  <h3>OpenJDK is not the only way to run Scala on Android</h3>
+  <p><a href="https://www.scala-js.org/" target="_blank">Scala targets JavaScript</a> (browser
+  and <a href="https://github.com/ScalaWilliam/scalajs-cli-demo" target="_blank">Node.js</a>)
+  too. <a href="https://facebook.github.io/react-native/docs/getting-started.html" target="_blank">React Native targets Android.</a>
+  And brilliant developers have already built <a href="https://github.com/scalajs-react-interface/sri#sri." target="_blank">Scala React Native</a> tooling. Scala <a href="http://www.scala-native.org/en/latest/" target="_blank">also targets Native</a>, and <a href="https://www.scalawilliam.com/scala-native-libpcap/" target="_blank">I didn't face problems in my first go at it</a>. Seeing
+  Scala.js mature so well, and Native having an initial painless experience, I have the confidence that in future Scala will successfully target
+  platforms well beyond Android.</p>
+  <p>Scala and its tooling are improving at such an incredible rate. I am all-in and I am pleased to know it is heading in the right direction.</p>
+  <h3>Conclusion</h3>
+  <p>Scala on Android will happen, but it will happen through osmosis. Thanks to Scala's cross-platformness, <a href="https://www.quora.com/What-are-advantages-of-Scala-over-Kotlin/answer/William-Narmontas?srid=DB6V" target="_blank">scalability over
+  Kotlin</a>, and <a href="https://github.com/Frege/frege" target="_blank">other</a> FP or FP-like languages on the JVM and
+  Android.</p>
+</section>
+</article>
+</body>
+</html>
