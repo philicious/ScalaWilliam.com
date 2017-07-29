@@ -29,6 +29,10 @@ php content/index.php > out/content/index.html
 mkdir -p out/1607/quick-scala-tutorial
 php 1607/quick-scala-tutorial/index.php > out/1607/quick-scala-tutorial/index.html
 
+mkdir -p out/1609/feature-switches-agile-scala-jmx/
+cp 1609/feature-switches-agile-scala-jmx/index.html out/1609/feature-switches-agile-scala-jmx/index.html
+cp 1609/feature-switches-agile-scala-jmx/*.png out/1609/feature-switches-agile-scala-jmx/
+
 mkdir -p out/scala-for-2017
 php scala-for-2017/index.php > out/scala-for-2017/index.html
 cp scala-for-2017/videos-stream-icon.svg out/scala-for-2017/
@@ -63,6 +67,7 @@ ruby -e '
 ' > out/1611/firebase-static-site-deploy/index.html
 php surround.php out/1611/firebase-static-site-deploy/index.html
 }
+
 mkdir -p out/sitemap/
 php sitemap.php > out/sitemap/index.html
 php 404.php > out/404.html
