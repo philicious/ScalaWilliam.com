@@ -129,7 +129,7 @@ figure {
   reverted your changes, or restarted the services for new configuration? Neither do I.</p>
   <p>In one of my recent contracts, 10 days before production deployment I began to work on
   a feature that would actually take 2&#8211;3 months. The management had not accounted for the complexity of the task, but no worries: we have Agile and
-  <a href="https://www.playframework.com/" data-href="https://www.playframework.com/" rel="noopener" target="_blank">Play</a> <a href="http://scala-lang.org/" data-href="http://scala-lang.org/" rel="noopener" target="_blank">Scala</a> at our disposal.</p>
+  <a href="https://www.playframework.com/" target="_blank">Play</a> <a href="http://scala-lang.org/" target="_blank">Scala</a> at our disposal.</p>
   <p>Once you know that you'll miss won't make a deadline, all risk is gone, and only
   certainty is left.</p>
   <p>I agreed with the project manager to implement the simplest, dumbest, safest thing
@@ -174,7 +174,7 @@ object AdvancedFeature {
   output? Because the input XML is very loose, there was no guarantee that everything would work as expected and none of it could be easily unit
   tested.</p>
   <p>However, how do we switch back? Revert Git code? Redeploy a configuration change? Come
-  on! We have the JVM at our disposal. It has something called JMX (&#8220;<a href="http://openjdk.java.net/groups/jmx/" data-href="http://openjdk.java.net/groups/jmx/" rel="noopener" target="_blank">Java Management Extensions</a>&#8221;) which
+  on! We have the JVM at our disposal. It has something called JMX (&#8220;<a href="http://openjdk.java.net/groups/jmx/" target="_blank">Java Management Extensions</a>&#8221;) which
   provides you with a way to manage your application at runtime. You can do metrics, rebind ports, change configuration options, change logging
   verbosity, run diagnostics&#8202;&#8212;&#8202;all sorts of things. So here's how you do it:</p>
   <p>First you write a generic interface, a &#8220;Management Bean&#8221;:</p>
@@ -200,7 +200,7 @@ class FeatureConfigurator() extends FeatureConfiguratorMBean {
   def setFeatureLevel(name: String): Unit = ???
 }</code></pre>
 
-  <p>And now when your app runs, you open up <a href="http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html" data-href="http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html" rel="noopener" target="_blank">Java Mission Control</a> (jmc in UNIX shell), connect to the app, and then you can change values immediately (it'd
+  <p>And now when your app runs, you open up <a href="http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html" target="_blank">Java Mission Control</a> (jmc in UNIX shell), connect to the app, and then you can change values immediately (it'd
   call setFeatureLevel method upon pressing Return):</p>
 
   <figure>
@@ -209,7 +209,7 @@ class FeatureConfigurator() extends FeatureConfiguratorMBean {
   </figure>
 
   <p>Of course in production you might want to have something easier to use, in which
-  case I used <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/shell.html" data-href="https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/shell.html" rel="noopener" target="_blank">Java 8's JavaScript interpreter jjs</a> to connect to a remote running process and change the value of configuration via a Shell
+  case I used <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/shell.html" target="_blank">Java 8's JavaScript interpreter jjs</a> to connect to a remote running process and change the value of configuration via a Shell
   script.</p>
   <p>Now the business had the certainty that instead of being stuck with incorrect behaviour
   they'll get a lesser version which gives the expected behaviour.</p>
@@ -249,7 +249,7 @@ object ComplexFeature {
   than nothing now.</strong></p>
   <p>But everything now is better than something now, so choose Scala &amp; JDK 8, it has it
   all.</p>
-  <p>Connect up with me <a href="https://www.linkedin.com/in/scalawilliam" data-href="https://www.linkedin.com/in/scalawilliam" rel="noopener" target="_blank">on LinkedIn</a> and <a href="https://twitter.com/ScalaWilliam" data-href="https://twitter.com/ScalaWilliam" rel="noopener" target="_blank">Twitter</a>.</p>
+  <p>Connect up with me <a href="https://www.linkedin.com/in/scalawilliam" target="_blank">on LinkedIn</a> and <a href="https://twitter.com/ScalaWilliam" target="_blank">Twitter</a>.</p>
   <p>&#8212;</p>
   <p><strong>Update, <span class="dt-updated">4 Nov 2016</span></strong>: A reader
   gave a very good question:</p>
@@ -264,9 +264,9 @@ object ComplexFeature {
   <blockquote>
     1. Java Mission Control via SSH tunnelling. You'll need to specify extra Java properties to allow that.<br>
     2. A custom script to make the call from the server itself. This is the approach I took in the article. Tooling takes a bit of time to build.<br>
-    3. Launch something like Hawtio on the server: <a href="http://hawt.io/" data-href="http://hawt.io/" class="markup--anchor markup--blockquote-anchor" rel="nofollow noopener" target="_blank">http://hawt.io/</a> This is a very nice simple approach but
-    you'll need to secure access control to it. Needs Jolokia: <a href="https://jolokia.org/" data-href="https://jolokia.org/" class="markup--anchor markup--blockquote-anchor" rel="nofollow noopener" target="_blank">https://jolokia.org/</a><br>
-    4. Use <a href="https://jolokia.org/" data-href="https://jolokia.org/" rel="nofollow noopener" target="_blank">https://jolokia.org/</a> with your own administrative panel via REST. Where you want to abstract the low level details.
+    3. Launch something like Hawtio on the server: <a href="http://hawt.io/" target="_blank">http://hawt.io/</a> This is a very nice simple approach but
+    you'll need to secure access control to it. Needs Jolokia: <a href="https://jolokia.org/" target="_blank">https://jolokia.org/</a><br>
+    4. Use <a href="https://jolokia.org/" target="_blank">https://jolokia.org/</a> with your own administrative panel via REST. Where you want to abstract the low level details.
   </blockquote>
   <blockquote>
     Choose #1 if your developers have access to production machines and know what they're doing (small team, few apps).<br>
