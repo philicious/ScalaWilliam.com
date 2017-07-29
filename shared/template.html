@@ -19,9 +19,9 @@
 </head>
 <body data-current-view="william">
 <div id="main">
-    <header>
+    <header class="h-card">
         <nav id="social-icons">
-        <a id="github-icon" href="https://github.com/ScalaWilliam" rel="me" target="_blank">
+        <a id="github-icon" href="https://github.com/ScalaWilliam" rel="me" class="u-url" target="_blank">
             <img src="/shared/GitHub_logo_2013.svg"/>
         </a>
         <a id="yt" href="https://www.youtube.com/playlist?list=PL3j15DieK_XuPMNpl0ZeLNsto87cBPaip" target="_blank">
@@ -30,10 +30,10 @@
             <a id="gplus" href="https://plus.google.com/collection/oFuHlB" target="_blank">
                 <img src="/shared/gplus-32.png"/>
             </a>
-        <a id="medium" href="https://medium.com/@ScalaWilliam" rel="me" target="_blank">
+        <a id="medium" href="https://medium.com/@ScalaWilliam" rel="me" class="u-url" target="_blank">
             <img src="/shared/medium-m-color-100px.png"/>
         </a>
-        <a id="twitter" href="https://twitter.com/ScalaWilliam" rel="me" target="_blank">
+        <a id="twitter" href="https://twitter.com/ScalaWilliam" rel="me" class="u-url" target="_blank">
             <svg
                     viewbox="0 0 2000 1625.36"
                     width="40"
@@ -46,7 +46,7 @@
             </svg>
         </a>
 
-        <a id="linkedin" href="https://www.linkedin.com/in/scalawilliam/" rel="me" target="_blank">
+        <a id="linkedin" href="https://www.linkedin.com/in/scalawilliam/" rel="me" class="u-url" target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="28"
                  height="28"
@@ -57,8 +57,10 @@
             </svg>
         </a>
         </nav>
-        <h1><a href="/">William Narmontas</a></h1>
-        <h2>Software Architect &bull; Singapore</h2>
+        <h1><a href="/" class="p-name u-url" rel="me">William Narmontas</a></h1>
+        <h2><span class="p-role">Software Architect</span> &bull; <span class="h-adr"><span class="p-country-name">Singapore</span></span></h2>
+        <data class="u-photo" value="https://www.scalawilliam.com/index/images/headshot-junefourteen.jpg"></data>
+        <a href="hello@scalawilliam.com" class="u-email" rel="me" style="display:none"></a><!-- hidden A instead of DATA to apply rel-me -->
     </header>
     <div id="content"></div>
     <p id="detail">&copy; 2012-2017 <a href="http://www.aptelements.com/">Apt Elements Limited</a>.<br/>
