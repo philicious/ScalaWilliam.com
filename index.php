@@ -68,7 +68,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
 
 </a></li>
     <li><a href="/essential-sbt/">Essential SBT</a></li>
-        <li><a href="https://hackernoon.com/feature-switches-inheritance-and-agile-with-scala-jmx-on-the-jvm-140b4bf94d9f?gi=d8324d17dca0#.vj0o8770w" target="_blank">Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM</a></li>
+        <li><a href="/1609/feature-switches-agile-scala-jmx/">Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM</a></li>
     </ul>
 </section></div>
 
