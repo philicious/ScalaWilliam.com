@@ -7,11 +7,11 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
 
 		<p>I've been building websites and software since 2004.</p>
 		
-            <p>Since 2013, I specialise in <a href="http://scala-lang.org"
-            target="_blank">Scala</a>, a programming language for the JVM.</p>
+            <p>Since 2013, I began specialising in <a href="http://scala-lang.org"
+            target="_blank">Scala</a> and IT consulting through <a href="http://www.aptelements.com/">Apt Elements</a>.
+		    Scala is a programming language for the JVM. Apt Elements 
+		</p>
 		
-		<p>I'm <a href="http://www.aptelements.com/">IT consulting through Apt Elements since 2013</a>.</p>
-
 		<p><a href="/cv/">Latest CV</a> &mdash;
                 <a href="#articles">Articles</a>
                 &mdash;
