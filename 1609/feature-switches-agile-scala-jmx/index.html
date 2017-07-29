@@ -90,20 +90,20 @@ figure {
     </style>
 
 
-    <title>Feature Switches, Inheritance and Agile with Scala & JMX on the JVM</title>
+    <title>Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM</title>
 
-<meta name="twitter:title" content="Feature Switches, Inheritance and Agile with Scala & JMX on the JVM">
-<meta property="og:title" content="Feature Switches, Inheritance and Agile with Scala & JMX on the JVM">
+<meta name="twitter:title" content="Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM">
+<meta property="og:title" content="Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM">
 <meta property="og:url" content="https://www.scalawilliam.com/1609/feature-switches-agile-scala-jmx/">
 <link rel="canonical" href="https://www.scalawilliam.com/1609/feature-switches-agile-scala-jmx/">
 <!-- http://ogp.me/ -->
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2016-09-30">
 <meta property="article:modified_time" content="2017-07-29">
-<meta property="og:description" content="William Narmontas takes you through Feature Switches, Inheritance and Agile with Scala & JMX on the JVM.">
-<meta itemprop="description" content="William Narmontas takes you through Feature Switches, Inheritance and Agile with Scala & JMX on the JVM.">
-<meta name="description" content="William Narmontas takes you through Feature Switches, Inheritance and Agile with Scala & JMX on the JVM.">
-<meta name="twitter:description" content="William Narmontas takes you through Feature Switches, Inheritance and Agile with Scala & JMX on the JVM.">
+<meta property="og:description" content="William Narmontas takes you through Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM.">
+<meta itemprop="description" content="William Narmontas takes you through Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM.">
+<meta name="description" content="William Narmontas takes you through Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM.">
+<meta name="twitter:description" content="William Narmontas takes you through Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM.">
 <meta property="og:site_name" content="Scala William">
 <link rel="author" href="https://plus.google.com/u/0/103489630517643950426/">
 <link rel="publisher" href="https://plus.google.com/u/0/103489630517643950426/">
@@ -117,9 +117,9 @@ figure {
 </head>
 <body>
   <header>
-    <h1>Feature Switches, Inheritance and Agile with Scala & JMX on the JVM</h1>
+    <h1>Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM</h1>
     <h2>By <a href="/">William Narmontas</a>, Sep 30, 2016</h2>
-      This page can be <a href="https://github.com/ScalaWilliam/ScalaWilliam.com/blob/master/1609/feature-switches-agile-scala-jmx/index.html">edited on GitHub</a>.</p>
+      This page can be <a href="https://github.com/ScalaWilliam/ScalaWilliam.com/blob/master/1609/feature-switches-agile-scala-jmx/index.html">edited on GitHub</a>.
   </header>
 
   <nav id="contents">
@@ -135,79 +135,67 @@ figure {
   <p>Remember last time a critical service in production worked incorrectly and you
   reverted your changes, or restarted the services for new configuration? Neither do I.</p>
   <p>In one of my recent contracts, 10 days before production deployment I began to work on
-  a feature that would actually take 2–3 months. The management had not accounted for the complexity of the task, but no worries: we have Agile and
-  <a href="https://www.playframework.com/" data-href="https://www.playframework.com/" rel="noopener" target=
-  "_blank">Play</a> <a href="http://scala-lang.org/" data-href="http://scala-lang.org/" rel="noopener"
-  target="_blank">Scala</a> at our disposal.</p>
-  <p>Once you know that you’ll miss won’t make a deadline, all risk is gone, and only
+  a feature that would actually take 2&#8211;3 months. The management had not accounted for the complexity of the task, but no worries: we have Agile and
+  <a href="https://www.playframework.com/" data-href="https://www.playframework.com/" rel="noopener" target="_blank">Play</a> <a href="http://scala-lang.org/" data-href="http://scala-lang.org/" rel="noopener" target="_blank">Scala</a> at our disposal.</p>
+  <p>Once you know that you&#8217;ll miss won&#8217;t make a deadline, all risk is gone, and only
   certainty is left.</p>
   <p>I agreed with the project manager to implement the simplest, dumbest, safest thing
   there was, so at least we would not miss the deadline. It would take 1 day to get into master.</p>
   <p>This would be our basic interface:</p>
-  <pre class="language-scala"><code data-source="https://gist.github.com/ScalaWilliam/2c6d27a59cec27107116502cb1cd4ea0/raw/744c92b8a7c261241b2719384768ad860856a234/Feature.scala" data-from="9" data-to="36">
-trait Feature {
+  <pre class="language-scala"><code data-source="Feature.scala" data-from="1" data-to="3">trait Feature {
   def execute(inputXml: Elem): Future[Result]
-}
-  </code></pre>
+}</code></pre>
 
-  <p>And a very dumb implementation in Scala, called ‘StaticFeature’</p>
+  <p>And a very dumb implementation in Scala, called &#8216;StaticFeature&#8217;</p>
 
-  <pre class="language-scala"><code data-source="https://gist.github.com/ScalaWilliam/3357d3cabb8d6b27f76eb225ca7f2622/raw/d05c12178e535376ffa17d4035b9c8a414da7697/StaticFeature.scala" data-from="9" data-to="36">
-class StaticFeature extends Feature {
+  <pre class="language-scala"><code data-source="StaticFeature.scala" data-from="1" data-to="8">class StaticFeature extends Feature {
   def execute(inputXml: Elem): Future[Result] = {
     Future.successful(StaticFeature.staticResult)
   }
 }
 object StaticFeature {
   val staticResult: Result = ???
-}
-  </code></pre>
+}</code></pre>
 
   <p>Now knowing that the management will be asking for constant updates for the final
-  deliverable, I agreed with the Product Owner that it’ll make more sense to implement something simple that at least partially meets the
-  requirement, but would take a bit less. It took 2 weeks and we we were able to deploy it to production quite easily. If anything went wrong, we’d
-  be able to switch back to something we agreed to earlier (ie ‘StaticFeature’).</p>
-  <p>Welcome to ‘AdvancedFeature’, which is 10x more complicated than ‘StaticFeature’, is
-  tested, and can fall back to ‘StaticFeature’ when it is unable to fit the bill.</p>
+  deliverable, I agreed with the Product Owner that it&#8217;ll make more sense to implement something simple that at least partially meets the
+  requirement, but would take a bit less. It took 2 weeks and we we were able to deploy it to production quite easily. If anything went wrong, we&#8217;d
+  be able to switch back to something we agreed to earlier (ie &#8216;StaticFeature&#8217;).</p>
+  <p>Welcome to &#8216;AdvancedFeature&#8217;, which is 10x more complicated than &#8216;StaticFeature&#8217;, is
+  tested, and can fall back to &#8216;StaticFeature&#8217; when it is unable to fit the bill.</p>
 
-  <pre class="language-scala"><code data-source="https://gist.githubusercontent.com/ScalaWilliam/d135ed3d22628270871f931eb8945745/raw/84542a2768b07b9dcd324a33b19a6b8faa548d6f/AdvancedFeature.scala" data-from="9" data-to="36">
-class AdvancedFeature(staticFeature: StaticFeature)
+  <pre class="language-scala"><code data-source="AdvancedFeature.scala" data-from="1" data-to="12">class AdvancedFeature(staticFeature: StaticFeature)
   extends Feature {
   def execute(inputXml: Elem): Future[Result] = {
     Future(blocking(AdvancedFeature.process(inputXml)))
       .recoverWith {
-        case NonFatal(e) => staticFeature.execute(inputXml)
+        case NonFatal(e) =&gt; staticFeature.execute(inputXml)
       }
   }
 }
 object AdvancedFeature {
   def process(inputXml: Elem): Result = ???
-}
-  </code></pre>
+}</code></pre>
 
-  <p>But let’s say rather than fail and fall back, ‘AdvancedFeature’ returned incorrect
+  <p>But let&#8217;s say rather than fail and fall back, &#8216;AdvancedFeature&#8217; returned incorrect
   output? Because the input XML is very loose, there was no guarantee that everything would work as expected and none of it could be easily unit
   tested.</p>
   <p>However, how do we switch back? Revert Git code? Redeploy a configuration change? Come
-  on! We have the JVM at our disposal. It has something called JMX (“<a href="http://openjdk.java.net/groups/jmx/" data-href=
-  "http://openjdk.java.net/groups/jmx/" rel="noopener" target="_blank">Java Management Extensions</a>”) which
+  on! We have the JVM at our disposal. It has something called JMX (&#8220;<a href="http://openjdk.java.net/groups/jmx/" data-href="http://openjdk.java.net/groups/jmx/" rel="noopener" target="_blank">Java Management Extensions</a>&#8221;) which
   provides you with a way to manage your application at runtime. You can do metrics, rebind ports, change configuration options, change logging
-  verbosity, run diagnostics — all sorts of things. So here’s how you do it:</p>
-  <p>First you write a generic interface, a “Management Bean”:</p>
+  verbosity, run diagnostics&#8202;&#8212;&#8202;all sorts of things. So here&#8217;s how you do it:</p>
+  <p>First you write a generic interface, a &#8220;Management Bean&#8221;:</p>
 
-  <pre class="language-scala"><code data-source="https://gist.github.com/ScalaWilliam/e85683a8851927313bd0a4e19df38589/raw/1871b0210e6804532e3d2ba35d1c0bc545b9772b/FeatureConfiguratorMBean.scala" data-from="9" data-to="36">
-package features
+  <pre class="language-scala"><code data-source="FeatureConfiguratorMBean.scala" data-from="1" data-to="5">package features
 trait FeatureConfiguratorMBean {
   def getFeatureLevel: String
   def setFeatureLevel(name: String): Unit
-}
-  </code></pre>
+}</code></pre>
 
   <p>Then you write an implementation which registers this component to the JMX
   registry and allows its methods to be called remotely:</p>
 
-  <pre class="language-scala"><code data-source="https://gist.github.com/ScalaWilliam/277f2587063c13ff65e8385056e8f2a5/raw/284d1c0471d04fadf3472af7d86268d804df8bf9/FeatureConfigurator.scala" data-from="9" data-to="36">
-package features
+  <pre class="language-scala"><code data-source="FeatureConfigurator.scala" data-from="1" data-to="11">package features
 class FeatureConfigurator() extends FeatureConfiguratorMBean {
   val platformMBeanServer = ManagementFactory.getPlatformMBeanServer
   val objectName = new ObjectName("app:type=FeatureConfigurator")
@@ -217,13 +205,9 @@ class FeatureConfigurator() extends FeatureConfiguratorMBean {
   }
   def getFeatureLevel: String = ???
   def setFeatureLevel(name: String): Unit = ???
-}
-  </code></pre>
+}</code></pre>
 
-  <p>And now when your app runs, you open up <a href=
-  "http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html" data-href=
-  "http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html"
-  rel="noopener" target="_blank">Java Mission Control</a> (jmc in UNIX shell), connect to the app, and then you can change values immediately (it’d
+  <p>And now when your app runs, you open up <a href="http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html" data-href="http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html" rel="noopener" target="_blank">Java Mission Control</a> (jmc in UNIX shell), connect to the app, and then you can change values immediately (it&#8217;d
   call setFeatureLevel method upon pressing Return):</p>
 
   <figure>
@@ -232,34 +216,30 @@ class FeatureConfigurator() extends FeatureConfiguratorMBean {
   </figure>
 
   <p>Of course in production you might want to have something easier to use, in which
-  case I used <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/shell.html" data-href=
-  "https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/shell.html" rel="noopener"
-  target="_blank">Java 8’s JavaScript interpreter jjs</a> to connect to a remote running process and change the value of configuration via a Shell
+  case I used <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/shell.html" data-href="https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/shell.html" rel="noopener" target="_blank">Java 8&#8217;s JavaScript interpreter jjs</a> to connect to a remote running process and change the value of configuration via a Shell
   script.</p>
   <p>Now the business had the certainty that instead of being stuck with incorrect behaviour
-  they’ll get a lesser version which gives the expected behaviour.</p>
-  <p>Final implementation, ‘ComplexFeature’:</p>
+  they&#8217;ll get a lesser version which gives the expected behaviour.</p>
+  <p>Final implementation, &#8216;ComplexFeature&#8217;:</p>
 
-  <pre class="language-scala"><code data-source="https://gist.github.com/ScalaWilliam/0388226ecb2a3b041a8437f35e2be520/raw/c427652b490582c09b63822cd32e5f89ece84552/ComplexFeature.scala" data-from="9" data-to="36">
-class ComplexFeature(serviceA: ServiceA, serviceB: ServiceB,
+  <pre class="language-scala"><code data-source="ComplexFeature.scala" data-from="1" data-to="14">class ComplexFeature(serviceA: ServiceA, serviceB: ServiceB,
                      advancedFeature: AdvancedFeature) 
   extends Feature {
     def execute(inputXml: Elem): Future[Result] = {
       Future(ComplexFeature.process(serviceA, serviceB))
         .recoverWith {
-          case NonFatal(e) => advancedFeature.execute(inputXml)
+          case NonFatal(e) =&gt; advancedFeature.execute(inputXml)
         }
     }
 }
 object ComplexFeature {
   def process(serviceA: ServiceA, serviceB: ServiceB):
     Future[Result] = ???
-}
-  </code></pre>
+}</code></pre>
 
   <p>This was the most complicated by far, and the business wanted to do an A-B type of
   roll out of the feature into several production environments. Run on the first environment for a few weeks, then run it on the second, then the
-  third, and then we’re done with the fourth. Should anything go wrong, we resort to the lesser versions and change the level at runtime. Easy &
+  third, and then we&#8217;re done with the fourth. Should anything go wrong, we resort to the lesser versions and change the level at runtime. Easy &amp;
   convenient.</p>
   <p>This approach was successful. Ops loved it. PO loved it.</p>
   <ol>
@@ -274,13 +254,10 @@ object ComplexFeature {
   </ol>
   <p><strong>Something now is almost always better
   than nothing now.</strong></p>
-  <p>But everything now is better than something now, so choose Scala & JDK 8, it has it
+  <p>But everything now is better than something now, so choose Scala &amp; JDK 8, it has it
   all.</p>
-  <p>Connect up with me <a href="https://www.linkedin.com/in/scalawilliam" data-href=
-  "https://www.linkedin.com/in/scalawilliam" rel="noopener" target="_blank">on LinkedIn</a> and <a href=
-  "https://twitter.com/ScalaWilliam" data-href="https://twitter.com/ScalaWilliam" rel="noopener" target=
-  "_blank">Twitter</a>.</p>
-  <p>—</p>
+  <p>Connect up with me <a href="https://www.linkedin.com/in/scalawilliam" data-href="https://www.linkedin.com/in/scalawilliam" rel="noopener" target="_blank">on LinkedIn</a> and <a href="https://twitter.com/ScalaWilliam" data-href="https://twitter.com/ScalaWilliam" rel="noopener" target="_blank">Twitter</a>.</p>
+  <p>&#8212;</p>
   <p><strong>Update, 4 Nov 2016</strong>: A reader
   gave a very good question:</p>
   <blockquote>
@@ -292,22 +269,19 @@ object ComplexFeature {
     remote.
   </blockquote>
   <blockquote>
-    1. Java Mission Control via SSH tunnelling. You’ll need to specify extra Java properties to allow that.<br>
+    1. Java Mission Control via SSH tunnelling. You&#8217;ll need to specify extra Java properties to allow that.<br>
     2. A custom script to make the call from the server itself. This is the approach I took in the article. Tooling takes a bit of time to build.<br>
-    3. Launch something like Hawtio on the server: <a href="http://hawt.io/" data-href="http://hawt.io/" class=
-    "markup--anchor markup--blockquote-anchor" rel="nofollow noopener" target="_blank">http://hawt.io/</a> This is a very nice simple approach but
-    you’ll need to secure access control to it. Needs Jolokia: <a href="https://jolokia.org/" data-href="https://jolokia.org/" class=
-    "markup--anchor markup--blockquote-anchor" rel="nofollow noopener" target="_blank">https://jolokia.org/</a><br>
-    4. Use <a href="https://jolokia.org/" data-href="https://jolokia.org/" rel="nofollow noopener"
-    target="_blank">https://jolokia.org/</a> with your own administrative panel via REST. Where you want to abstract the low level details.
+    3. Launch something like Hawtio on the server: <a href="http://hawt.io/" data-href="http://hawt.io/" class="markup--anchor markup--blockquote-anchor" rel="nofollow noopener" target="_blank">http://hawt.io/</a> This is a very nice simple approach but
+    you&#8217;ll need to secure access control to it. Needs Jolokia: <a href="https://jolokia.org/" data-href="https://jolokia.org/" class="markup--anchor markup--blockquote-anchor" rel="nofollow noopener" target="_blank">https://jolokia.org/</a><br>
+    4. Use <a href="https://jolokia.org/" data-href="https://jolokia.org/" rel="nofollow noopener" target="_blank">https://jolokia.org/</a> with your own administrative panel via REST. Where you want to abstract the low level details.
   </blockquote>
   <blockquote>
-    Choose #1 if your developers have access to production machines and know what they’re doing (small team, few apps).<br>
-    Choose #2 if you DevOps and Dev are in close communication but Dev don’t have access to production.<br>
+    Choose #1 if your developers have access to production machines and know what they&#8217;re doing (small team, few apps).<br>
+    Choose #2 if you DevOps and Dev are in close communication but Dev don&#8217;t have access to production.<br>
     Choose #3 if you have more applications running on the machine, maybe even several instances of the same app.<br>
     Choose #4 if you are delivering to a customer who has their own Ops team and need special reliable control of your stuff.<br>
     I think this will warrant a further article.<br>
-    Databases shouldn’t really be used for configuration or management. But of course not all platforms support management facilities.
+    Databases shouldn&#8217;t really be used for configuration or management. But of course not all platforms support management facilities.
   </blockquote>
     </section>
   </article>
