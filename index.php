@@ -61,7 +61,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                     <time class="dt-published" datetime="2017-05-18T11:41:55.686Z">May 2017</time>
                 </li>
                 <li class="h-entry">
-                    <a class="p-name" href="https://medium.com/@ScalaWilliam/how-i-deal-with-greenfield-technical-debt-1a35be33dc71">How I deal with greenfield technical debt</a>,
+                    <a class="p-name" href="/1705/greenfield-technical-debt/">How I deal with greenfield technical debt</a>,
                     <time class="dt-published" datetime="2017-05-05T10:47:11.753Z">May 2017</time>
                 </li>
                 <li class="h-entry">
