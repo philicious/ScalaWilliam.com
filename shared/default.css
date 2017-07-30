@@ -276,4 +276,6 @@ p.permalink {
         40% { opacity: 0; }
     }
 
-
+time {
+    white-space: nowrap;
+}
