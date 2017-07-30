@@ -34,7 +34,7 @@ cp 1609/feature-switches-agile-scala-jmx/index.html out/1609/feature-switches-ag
 cp 1609/feature-switches-agile-scala-jmx/*.png out/1609/feature-switches-agile-scala-jmx/
 
 mkdir -p out/1705/scala-android-opportunity
-cp 1705/scala-android/index.html out/1705/scala-android-opportunity/
+cp 1705/scala-android-opportunity/index.html out/1705/scala-android-opportunity/
 
 mkdir -p out/scala-for-2017
 php scala-for-2017/index.php > out/scala-for-2017/index.html
