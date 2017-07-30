@@ -9,7 +9,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
 		
             <p>Since 2013, I began specialising in <a href="http://scala-lang.org"
             target="_blank">Scala</a> and IT consulting through <a href="http://www.aptelements.com/">Apt Elements</a>.
-		    Scala is a programming language for the JVM. Apt Elements 
+		    Scala is a programming language for the JVM.
 		</p>
 		
 		<p><a href="/cv/">Latest CV</a> &mdash;
