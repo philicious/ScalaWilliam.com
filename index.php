@@ -65,7 +65,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                     <time class="dt-published" datetime="2017-05-05T10:47:11.753Z">May 2017</time>
                 </li>
                 <li class="h-entry">
-                    <a class="p-name" href="https://dev.to/scalawilliam/certifications-im-considering-as-an-experienced-software-engineer">Certifications I'm considering, as an experienced software engineer</a>,
+                    <a class="p-name" href="/1704/certifications-im-considering/">Certifications I'm considering, as an experienced software engineer</a>,
                     <time class="dt-published" datetime="2017-04-29">Apr 2017</time>
                 </li>
                 <li class="h-entry">
