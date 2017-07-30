@@ -85,7 +85,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                     <time class="dt-published" datetime="2016-12-29">Dec 2016</time>
                 </li>
                 <li class="h-entry">
-                    <a class="p-name" href="https://medium.com/@ScalaWilliam/limit-degrees-of-freedom-in-development-4c543bb6f806#.xmrcpl8rg">Limit degrees of freedom in development</a>,
+                    <a class="p-name" href="/1612/limit-degrees-of-freedom/">Limit degrees of freedom in development</a>,
                     <time class="dt-published" datetime="2016-12-17T11:21:25.101Z">Dec 2016</time>
                 </li>
                 <li class="h-entry">
