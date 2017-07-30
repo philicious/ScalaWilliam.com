@@ -48,19 +48,58 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
             <a class="u-author" href="/" style="display:none"></a><!-- Help parsers out. The author of all of these articles is https://www.scalawilliam.com/ -->
             <p>Also on <a href="https://plus.google.com/collection/oFuHlB" target="_blank">Google+</a>.</p>
             <ul>
-                <li class="h-entry"><a class="p-name" href="https://dev.to/scalawilliam/unit-testing-is-simple">Unit testing is simple</a>, <time class="dt-published" datetime="2017-05-04">May 2017</time></li>
-                <li class="h-entry"><a class="p-name" href="https://www.quora.com/What-are-advantages-of-Scala-over-Kotlin/answer/William-Narmontas?srid=DB6V">What are advantages of Scala over Kotlin?</a>, <time class="dt-published" datetime="2017-05">May 2017</time></li>
-                <li class="h-entry"><a class="p-name" href="/1705/scala-android-opportunity/">Why Scala didn't miss the Android opportunity</a>, <time class="dt-published" datetime="2017-05-18T11:41:55.686Z">May 2017</time></li>
-                <li class="h-entry"><a class="p-name" href="https://medium.com/@ScalaWilliam/how-i-deal-with-greenfield-technical-debt-1a35be33dc71">How I deal with greenfield technical debt</a>, <time class="dt-published" datetime="2017-05-05T10:47:11.753Z">May 2017</time></li>
-                <li class="h-entry"><a class="p-name" href="https://dev.to/scalawilliam/certifications-im-considering-as-an-experienced-software-engineer">Certifications I'm considering, as an experienced software engineer</a>, <time class="dt-published" datetime="2017-04-29">Apr 2017</time></li>
-                <li class="h-entry"><a class="p-name" href="https://dev.to/scalawilliam/2017-freelance-development-platforms">2017 freelance development platforms</a>, <time class="dt-published" datetime="2017-04-20">Apr 2017</time></li>
-                <li class="h-entry"><a class="p-name" href="/scala-native-libpcap/">Capturing Packets with Scala Native and libpcap</a>, <time class="dt-published" datetime="2017-03-26">Mar 2017</time></li>
-                <li class="h-entry"><a class="p-name" href="https://medium.com/@ScalaWilliam/java-8-nashorn-cli-use-case-prepending-iso-instant-to-csv-from-unix-timestamp-3685b6ee746">Java 8 Nashorn CLI use case: prepending ISO instant to CSV from UNIX timestamp</a>, <time class="dt-published" datetime="2017-01-02T03:05:17.144Z">Jan 2017</time></li>
-                <li class="h-entry"><a class="p-name" href="/scala-nashorn-interaction/">Scala Nashorn Interaction</a>, <time class="dt-published" datetime="2016-12-29">Dec 2016</time></li>
-                <li class="h-entry"><a class="p-name" href="https://medium.com/@ScalaWilliam/limit-degrees-of-freedom-in-development-4c543bb6f806#.xmrcpl8rg">Limit degrees of freedom in development</a>, <time class="dt-published" datetime="2016-12-17T11:21:25.101Z">Dec 2016</time></li>
-                <li class="h-entry"><a class="p-name" href="/most-important-streaming-abstraction/">The most important Streaming abstraction</a>, <time class="dt-published" datetime="2016-12-14">Dec 2016</time></li>
-                <li class="h-entry"><a class="p-name" href="/essential-sbt/">Essential SBT</a>, <time class="dt-published" datetime="2016-12-10">Dec 2016</time></li>
-                <li class="h-entry"><a class="p-name" href="/1609/feature-switches-agile-scala-jmx/">Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM</a>, <time class="dt-published" datetime="2016-09-30T12:38:59.026Z">Sep 2016</time></li>
+                <li class="h-entry">
+                    <a class="p-name" href="https://dev.to/scalawilliam/unit-testing-is-simple">Unit testing is simple</a>,
+                    <time class="dt-published" datetime="2017-05-04">May 2017</time>
+                </li>
+                <li class="h-entry">
+                    <a class="p-name" href="https://www.quora.com/What-are-advantages-of-Scala-over-Kotlin/answer/William-Narmontas?srid=DB6V">What are advantages of Scala over Kotlin?</a>,
+                    <time class="dt-published" datetime="2017-05">May 2017</time>
+                </li>
+                <li class="h-entry">
+                    <a class="p-name" href="/1705/scala-android-opportunity/">Why Scala didn't miss the Android opportunity</a>,
+                    <time class="dt-published" datetime="2017-05-18T11:41:55.686Z">May 2017</time>
+                </li>
+                <li class="h-entry">
+                    <a class="p-name" href="https://medium.com/@ScalaWilliam/how-i-deal-with-greenfield-technical-debt-1a35be33dc71">How I deal with greenfield technical debt</a>,
+                    <time class="dt-published" datetime="2017-05-05T10:47:11.753Z">May 2017</time>
+                </li>
+                <li class="h-entry">
+                    <a class="p-name" href="https://dev.to/scalawilliam/certifications-im-considering-as-an-experienced-software-engineer">Certifications I'm considering, as an experienced software engineer</a>,
+                    <time class="dt-published" datetime="2017-04-29">Apr 2017</time>
+                </li>
+                <li class="h-entry">
+                    <a class="p-name" href="https://dev.to/scalawilliam/2017-freelance-development-platforms">2017 freelance development platforms</a>,
+                    <time class="dt-published" datetime="2017-04-20">Apr 2017</time>
+                </li>
+                <li class="h-entry">
+                    <a class="p-name" href="/scala-native-libpcap/">Capturing Packets with Scala Native and libpcap</a>,
+                    <time class="dt-published" datetime="2017-03-26">Mar 2017</time>
+                </li>
+                <li class="h-entry">
+                    <a class="p-name" href="https://medium.com/@ScalaWilliam/java-8-nashorn-cli-use-case-prepending-iso-instant-to-csv-from-unix-timestamp-3685b6ee746">Java 8 Nashorn CLI use case: prepending ISO instant to CSV from UNIX timestamp</a>,
+                    <time class="dt-published" datetime="2017-01-02T03:05:17.144Z">Jan 2017</time>
+                </li>
+                <li class="h-entry">
+                    <a class="p-name" href="/scala-nashorn-interaction/">Scala Nashorn Interaction</a>,
+                    <time class="dt-published" datetime="2016-12-29">Dec 2016</time>
+                </li>
+                <li class="h-entry">
+                    <a class="p-name" href="https://medium.com/@ScalaWilliam/limit-degrees-of-freedom-in-development-4c543bb6f806#.xmrcpl8rg">Limit degrees of freedom in development</a>,
+                    <time class="dt-published" datetime="2016-12-17T11:21:25.101Z">Dec 2016</time>
+                </li>
+                <li class="h-entry">
+                    <a class="p-name" href="/most-important-streaming-abstraction/">The most important Streaming abstraction</a>,
+                    <time class="dt-published" datetime="2016-12-14">Dec 2016</time>
+                </li>
+                <li class="h-entry">
+                    <a class="p-name" href="/essential-sbt/">Essential SBT</a>,
+                    <time class="dt-published" datetime="2016-12-10">Dec 2016</time>
+                </li>
+                <li class="h-entry">
+                    <a class="p-name" href="/1609/feature-switches-agile-scala-jmx/">Feature Switches, Inheritance and Agile with Scala &amp; JMX on the JVM</a>,
+                    <time class="dt-published" datetime="2016-09-30T12:38:59.026Z">Sep 2016</time>
+                </li>
             </ul>
         </section>
     </div>
