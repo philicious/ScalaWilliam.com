@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900%7CRoboto+Mono" rel="stylesheet">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-scala.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <style type="text/css">
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height:1.6;
+        color:rgb(5,5,5);
+        background:rgb(255,255,255);
+        max-width:60em;
+    }
+        code {
+            font-family: 'Roboto Mono', monospace;
+        }
+        header {
+            padding-bottom: 1em;
+        }
+        header pre {
+            border:2px solid;
+            border-color: firebrick;
+            text-align: center;
+            padding:0.6em;
+            overflow-x:scroll;
+        }
+        header code {
+            font-size:1.6em;
+            font-weight:bold;
+        }
+        ul {
+            list-style-type: square;
+        }
+                a {
+            color:darkslategrey;
+        }
+        a:hover {
+            color:darkslateblue;
+        }
+
+        .token.operator {
+        background:none;
+        }
+
+
+             nav button {
+                box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;
+    font-family: inherit;
+    font-size: 100%;
+    padding: .5em 1em;
+    color: #444;
+    border: 1px solid #999;
+    border: 0 rgba(0,0,0,0);
+    background-color: #E6E6E6;
+    text-decoration: none;
+    border-radius: 2px;
+        }
+        nav.hide ul {
+            display:none;
+        }
+nav ul {
+            list-style-type: none;
+        }
+nav li:before {
+            content: "- ";
+        }
+figure {
+    display:inline-block;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+    box-shadow: 1px 1px 3px black;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+.clear { clear:both; }
+    </style>
+
+
+    <title>Unit testing is simple</title>
+
+<meta name="twitter:title" content="Unit testing is simple">
+<meta property="og:title" content="Unit testing is simple">
+<meta itemprop="name" content="Unit testing is simple">
+<meta property="og:url" content="/unit-testing-is-simple">
+<link rel="canonical" href="/unit-testing-is-simple">
+<!-- http://ogp.me/ -->
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-05-04">
+<meta property="article:modified_time" content="2017-05-04">
+<meta property="og:description" content="William Narmontas shows how simple unit testing is.">
+<meta itemprop="description" content="William Narmontas shows how simple unit testing is.">
+<meta name="description" content="William Narmontas shows how simple unit testing is.">
+<meta name="twitter:description" content="William Narmontas shows how simple unit testing is.">
+<meta property="og:site_name" content="Scala William">
+<link rel="author" href="https://plus.google.com/u/0/103489630517643950426/">
+<link rel="publisher" href="https://plus.google.com/u/0/103489630517643950426/">
+<meta property="og:image" content="https://avatars2.githubusercontent.com/u/2464813">
+<meta itemprop="image" content="https://avatars2.githubusercontent.com/u/2464813">
+<meta name="twitter:image" content="https://avatars2.githubusercontent.com/u/2464813">
+<meta name="author" content="William Narmontas">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@ScalaWilliam">
+</head>
+<body>
+  <article class="h-entry">
+    <header>
+      <h1>Unit testing is simple</h1>
+      <h2>By <a href="/" class="u-author h-card">William Narmontas</a>, <a class="u-url" href="/unit-testing-is-simple"><time class="dt-published" datetime="2017-05-04">May 4, 2017</time></a></h2>
+      <p>This page can be <a href="https://github.com/ScalaWilliam/ScalaWilliam.com/blob/master/unit-testing-is-simple/index.html">edited on GitHub</a>.</p>
+      <p>Original article at <a href="https://dev.to/scalawilliam/unit-testing-is-simple" class="u-syndication">The Practical Dev</a>.</p>
+    </header>
+    <section class="e-content">
+        <p>Is unit testing difficult?</p>
+        <p>No, it is not. You don't even need a testing framework for it.</p>
+        <p>You don't even need to write the test in a separate file or class.</p>
+        <p>You just need to <a href="http://tldp.org/LDP/abs/html/exitcodes.html" target="_blank">exit with code 1</a>. This is enough to fail a Jenkins build and a Makefile!</p>
+        <p>Why is a unit test useful?</p>
+        <ul>
+            <li>Prevent regressions when you change the code.</li>
+            <li>Document expected input and output as code.</li>
+            <li>Replace error-prone <a href="http://codebetter.com/jeremymiller/2006/06/01/tdd-and-debugging/" target="_blank">println-driven development with test-driven development</a>.</li>
+        </ul>
+        <blockquote>
+            <p><strong>What do you test?</strong> when the logic is "complex enough" I know it could be broken 6 months down the line, due to "that one small change" - or that I'd spend time building it with print statements. <a href="https://github.com/ActionFPS/dashboard/blob/e757931de22d82edd20e4ef5ad3b2df56d433a16/test_build.py#L82" target="_blank">Example from my own code</a>.</p>
+        </blockquote>
+        <p>Here, I'll show you the most basic way to unit testing with four languages: Bash, Python, Node.js, Scala, just to prove the point.</p>
+        <p>These examples are for a very basic piece of code and are intentionally minimalistic, to demonstrate that you needn't use a test framework to get started with - though one will be very necessary when you scale your application.</p>
+        <h3>Bash</h3>
+        <p>Here's a bash script <code>inc.sh</code> with a basic assertion and some main code:</p>
+        <pre><code class="language-bash">#!/bin/bash
+
+increment() {
+    echo $(("$1"+1))
+}
+
+# If this assertion fails, the whole thing quits 
+[ 3 -eq $(increment 2) ] || exit 1
+
+# Increment a stream of numbers
+while read n; do
+    increment $n;
+done</code></pre>
+        <p>If we run:</p>
+        <pre class="command-line language-bash" data-user="william" data-host="localhost" data-output="2-6, 8"><code class="language-bash">seq 1 5 | bash inc.sh
+2
+3
+4
+5
+6
+echo $?
+0</code></pre>
+        <p>Exit code is 0. But if we broke the function, and put 2 instead of 1, we get:</p>
+        <pre class="command-line language-bash" data-user="william" data-host="localhost" data-output="3"><code class="language-bash">seq 1 5 | bash inc.sh
+echo $?
+1</code></pre>
+        <h3>Python</h3>
+        <p>This is easy to achieve in any language really. <a href="https://docs.python.org/2/reference/simple_stmts.html#the-assert-statement" target="_blank">Python assertions</a>:</p>
+        <p>Broken test in file <code>inc.py</code>:</p>
+        <pre><code class="language-python">def increment(n):
+  return n + 2
+
+assert increment(2) == 3</code></pre>
+        <pre class="command-line language-bash" data-user="william" data-host="localhost" data-output="2-5,7"><code class="language-bash">python inc.py
+Traceback (most recent call last):
+  File "inc.py", line 4, in <module>
+    assert increment(2) == 3
+AssertionError
+echo $?
+1</code></pre>
+        <h3>Node.js</h3>
+        <p>Comes with <a href="https://nodejs.org/api/assert.html#assert_assert_equal_actual_expected_message" target="_blank">assertions built in</a>.</p>
+        <p>Broken test in file <code>inc.js</code>:</p>
+        <pre><code class="language-javascript">const assert = require('assert');
+
+function increment(n) {
+  return n + 2;
+}
+
+assert.equal(2, increment(1));</code></pre>
+        <pre class="command-line language-bash" data-user="william" data-host="localhost" data-output="2-8,10"><code class="language-bash">node inc.js
+
+assert.js:81
+  throw new assert.AssertionError({
+  ^
+AssertionError: 2 == 3
+
+...
+echo $?
+1</code></pre>
+        <h3><a href="http://scala-lang.org/" target="_blank">Scala</a></h3>
+        <p>Comes with assert.</p>
+        <pre><code class="language-scala">def inc(n: Int) = n + 2
+assert(inc(1) == 2)</code></pre>
+        <pre class="command-line language-bash" data-user="william" data-host="localhost" data-output="2,4"><code class="language-bash">scala inc.scala
+java.lang.AssertionError: assertion failed
+echo $?
+1</code></pre>
+        <h3>Why is this important?</h3>
+        <p>You can get started light with several assertions and work your way up to proper test suites.</p>
+        <h3>So what are test frameworks for?</h3>
+        <p>To make testing more organised. You get:</p>
+        <ul>
+            <li>Organisation</li>
+            <li>Detailed error messages</li>
+            <li>Detailed test reports</li>
+            <li>Neat assertions and human readable language (see <a href="http://www.scalatest.org/" target="_blank">ScalaTest</a>)</li>
+            <li>Incremental/TDD type of development</li>
+        </ul>
+        <h2>Conclusion</h2>
+        <p>Now you have no excuse for not writing at least a few tests in your code.</p>
+    </section>
+</article>
+</body>
+</html>

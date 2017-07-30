@@ -49,7 +49,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
             <p>Also on <a href="https://plus.google.com/collection/oFuHlB" target="_blank">Google+</a>.</p>
             <ul>
                 <li class="h-entry">
-                    <a class="p-name" href="https://dev.to/scalawilliam/unit-testing-is-simple">Unit testing is simple</a>,
+                    <a class="p-name" href="/unit-testing-is-simple/">Unit testing is simple</a>,
                     <time class="dt-published" datetime="2017-05-04">May 2017</time>
                 </li>
                 <li class="h-entry">
