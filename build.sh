@@ -64,6 +64,9 @@ cp 1612/limit-degrees-of-freedom/index.html out/1612/limit-degrees-of-freedom/
 cp 1612/limit-degrees-of-freedom/*.png out/1612/limit-degrees-of-freedom/
 cp 1612/limit-degrees-of-freedom/*.jpeg out/1612/limit-degrees-of-freedom/
 
+mkdir -p out/1704/certifications-im-considering
+cp 1704/certifications-im-considering/index.html out/1704/certifications-im-considering/
+
 mkdir -p out/1705/greenfield-technical-debt
 cp 1705/greenfield-technical-debt/index.html out/1705/greenfield-technical-debt/
 cp 1705/greenfield-technical-debt/dont-be-like-this.jpeg out/1705/greenfield-technical-debt/
