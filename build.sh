@@ -72,7 +72,7 @@ cp 1705/greenfield-technical-debt/index.html out/1705/greenfield-technical-debt/
 cp 1705/greenfield-technical-debt/dont-be-like-this.jpeg out/1705/greenfield-technical-debt/
 
 mkdir -p out/unit-testing-is-simple
-cp unit-testing-is-simple/index.html out/unit-testing-is-simple/
+php embed-code.php unit-testing-is-simple/index.html > out/unit-testing-is-simple/index.html
 
 function do_1612() {
 mkdir -p out/1612/essential-scala-tutorial/

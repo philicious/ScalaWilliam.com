@@ -1,0 +1,4 @@
+scala inc.scala
+java.lang.AssertionError: assertion failed
+echo $?
+1

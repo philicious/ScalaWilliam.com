@@ -172,74 +172,25 @@ figure {
         <p>These examples are for a very basic piece of code and are intentionally minimalistic, to demonstrate that you needn't use a test framework to get started with - though one will be very necessary when you scale your application.</p>
         <h3>Bash</h3>
         <p>Here's a bash script <code>inc.sh</code> with a basic assertion and some main code:</p>
-        <pre><code class="language-bash">#!/bin/bash
-
-increment() {
-    echo $(("$1"+1))
-}
-
-# If this assertion fails, the whole thing quits 
-[ 3 -eq $(increment 2) ] || exit 1
-
-# Increment a stream of numbers
-while read n; do
-    increment $n;
-done</code></pre>
+        <pre data-code-include="inc.sh"></pre>
         <p>If we run:</p>
-        <pre class="command-line language-bash" data-user="william" data-host="localhost" data-output="2-6, 8"><code class="language-bash">seq 1 5 | bash inc.sh
-2
-3
-4
-5
-6
-echo $?
-0</code></pre>
+        <pre data-code-include="bash-out-1.txt" class="command-line language-bash" data-user="william" data-host="localhost" data-output="2-6, 8"><code class="language-bash"></pre>
         <p>Exit code is 0. But if we broke the function, and put 2 instead of 1, we get:</p>
-        <pre class="command-line language-bash" data-user="william" data-host="localhost" data-output="3"><code class="language-bash">seq 1 5 | bash inc.sh
-echo $?
-1</code></pre>
+        <pre data-code-include="bash-out-2.txt" class="command-line language-bash" data-user="william" data-host="localhost" data-output="3"></pre>
         <h3>Python</h3>
         <p>This is easy to achieve in any language really. <a href="https://docs.python.org/2/reference/simple_stmts.html#the-assert-statement" target="_blank">Python assertions</a>:</p>
         <p>Broken test in file <code>inc.py</code>:</p>
-        <pre><code class="language-python">def increment(n):
-  return n + 2
-
-assert increment(2) == 3</code></pre>
-        <pre class="command-line language-bash" data-user="william" data-host="localhost" data-output="2-5,7"><code class="language-bash">python inc.py
-Traceback (most recent call last):
-  File "inc.py", line 4, in <module>
-    assert increment(2) == 3
-AssertionError
-echo $?
-1</code></pre>
+        <pre data-code-include="inc.py"></pre>
+        <pre data-code-include="python-out.txt" class="command-line language-bash" data-user="william" data-host="localhost" data-output="2-5,7"></pre>
         <h3>Node.js</h3>
         <p>Comes with <a href="https://nodejs.org/api/assert.html#assert_assert_equal_actual_expected_message" target="_blank">assertions built in</a>.</p>
         <p>Broken test in file <code>inc.js</code>:</p>
-        <pre><code class="language-javascript">const assert = require('assert');
-
-function increment(n) {
-  return n + 2;
-}
-
-assert.equal(2, increment(1));</code></pre>
-        <pre class="command-line language-bash" data-user="william" data-host="localhost" data-output="2-8,10"><code class="language-bash">node inc.js
-
-assert.js:81
-  throw new assert.AssertionError({
-  ^
-AssertionError: 2 == 3
-
-...
-echo $?
-1</code></pre>
+        <pre data-code-include="inc.js"></pre>
+        <pre data-code-include="node-out.txt" class="command-line language-bash" data-user="william" data-host="localhost" data-output="2-8,10"></pre>
         <h3><a href="http://scala-lang.org/" target="_blank">Scala</a></h3>
         <p>Comes with assert.</p>
-        <pre><code class="language-scala">def inc(n: Int) = n + 2
-assert(inc(1) == 2)</code></pre>
-        <pre class="command-line language-bash" data-user="william" data-host="localhost" data-output="2,4"><code class="language-bash">scala inc.scala
-java.lang.AssertionError: assertion failed
-echo $?
-1</code></pre>
+        <pre data-code-include="inc.scala"></pre>
+        <pre data-code-include="scala-out.txt" class="command-line language-bash" data-user="william" data-host="localhost" data-output="2,4"></pre>
         <h3>Why is this important?</h3>
         <p>You can get started light with several assertions and work your way up to proper test suites.</p>
         <h3>So what are test frameworks for?</h3>

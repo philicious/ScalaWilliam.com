@@ -1,0 +1,7 @@
+python inc.py
+Traceback (most recent call last):
+  File "inc.py", line 4, in <module>
+    assert increment(2) == 3
+AssertionError
+echo $?
+1
