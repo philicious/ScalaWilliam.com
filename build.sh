@@ -74,18 +74,6 @@ cp 1705/greenfield-technical-debt/dont-be-like-this.jpeg out/1705/greenfield-tec
 mkdir -p out/unit-testing-is-simple
 php embed-code.php unit-testing-is-simple/index.html > out/unit-testing-is-simple/index.html
 
-function do_1612() {
-mkdir -p out/1612/essential-scala-tutorial/
-mkdir -p out/1611/firebase-static-site-deploy/
-php 1612/essential-scala-tutorial/index.php > out/1612/essential-scala-tutorial/index.html
-ruby -e '
-    require "github/markup"
-    file = "1611/firebase-static-site-deploy/README.md"
-    puts GitHub::Markup.render(file, File.read(file))
-' > out/1611/firebase-static-site-deploy/index.html
-php surround.php out/1611/firebase-static-site-deploy/index.html
-}
-
 mkdir -p out/sitemap/
 php sitemap.php > out/sitemap/index.html
 php 404.php > out/404.html
