@@ -1,0 +1,10 @@
+node inc.js
+
+assert.js:81
+  throw new assert.AssertionError({
+  ^
+AssertionError: 2 == 3
+
+...
+echo $?
+1
