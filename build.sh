@@ -74,6 +74,9 @@ cp 1705/greenfield-technical-debt/dont-be-like-this.jpeg out/1705/greenfield-tec
 mkdir -p out/unit-testing-is-simple
 php embed-code.php unit-testing-is-simple/index.html > out/unit-testing-is-simple/index.html
 
+mkdir -p out/1704/2017-freelance-development-platforms
+cp 1704/2017-freelance-development-platforms/index.html out/1704/2017-freelance-development-platforms/index.html
+
 mkdir -p out/sitemap/
 php sitemap.php > out/sitemap/index.html
 php 404.php > out/404.html
