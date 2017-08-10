@@ -69,7 +69,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                     <time class="dt-published" datetime="2017-04-29">Apr 2017</time>
                 </li>
                 <li class="h-entry">
-                    <a class="p-name" href="https://dev.to/scalawilliam/2017-freelance-development-platforms">2017 freelance development platforms</a>,
+                    <a class="p-name" href="/1704/2017-freelance-development-platforms/">2017 freelance development platforms</a>,
                     <time class="dt-published" datetime="2017-04-20">Apr 2017</time>
                 </li>
                 <li class="h-entry">
