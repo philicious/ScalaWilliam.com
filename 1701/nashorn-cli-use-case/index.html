@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900%7CRoboto+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-okaidia.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.css">
+    <style type="text/css">
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: rgb(5,5,5);
+            background: rgb(255,255,255);
+            max-width: 60em;
+        }
+        code {
+            font-family: 'Roboto Mono', monospace;
+        }
+        header {
+            padding-bottom: 1em;
+        }
+        header pre {
+            border: 2px solid;
+            border-color: firebrick;
+            text-align: center;
+            padding: 0.6em;
+            overflow-x: scroll;
+        }
+        header code {
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+        ul {
+            list-style-type: square;
+        }
+        a {
+            color: darkslategrey;
+        }
+        a:hover {
+            color: darkslateblue;
+        }
+        img {
+            max-width: 100%;
+        }
+
+        .token.operator {
+            background: none;
+        }
+
+        nav button {
+            box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset, 0 0 6px rgba(0,0,0,.2) inset;
+            font-family: inherit;
+            font-size: 100%;
+            padding: .5em 1em;
+            color: #444;
+            border: 1px solid #999;
+            border: 0 rgba(0,0,0,0);
+            background-color: #E6E6E6;
+            text-decoration: none;
+            border-radius: 2px;
+        }
+        nav.hide ul {
+            display: none;
+        }
+        nav ul {
+            list-style-type: none;
+        }
+        nav li:before {
+            content: "- ";
+        }
+        figure {
+            display: inline-block;
+            text-align: center;
+            font-style: italic;
+            font-size: smaller;
+            text-indent: 0;
+            border: thin silver solid;
+            box-shadow: 1px 1px 3px black;
+            margin: 0.5em;
+            padding: 0.5em;
+        }
+        .clear { clear:both; }
+    </style>
+    <title>Java 8 Nashorn CLI use case: adding ISO 8601 instant to CSV with UNIX timestamp</title>
+    <meta name="twitter:title" content="Java 8 Nashorn CLI use case: adding ISO 8601 instant to CSV with UNIX timestamp">
+    <meta property="og:title" content="Java 8 Nashorn CLI use case: adding ISO 8601 instant to CSV with UNIX timestamp">
+    <meta itemprop="name" content="Java 8 Nashorn CLI use case: adding ISO 8601 instant to CSV with UNIX timestamp">
+    <meta property="og:url" content="/1701/nashorn-cli-use-case/">
+    <link rel="canonical" href="/1701/nashorn-cli-use-case/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2017-01-02T03:05:17.144Z">
+    <meta property="article:modified_time" content="2017-01-02T03:05:17.144Z">
+    <meta property="og:description" content="William Narmontas describes how to add full ISO dates to a CSV that contains only UNIX timestamps, using the Java 8 Nashorn CLI.">
+    <meta itemprop="description" content="William Narmontas describes how to add full ISO dates to a CSV that contains only UNIX timestamps, using the Java 8 Nashorn CLI.">
+    <meta name="description" content="William Narmontas describes how to add full ISO dates to a CSV that contains only UNIX timestamps, using the Java 8 Nashorn CLI.">
+    <meta name="twitter:description" content="William Narmontas describes how to add full ISO dates to a CSV that contains only UNIX timestamps, using the Java 8 Nashorn CLI.">
+    <meta property="og:site_name" content="Scala William">
+    <link rel="author" href="https://plus.google.com/u/0/103489630517643950426/">
+    <link rel="publisher" href="https://plus.google.com/u/0/103489630517643950426/">
+    <meta property="og:image" content="https://avatars2.githubusercontent.com/u/2464813">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/2464813">
+    <meta name="twitter:image" content="https://avatars2.githubusercontent.com/u/2464813">
+    <meta name="author" content="William Narmontas">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ScalaWilliam">
+</head>
+<body>
+    <article class="h-entry">
+        <header>
+            <h1 class="p-name">Java 8 Nashorn CLI use case: adding ISO 8601 instant to CSV with UNIX timestamp</h1>
+            <h2>By <a href="/" class="u-author">William Narmontas</a>, <a href="/1701/nashorn-cli-use-case/" class="u-url"><time class="dt-published" datetime="2017-01-02T03:05:17.144Z">January 2, 2017</time></a></h2>
+            <p>This page can be <a href="https://github.com/ScalaWilliam/ScalaWilliam.com/blob/master/1701/nashorn-cli-use-case/index.html">edited on GitHub</a>.</p>
+            <p>Original article at <a href="https://medium.com/@ScalaWilliam/java-8-nashorn-cli-use-case-prepending-iso-instant-to-csv-from-unix-timestamp-3685b6ee746" class="u-syndication">Medium</a>.</p>
+        </header>
+        <section class="e-content">
+            <img src="featured-image.png" alt="" class="u-featured">
+            <p><a href="http://www.oracle.com/technetwork/articles/java/jf14-nashorn-2126515.html" target="_blank">Nashorn is a JavaScript engine</a> that comes with a Java 8 installation. It allows you to write scripts that have access to all of Java very easily, without needing any compilation steps. It also comes with its own <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/shell.html" target="_blank">Shell Scripting facilities</a> and JSON handling (as you’d expect from a JavaScript engine).</p>
+            <p>There’s a command line utility called <code>jjs</code> which will execute a given script or provide you with a REPL where you can type in custom commands.</p>
+            <p>Here for demonstration purposes we’ll utilise the <a href="http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html" target="_blank">powerful java.time library</a>:</p>
+            <pre class="command-line language-java" data-user="william" data-host="localhost"><code class="language-bash">jjs</code></pre>
+            <pre data-code-include="jjs-example-1.js" class="command-line" data-prompt="jjs>" data-output="2"></pre>
+            <p>We can get the time in a different time zone, such as in New York:</p>
+            <pre data-code-include="jjs-example-2.js" class="command-line" data-prompt="jjs>" data-output="4"></pre>
+            <p>And if we wanted to go back a few years we can:</p>
+            <pre data-code-include="jjs-example-3.js" class="command-line" data-prompt="jjs>" data-output="2"></pre>
+            <p>Notice the same local time and timezone but different offset due to <a href="https://www.timeanddate.com/time/zone/usa/new-york" target="_blank">New York’s DST</a>.</p>
+            <h3>Making a time-series CSV human-readable</h3>
+            <p>Let’s suppose we had this CSV file come in from a vendor or a client:</p>
+            <pre data-code-include="client.csv"></pre>
+            <p>Are you able to discern what date and time the timestamp actually refers to? Not unless you check by hand. But would you be able to visually scan through such a file if it had 40 million lines? That’s only doable with human readable timestamps.</p>
+            <p>With <code>jjs</code> On UNIX, you can make a script to effortlessly enrich some CSV input:</p>
+            <pre data-code-include="prepend-iso-type.js"></pre>
+            <p>When you run it against sample data, you’ll see a new column in the front:</p>
+            <pre data-code-include="example-usage-1.txt" class="command-line language-bash" data-output="6-8"></pre>
+            <p>And if this were a 40 million line file, you can use <code>less</code> to scan through all the data very easily.</p>
+            <h3>What about JSON?</h3>
+            <p>You may also come across <a href="http://ndjson.org/" target="_blank">NDJSON</a>, such as:</p>
+            <pre data-code-include="dates.json"></pre>
+            <p>Now let’s say you are in New York and want to know attach the local time. You could do:</p>
+            <pre data-code-include="add-ny-time-json.js"></pre>
+            <pre data-code-include="example-usage-2.txt" class="command-line language-bash" data-output="6-8"></pre>
+            <h3>Many other use cases</h3>
+            <p>Especially where you want to do some Java calls but don’t wish to set up an IDE and a Maven/SBT project…</p>
+            <p>And where you’d like to turn your scripts into proper libraries later on.</p>
+            <p>One nice use case of mine was to <a href="/1609/feature-switches-agile-scala-jmx/">reconfigure a Scala/Play app at runtime</a>:</p>
+            <h3>Conclusion</h3>
+            <p>I hope you found this useful and will investigate what else Nashorn has to offer. It’s a very solid tool that’s available where Java 8 is and can be utilised very easily. Explore :-)</p>
+            <ul>
+                <li>If you liked this, definitely <a href="https://twitter.com/ScalaWilliam">follow me on Twitter</a>.</li>
+                <li>And check out <a href="/1612/limit-degrees-of-freedom/">my article on Limiting Degrees of Freedom</a>.</li>
+            </ul>
+        </section>
+    </article>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/command-line/prism-command-line.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-json.min.js"></script>
+</body>
+</html>

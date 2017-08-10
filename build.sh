@@ -77,6 +77,10 @@ php embed-code.php unit-testing-is-simple/index.html > out/unit-testing-is-simpl
 mkdir -p out/1704/2017-freelance-development-platforms
 cp 1704/2017-freelance-development-platforms/index.html out/1704/2017-freelance-development-platforms/index.html
 
+mkdir -p out/1701/nashorn-cli-use-case
+php embed-code.php 1701/nashorn-cli-use-case/index.html > out/1701/nashorn-cli-use-case/index.html
+cp 1701/nashorn-cli-use-case/*.png out/1701/nashorn-cli-use-case/
+
 mkdir -p out/sitemap/
 php sitemap.php > out/sitemap/index.html
 php 404.php > out/404.html

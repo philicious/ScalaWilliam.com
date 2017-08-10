@@ -1,0 +1,8 @@
+./add-ny-time-json.js << EOF
+> {"unix_timestamp": 1552134142}
+> {"unix_timestamp": 1552134143}
+> {"unix_timestamp": 1562134142}
+> EOF
+{"unix_timestamp":1552134142,"iso_timestamp":"2019-03-09T07:22:22-05:00[America/New_York]"}
+{"unix_timestamp":1552134143,"iso_timestamp":"2019-03-09T07:22:23-05:00[America/New_York]"}
+{"unix_timestamp":1562134142,"iso_timestamp":"2019-07-03T02:09:02-04:00[America/New_York]"}
