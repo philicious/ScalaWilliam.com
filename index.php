@@ -53,8 +53,8 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                     <time class="dt-published" datetime="2017-05-04">May 2017</time>
                 </li>
                 <li class="h-entry">
-                    <a class="p-name" href="https://www.quora.com/What-are-advantages-of-Scala-over-Kotlin/answer/William-Narmontas?srid=DB6V">What are advantages of Scala over Kotlin?</a>,
-                    <time class="dt-published" datetime="2017-05">May 2017</time>
+                    <a class="p-name" href="/1705/advantages-of-scala-over-kotlin/">What are advantages of Scala over Kotlin?</a>,
+                    <time class="dt-published" datetime="2017-05-29">May 2017</time>
                 </li>
                 <li class="h-entry">
                     <a class="p-name" href="/1705/scala-android-opportunity/">Why Scala didn't miss the Android opportunity</a>,

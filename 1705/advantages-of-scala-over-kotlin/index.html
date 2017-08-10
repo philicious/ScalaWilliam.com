@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900%7CRoboto+Mono" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: rgb(5,5,5);
+            background: rgb(255,255,255);
+            max-width: 60em;
+        }
+        header {
+            padding-bottom: 1em;
+        }
+        a {
+            color: darkslategrey;
+        }
+        a:hover {
+            color: darkslateblue;
+        }
+    </style>
+    <title>What are advantages of Scala over Kotlin?</title>
+    <meta name="twitter:title" content="What are advantages of Scala over Kotlin?">
+    <meta property="og:title" content="What are advantages of Scala over Kotlin?">
+    <meta itemprop="name" content="What are advantages of Scala over Kotlin?">
+    <meta property="og:url" content="/1705/advantages-of-scala-over-kotlin/">
+    <link rel="canonical" href="/1705/advantages-of-scala-over-kotlin/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2017-05-29">
+    <meta property="article:modified_time" content="2017-05-29">
+    <meta property="og:description" content="William Narmontas compares Scala against Kotlin, and other programming languages.">
+    <meta itemprop="description" content="William Narmontas compares Scala against Kotlin, and other programming languages.">
+    <meta name="description" content="William Narmontas compares Scala against Kotlin, and other programming languages.">
+    <meta name="twitter:description" content="William Narmontas compares Scala against Kotlin, and other programming languages.">
+    <meta property="og:site_name" content="Scala William">
+    <link rel="author" href="https://plus.google.com/u/0/103489630517643950426/">
+    <link rel="publisher" href="https://plus.google.com/u/0/103489630517643950426/">
+    <meta property="og:image" content="https://avatars2.githubusercontent.com/u/2464813">
+    <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/2464813">
+    <meta name="twitter:image" content="https://avatars2.githubusercontent.com/u/2464813">
+    <meta name="author" content="William Narmontas">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ScalaWilliam">
+</head>
+<body>
+    <article class="h-entry">
+        <header>
+            <h1 class="p-name">What are advantages of Scala over Kotlin?</h1>
+            <h2>By <a href="/" class="u-author">William Narmontas</a>, <a href="/1705/advantages-of-scala-over-kotlin/" class="u-url"><time class="dt-published" datetime="2017-05-29">May 29, 2017</time></a></h2>
+            <p>This page can be <a href="https://github.com/ScalaWilliam/ScalaWilliam.com/blob/master/1705/advantages-of-scala-over-kotlin/index.html">edited on GitHub</a>.</p>
+            <p>Original article at <a href="https://www.quora.com/What-are-advantages-of-Scala-over-Kotlin/answer/William-Narmontas?srid=DB6V" class="u-syndication">Quora</a>.</p>
+        </header>
+        <section class="e-content">
+            <p>Scala leads, others follow. Scala offers:</p>
+            <ul>
+                <li>
+                    A far stronger and more sound type system
+                    <ul>
+                        <li><a href="http://danielwestheide.com/blog/2013/02/06/the-neophytes-guide-to-scala-part-12-type-classes.html" target="_blank">Type classes &amp; implicits</a></li>
+                        <li><a href="https://stackoverflow.com/questions/6246719/what-is-a-higher-kinded-type-in-scala#6246833" target="_blank">Higher kinded types:</a> are types which take other types and construct a new type, mostly used for Functional and Generic programming, see libraries like <a href="http://typelevel.org/cats/" target="_blank">Cats</a>, <a href="https://github.com/scalaz/scalaz" target="_blank">Scalaz</a> and <a href="https://github.com/milessabin/shapeless" target="_blank">Shapeless</a>.</li>
+                        <li>Still work in progress to build Scala 3 (Dotty) to have a language <a href="http://dotty.epfl.ch/blog/2016/02/03/essence-of-scala.html" target="_blank">based on sound theory</a></li>
+                        <li>This enables an incredible amount of things such as automatically deriving information from your types, creating complex types from other types, and treating types almost as if they were values.</li>
+                    </ul>
+                </li>
+                <li>
+                    Excellent, scalable tooling
+                    <ul>
+                        <li>
+                            SBT - Scalable Build Tool
+                            <ul>
+                                <li><a href="http://www.scala-sbt.org/0.13/docs/Plugins.html#projectSettings+and+buildSettings" target="_blank">Custom, cheap plugins in-project</a> - you can extract common functionality from multiple projects for your team. Your build is code meaning you can publish it, transform it, factor it out, etc</li>
+                                <li>Easy packaging and <a href="https://www.scalawilliam.com/essential-sbt/#dockerize-your-app" target="_blank">deployment to Docker</a> and other targets</li>
+                                <li>Strongly typed, as it is written in Scala, and with macros</li>
+                            </ul>
+                        </li>
+                        <li>Play Framework - <a href="https://www.quora.com/What-are-the-advantages-and-disadvantages-of-play-framework/answer/William-Narmontas" target="_blank">which actually scales in development</a>, unlike every other framework I’ve used</li>
+                        <li>Akka</li>
+                    </ul>
+                </li>
+                <li>
+                    Macros and code introspection (<a href="http://scalameta.org/" target="_blank">scalameta</a>; <a href="http://scalamacros.org/paperstalks/2016-06-17-Metaprogramming20.pdf" target="_blank">PDF slides</a>)
+                    <ul>
+                        <li>Basically write code to analyse and generate other code</li>
+                        <li>Enable automatic yet explicit type class derivation, such as for <a href="https://www.playframework.com/documentation/2.5.x/ScalaJsonAutomated" target="_blank">JSON formats</a> (also done with generic programming)</li>
+                        <li>Enables tools such as <a href="https://github.com/milessabin/shapeless#shapeless-generic-programming-for-scala" target="_blank">shapeless</a>, <a href="http://scalameta.org/scalafmt/" target="_blank">scalafmt</a>, <a href="https://www.scala-lang.org/blog/2016/10/24/scalafix.html" target="_blank">scalafix</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <p>I have not listed everything, but this is more than enough to start with.</p>
+            <p>Right now, Kotlin and Scala are not really competitors as they are in a different ballpark in terms of offerings. Different target markets.</p>
+            <p>The way I see it, Kotlin will make it possible for programmers <a href="/1705/scala-android-opportunity/">to appreciate what Scala has to offer</a>.</p>
+            <p>Make no mistake about it: Scala scales, hence the name.</p>
+        </section>
+    </article>
+</body>
+</html>
