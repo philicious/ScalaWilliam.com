@@ -77,7 +77,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                     <time class="dt-published" datetime="2017-03-26">Mar 2017</time>
                 </li>
                 <li class="h-entry">
-                    <a class="p-name" href="https://medium.com/@ScalaWilliam/java-8-nashorn-cli-use-case-prepending-iso-instant-to-csv-from-unix-timestamp-3685b6ee746">Java 8 Nashorn CLI use case: prepending ISO instant to CSV from UNIX timestamp</a>,
+                    <a class="p-name" href="/1701/nashorn-cli-use-case/">Java 8 Nashorn CLI use case: prepending ISO instant to CSV from UNIX timestamp</a>,
                     <time class="dt-published" datetime="2017-01-02T03:05:17.144Z">Jan 2017</time>
                 </li>
                 <li class="h-entry">
