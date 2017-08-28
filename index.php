@@ -57,6 +57,10 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                     <time class="dt-published" datetime="2017-05-29">May 2017</time>
                 </li>
                 <li class="h-entry">
+                    <a class="p-name" href="/web-standards-for-content-syndication/">Web standards for content syndication</a>,
+                    <time class="dt-published" datetime="2017-05-21">May 2017</time>
+                </li>
+                <li class="h-entry">
                     <a class="p-name" href="/1705/scala-android-opportunity/">Why Scala didn't miss the Android opportunity</a>,
                     <time class="dt-published" datetime="2017-05-18T11:41:55.686Z">May 2017</time>
                 </li>

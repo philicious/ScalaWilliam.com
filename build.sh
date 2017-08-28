@@ -84,6 +84,9 @@ cp 1701/nashorn-cli-use-case/*.png out/1701/nashorn-cli-use-case/
 mkdir -p out/1705/advantages-of-scala-over-kotlin
 cp 1705/advantages-of-scala-over-kotlin/index.html out/1705/advantages-of-scala-over-kotlin/index.html
 
+mkdir -p out/web-standards-for-content-syndication
+cp web-standards-for-content-syndication/index.html out/web-standards-for-content-syndication/index.html
+
 mkdir -p out/sitemap/
 php sitemap.php > out/sitemap/index.html
 php 404.php > out/404.html
