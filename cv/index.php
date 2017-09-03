@@ -7,8 +7,12 @@ require(dirname(__FILE__).'/../../shared/render.inc.php');
         <p style="cursor:default">
             <a href="https://docs.google.com/document/d/15-C0RFjc_E0t84xxmY9zGQc0phdnR4hniLpviiI98fc/edit" target="_blank">
 
-            <img src="kix-favicon6.ico"/> Google Docs document.</a> Can export <img src="Microsoft-Word-2013-icon.png" alt="Microsoft Word"/> and <img alt="PDF"
-                    src="pdficon_small.png"/>.
+            <img src="kix-favicon6.ico"/> Google Docs document.</a> 
+            
+            <a href="https://docs.google.com/document/d/15-C0RFjc_E0t84xxmY9zGQc0phdnR4hniLpviiI98fc/export?format=pdf">
+                <img alt="PDF"
+                    src="pdficon_small.png"/>
+                Download PDF</a>
           </p>
         <p style="font-weight:bold; font-size:0.8em;">No sharing without permission!</p>
         <iframe
