@@ -283,6 +283,11 @@ time {
     white-space: nowrap;
 }
 
+
+ul.time-table .time, ul.time-table time {
+  font-size:0.8em;
+}
+
 @media (max-width: 640px) {
   ul.time-table .time:before, ul.time-table time:before {
     content: " – ";
