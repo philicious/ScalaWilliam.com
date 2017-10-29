@@ -17,8 +17,10 @@ text-decoration:none;
 }
 h1 { font-weight:normal; margin-bottom:0;}
 h2 {
-	margin-top:0;
+  margin-top:0;
 	font-weight:normal;
+}
+section h2 { margin-bottom:0;
 }
 header {
 	border-bottom:thin solid lightgrey;
@@ -199,6 +201,7 @@ opacity: 0.8;
   position:relative;
 
 }
+#william { clear:both; }
 .section#william .slide .img {
 background-image:url('/index/images/headshot-junefourteen.jpg');
 }
@@ -278,4 +281,18 @@ p.permalink {
 
 time {
     white-space: nowrap;
+}
+
+ul.time-table li {
+  clear:both;
+}
+ul.time-table {
+  list-style-type: none;
+  margin:0;
+  padding:0;
+  font-size:0.9em;
+}
+
+ul.time-table .time, ul.time-table time {
+  float:right
 }
