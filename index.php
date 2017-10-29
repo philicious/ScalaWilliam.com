@@ -115,7 +115,6 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
 		    <li><a href="https://github.com/ScalaWilliam/scalajs-cli-demo" target="_blank">scalajs-cli-demo</a>, May 2017 to now.</li>
 		    <li><a href="https://github.com/ScalaWilliam/eventsource-hub" target="_blank">EventSource Hub</a>, April 2017 to now.</li>
 		    <li><a href="https://github.com/ScalaWilliam/express-scalajs-nodejs-demo" target="_blank">Express on ScalaJS on NodeJS</a>, April 2017.</li>
-		    <li><a href="https://git.work/" target="_blank">Git Work</a>, October 2016 to now.</li>
                 <li><a href="https://git.watch/" target="_blank">Git Watch</a>, July 2016 to now.</li>
                 <li><a target="_blank" href="https://github.com/ScalaWilliam/ActionFPS">ActionFPS</a>,
                     January 2014 to now.
