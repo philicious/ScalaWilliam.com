@@ -134,8 +134,8 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                 <span class="time">February 2007 to July 2009</span>
                 </li>
 
-                <li><a href="http://www.milanohousecurtains.co.uk/" target="_blank">Milano House Curtains</a> August
-                <span class="time">2012 to now</span>
+                <li><a href="http://www.milanohousecurtains.co.uk/" target="_blank">Milano House Curtains</a>
+                <span class="time">August 2012 to now</span>
                 </li>
             </ul>
         </section>
