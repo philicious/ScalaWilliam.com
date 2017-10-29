@@ -7,8 +7,8 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
 
 		<p>I've been building websites and software since 2004.</p>
 		
-            <p>Since 2013, I began specialising in <a href="http://scala-lang.org"
-            target="_blank">Scala</a> and IT consulting through <a href="http://www.aptelements.com/">Apt Elements</a>.
+            <p>Since 2013, I've specialised in <a href="http://scala-lang.org"
+            target="_blank">Scala</a> and been IT consulting through <a href="http://www.aptelements.com/">Apt Elements</a>.
 		    Scala is a programming language for the JVM.
 		</p>
 		
@@ -33,10 +33,10 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
             <h2>Talks</h2>
             <ul>
                 <li><a href="/scala-for-2017/">Scala for 2017</a>, Singapore, December 2016</li>
-                <li><a href="/1406/xml-processing-in-scala/" target="_blank">XML Processing in Scala,
+                <li><a href="/1406/xml-processing-in-scala/">XML Processing in Scala,
                         XML London 2014</a>, London, June 2014
                 </li>
-                <li><a href="/1404/an-introduction-to-scala/" target="_blank">An Introduction to Scala</a>, City of London,
+                <li><a href="/1404/an-introduction-to-scala/">An Introduction to Scala</a>, City of London,
                     April 2014
                 </li></ul>
         </section>

@@ -1,13 +1,13 @@
-[![Build Status](https://travis-ci.org/ScalaWilliam/ScalaWilliam.com.svg?branch=master)](https://travis-ci.org/ScalaWilliam/ScalaWilliam.com)
+# [ScalaWilliam.com](https://www.scalawilliam.com) [![Build Status](https://travis-ci.org/ScalaWilliam/ScalaWilliam.com.svg?branch=master)](https://travis-ci.org/ScalaWilliam/ScalaWilliam.com)
 
-[![CircleCI](https://circleci.com/gh/ScalaWilliam/ScalaWilliam.com.svg?style=svg)](https://circleci.com/gh/ScalaWilliam/ScalaWilliam.com)
+# Development
 
-<https://www.scalawilliam.com>
+It's mostly done with [PHP](http://php.net/). You need PHP 7 installed.
 
-sudo gem install bundle
+```
+$ git clone git@github.com:ScalaWilliam/ScalaWilliam.com.git sw
+$ cd sw
+$ php -S localhost:8111 router.php
+```
 
-bundle install
-
-make
-
-Using Firebase, CircleCI, Ruby, PHP, Git Watch.
+Go to http://localhost:8111/

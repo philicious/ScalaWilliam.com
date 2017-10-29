@@ -1,5 +1,5 @@
 <?php
-require(dirname(__FILE__).'/../../shared/render.inc.php');
+require(dirname(__FILE__).'/../shared/render.inc.php');
 ?>
 
 <div class="section" id="william">
