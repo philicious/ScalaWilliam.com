@@ -18,6 +18,8 @@ TARGET_FILE="${PHP_FILE/php/html}";
 php $PHP_FILE > $TARGET_FILE
 done
 
+rm $(grep -l -r -F '<!-- DRAFT -->' out)
+
 mkdir -p out/sitemap/
 php sitemap.php > out/sitemap/index.html
 php 404.php > out/404.html
