@@ -9,13 +9,13 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
             target="_blank">Scala</a> programming language since 2013.
             <br/>Software development since 2004.</p>
 		
-		<p><a href="/cv/">Latest CV</a> &mdash;
+		<p><a href="/cv/">Latest CV</a> –
                 <a href="#articles">Articles</a>
-                &mdash;
+                –
                 <a href="/content/">Social content</a>
-                &mdash;
+                –
                 <a href="#talks">Talks</a>
-                &mdash;
+                –
                 <a href="#projects">Projects</a>
 
 </p><p>

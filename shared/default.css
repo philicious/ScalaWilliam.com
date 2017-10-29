@@ -283,9 +283,16 @@ time {
     white-space: nowrap;
 }
 
+@media (max-width: 640px) {
+  ul.time-table .time:before, ul.time-table time:before {
+    content: " – ";
+  }
+}
+@media (min-width: 640px) {
 ul.time-table li {
   clear:both;
 }
+
 ul.time-table {
   list-style-type: none;
   margin:0;
@@ -295,4 +302,5 @@ ul.time-table {
 
 ul.time-table .time, ul.time-table time {
   float:right
+}
 }
