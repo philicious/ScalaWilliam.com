@@ -18,3 +18,10 @@ Engagement
 Causes difficulties in planning
 - Unexpected maintenance/looking after
 - Information-hiding
+
+Promises:
+- http://www.archerconsulting.com.au/blog/why-you-shouldnt-under-promise-and-over-deliver/
+- https://beta.theglobeandmail.com/report-on-business/careers/management/dont-under-promise-and-over-deliver/article5604778/?ref=http://www.theglobeandmail.com&
+- https://www.inc.com/jessica-stillman/underpromise-and-overdeliver-is-terrible-advice.html
+- http://workawesome.com/productivity/why-you-shouldnt-underpromise-and-overdeliver/
+
