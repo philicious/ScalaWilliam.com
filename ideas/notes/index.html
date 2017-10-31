@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+
+    
+<title>Notes</title>
+    </head>
+    <body>
+        <article id="h2-shell">
+            <header><h1>Launch H2 shell</h1><date>2017-06-10</date>
+            </header>
+            <pre><code>coursier launch com.h2database:h2:5:1.4.195 --main-class org.h2.tools.Shell</code></pre>
+                </article>
+        <article id="render-graphviz">
+            <header>
+            <h1>Rendering GraphViz for web</h1>
+            <date>2017-06-09</date>
+            </header>
+            <p><a href="http://www.graphviz.org/">GraphViz</a> is a brilliant vendor-independent way of creating graphs and having them render into 
+                multiple formats such as SVG.</p>
+            <p>We can achieve stuff like this:</p>
+            <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Just managed to map an <a href="https://twitter.com/hashtag/SBT?src=hash">#SBT</a> project to an <a href="https://twitter.com/hashtag/SVG?src=hash">#SVG</a> diagram. Clicking a node takes you to the project folder. <a href="https://t.co/IKr8eMkogp">https://t.co/IKr8eMkogp</a> <a href="https://t.co/9btcMAdKzk">pic.twitter.com/9btcMAdKzk</a></p>&mdash; William Narmontas (@ScalaWilliam) <a href="https://twitter.com/ScalaWilliam/status/868471171787902977">May 27, 2017</a></blockquote>
+
+            <p>Two options:</p>
+            <dl>
+                <dt>Render on the client-side</dt>
+                
+                <dd>Can use <a href="http://viz-js.com/">Viz-JS</a> (<a href="https://github.com/mdaines/viz.js">GitHub</a>).</dd>
+                
+                <dd>Very easy to use:
+                    
+<pre><code>&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/viz.js/1.8.0/viz-lite.js&quot;
+    integrity=&quot;sha256-lLBbzF3IYSscIpBw/KgKjF1dDWMQdz1RWZnEdnNSDxA=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    document.querySelector("#target").innerHTML = Viz(dotString, {format: "svg"});
+    flw.innerHTML = image;
+&lt;/script&gt;
+            
+            </code></pre>
+
+                </dd>
+                
+                <dt>Render on the server-side</dt>
+                
+                <dd><a href="https://github.com/nidi3/graphviz-java">nidi3/graphviz-java</a></dd>
+                <dd>More powerful, can do XSL transforms, etc, etc, before serving SVG</dd>
+                <dd>Specific library however uses a V8 layer which seemed unstable to me.</dd>
+                
+            </dl>
+            
+        </article>
+        
+        <article id="hub-github">
+        <h1>Hub @ GitHub</h1>
+            <p><a href="https://hub.github.com/">Very useful utility</a>, can just type <code>hub push</code> for example.</p>
+        </article>
+        <article id="scala-stuff">
+        
+            <h1>Scale stuff</h1>
+            
+            <p>Begin by using the non-scalable thing.</p>
+            
+            <p>Then don't forget to scale.</p>
+
+            <p>These are just some ideas, non-committal I am.</p>
+            
+            <table>
+            <thead>
+                <tr><th>Fast to use</th><th>Usage scales</th></tr></thead>
+            <tbody>
+                <tr>
+<td>Markdown, Google Docs</td>
+<td>HTML, XML</td></tr>
+                <tr>
+<td>Python, JavaScript</td><th>Scala, Haskell</th></tr>
+                <tr>
+<td>GitHub</td>
+<td>Self hosted</td></tr>
+                <tr>
+<td>Twitter, Medium, Quora</td>
+<td>Self hosted</td></tr>
+            </tbody>
+            </table>
+            
+            
+        </article>
+        <article id="xslt-one-line">
+        
+        <h1>Execute XSLT in one line</h1>
+            <h2>Using <a href="https://en.wikipedia.org/wiki/Saxon_XSLT">Saxon</a> and <a href="https://github.com/coursier/coursier">Coursier</a></h2>
+            <pre><code>coursier launch net.sf.saxon:Saxon-HE:9.7.0-18 --main net.sf.saxon.Transform -- -s:source -xsl:stylesheet -o:output</code></pre>
+            
+            <p>Very useful when you want to run an XSLT transform..</p>
+            <address>May 27, 2017</address>
+        </article>
+        
+        <article id="identity-xslt">
+        <h1 id="bpmn-to-svg">Convert BPMN to SVG via command line</h1>
+<p>Not very pretty at all but could be improved with a better XSLT sheet. Way better than manual clicking:</p>
+<pre>$ wget https://raw.githubusercontent.com/trevershick/example-bpmn-dot-render/a1c1287bf19b1e1310cbbcfd37e767e71d651812/src/main/resources/xsl/bpmn.dot.xsl<br>$ coursier launch net.sf.saxon:Saxon-HE:9.7.0-18 --main net.sf.saxon.Transform -- -s:diagram.bpmn -xsl:bpmn.dot.xsl -o:diagram.dot<br>$ dot -Tsvg -o diagram.svg diagram.dot</pre>
+<p>I also <a href="https://github.com/bpmn-io/bpmn-js/issues/689https://github.com/bpmn-io/bpmn-js/issues/689">filed an issue on bpmn-js</a>.</p>
+<h1>Identity XSLT transform</h1>
+            <pre><code>wget -O test.xsl 'https://git.io/vHnat'</code></pre>
+            <p>Also used the <a href="https://github.com/blog/985-git-io-github-url-shortener">git.io Link Shortener</a> for this.</p>
+        </article>
+       
+<article id="split-git-repo">
+        
+        <h1>Split a Git repository</h1>
+    
+    <p>Suppose you now want to split away a project but keep the commit history in Git.</p>
+    
+    <pre><code>$ git filter-branch --tree-filter 'mkdir new-repo; mv x y z new-repo || true' HEAD
+...
+$ git filter-branch --prune-empty -f --subdirectory-filter new-repo -- --all</code></pre>
+        </article>
+        
+        <article id="why-software-takes-long">
+        <h1>Why does software take so long?</h1>
+            
+            <blockquote class="twitter-tweet" data-lang="en">
+<p dir="ltr" lang="en">When a non-techie asks you why you take so long to get the thing done, this is what you tell them. <a href="https://twitter.com/hashtag/software?src=hash">#software</a><a href="https://t.co/dpB156iqpv">https://t.co/dpB156iqpv</a></p>&mdash; William Narmontas (@ScalaWilliam) <a href="https://twitter.com/ScalaWilliam/status/853154952448942080">April 15, 2017</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            
+            
+        </article>
+        
+        <article id="json-array-to-tsv">
+        <h1>BlueGriffon Entity conversions</h1>
+<p><a href="http://bluegriffon.org/">BlueGriffon</a> converts entities to their direct characters, which then don't render.</p>
+<p>To fix this, go to 'Preferences' &gt; 'Source' &gt; 'Serialization' &gt; 'Output the following characters as entities' &gt; 'All HTML4 special characters'.</p>
+<h1>JSON array to TSV?</h1>
+            
+            <p>Yep, doable with jq. Useful when you want to process data with CLI tools more easily.</p>
+            
+            <p>Example:</p>
+            
+            <pre><code>curl -s 'https://actionfps.com/players/?format=json' | jq -r '.[] | [.id, .nickname.nickname] | @tsv'</code></pre>
+            
+            <blockquote class="twitter-tweet" data-lang="en">
+<p dir="ltr" lang="en"><a href="https://twitter.com/hashtag/json?src=hash">#json</a> array to <a href="https://twitter.com/hashtag/tsv?src=hash">#tsv</a> with <a href="https://twitter.com/hashtag/jq?src=hash">#jq</a>: `curl -s '<a href="https://t.co/NbmkSBPzSz">https://t.co/NbmkSBPzSz</a>' | jq -r '.[] | [.id, .nickname.nickname] | <a href="https://twitter.com/tsv">@tsv</a>'` so nice.</p>&mdash; William Narmontas (@ScalaWilliam) <a href="https://twitter.com/ScalaWilliam/status/862657428915052544">May 11, 2017</a></blockquote>
+
+            
+            
+        </article>
+    
+    <script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</body></html>
