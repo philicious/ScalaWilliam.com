@@ -7,7 +7,9 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
 
 		<p>Specialising in the <a href="http://scala-lang.org"
             target="_blank">Scala</a> programming language since 2013.
-            <br/>Software development since 2004.</p>
+            <br/>Software development since 2004.<br/>
+		Consulting via <a href="http://www.aptelements.com" target="_blank"
+				  >Apt Elements</a> since 2013.</p>
 		
 		<p><a href="/cv/">Latest CV</a> –
                 <a href="#articles">Articles</a>
