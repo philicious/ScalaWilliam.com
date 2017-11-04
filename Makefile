@@ -5,6 +5,7 @@ test-only:
 	grep -i GitHub out/index.html > /dev/null
 	grep -i LinkedIn out/index.html > /dev/null
 	grep google.com out/cv/index.html > /dev/null
+	grep 'What is Scala' out/what-is-scala/index.html > /dev/null
 	find out -iname '*.html' -print0 | while read -d '' -r file; do \
 	    grep analytics $$file > /dev/null; \
 	    if [ $$? -ne 0 ]; then  \

@@ -25,6 +25,7 @@ mkdir -p $OUT/sitemap/
 php sitemap.php > $OUT/sitemap/index.html
 php 404.php > $OUT/404.html
 php sitemap-xml.php > $OUT/sitemap.xml
+rm -f $OUT/shared/template.html
 
 php add-analytics.php $(find $OUT -iname '*.html'|grep -v shared)
 
