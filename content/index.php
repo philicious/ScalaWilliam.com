@@ -19,7 +19,6 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
       <dd>Disqus comment: <a href="http://disq.us/p/1ink6mx">TechBeacon &mdash; 13 programming languages defining the future of coding</a></dd>
       <dd>GitHub Pull Request: <a href="https://github.com/EventSource/eventsource/pull/74">Eventsource 50x support</a></dd>
       <dd>Medium: <a href="https://medium.com/@ScalaWilliam/how-i-deal-with-greenfield-technical-debt-1a35be33dc71">How I deal with greenfield technical debt</a></dd>
-      <dd>LinkedIn: <a href="https://www.linkedin.com/pulse/my-simple-trick-7x-less-recruiter-spam-william-vykintas-narmontas">My simple trick for 7x less recruiter spam</a></dd>
       <dd>Disqus comment: <a href="http://disq.us/p/1ibfjyc">Buffer &mdash; Transparency in Engineering: Can We Open Source Our Whole Code Base?</a></dd>
       <dd>dev.to: <a href="https://dev.to/scalawilliam/unit-testing-is-simple">Unit testing is simple.</a></dd>
       <dt>April 2017</dt>
