@@ -306,6 +306,7 @@ ul.time-table {
 }
 
 ul.time-table .time, ul.time-table time {
-  float:right
+  float:right;
+  margin-top:0.3em;
 }
 }
