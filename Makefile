@@ -24,10 +24,3 @@ bs:
 	browser-sync --proxy 'localhost:7071' start --files '**/*' --reload-delay 1000
 ensure-firebase:
 	ls firebase.json
-gems:
-	gem install github-markup
-	gem install redcarpet
-watch:
-	make
-	fswatch -l 0.2 --exclude 'out' --exclude '.idea' --exclude '.git' --exclude '.*___jb_.*' . \
-	| xargs -n1 -I {} 'make'

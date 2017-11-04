@@ -1,9 +1,10 @@
 #!/bin/bash
 set -x
-mkdir -p out
+OUT=${OUT:-out}
+mkdir -p $OUT
 
 rsync -a \
-    --exclude 'out' \
+    --exclude '$OUT' \
     --exclude 'build.sh' \
     --exclude '.git' \
     --exclude 'firebase.json' \
@@ -11,20 +12,20 @@ rsync -a \
     --exclude '*.scala' \
     --exclude 'README.md' \
     --exclude 'router.php' \
-    ./ out/
+    ./ $OUT/
 
-for PHP_FILE in $(find out -iname 'index.php'); do
+for PHP_FILE in $(find $OUT -iname 'index.php'); do
 TARGET_FILE="${PHP_FILE/php/html}";
 php $PHP_FILE > $TARGET_FILE
 done
 
-rm $(grep -l -r -F '<!-- DRAFT -->' out)
+rm $(grep -l -r -F '<!-- DRAFT -->' $OUT)
 
-mkdir -p out/sitemap/
-php sitemap.php > out/sitemap/index.html
-php 404.php > out/404.html
-php sitemap-xml.php > out/sitemap.xml
+mkdir -p $OUT/sitemap/
+php sitemap.php > $OUT/sitemap/index.html
+php 404.php > $OUT/404.html
+php sitemap-xml.php > $OUT/sitemap.xml
 
-php add-analytics.php $(find out -iname '*.html'|grep -v shared)
+php add-analytics.php $(find $OUT -iname '*.html'|grep -v shared)
 
-rm -f $(find out -iname '*.php')
+rm -f $(find $OUT -iname '*.php')
