@@ -8,8 +8,28 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
       <p>Contributions to Quora, Stack Overflow and GitHub. Excluding my open source projects. <a href="https://www.scalawilliam.com/cv/">My CV is here</a>.</p>
     </header>
     <dl>
+    <dt>October 2017</dt>
+    <dd>GitHub Pull Request: <a href="https://github.com/lampepfl/dotty/pull/3404">lampepfl/dotty: Fix wrong word usage. Replace 'constructors' with 'constructs'</a></dd>
+    <dd>GitHub Pull Request: <a href="https://github.com/scala-records/scala-records/pull/131">scala-records/scala-records: Support current Scala 2.12</a></dd>
+    <dd>GitHub Pull Request: <a href="https://github.com/scala-records/scala-records/pull/132">scala-records/scala-records: Fix README formatting error..</a></dd>
+    <dd>GitHub Issue: <a href="https://github.com/nrinaudo/kantan.csv/issues/104">nrinaudo/kantan.csv: Going beyond 22 fields</a></dd>
+    <dd>GitHub Issue: <a href="https://github.com/sbt/sbt-native-packager/issues/1043">sbt/sbt-native-packager: [Idea] JDK 9's jlink &amp; sbt-native-packager?</a></dd>
+
+
+    <dt>September 2017</dt>
+    <dd>Disqus comment: <a href="http://disq.us/p/1lxksd4">Dealing with exceptions in Scala</a></dd>
+    <dt>August 2017</dt>
+    <dd>GitHub Issue: <a href="https://github.com/Zegnat/strapdown.php/issues/2">Zegnat/strapdown.php: Any way to include this via composer?</a></dd>
+    <dd>GitHub Issue: <a href="https://github.com/Inklings-io/selfauth/issues/32">Inklings-io/selfauth: 'How it works' in README unclear </a></dd>
+    <dd>GitHub Issue: <a href="https://github.com/derogab/gabrielize/issues/1">derogab/gabrielize: Requirements =&gt; use requirements.txt</a></dd>
+    <dt>June 2017</dt>
+    <dd>GitHub Pull Request: <a href="https://github.com/lampepfl/dotty/pull/2643">lampepfl/dotty: Fix misspelling: update intersection-types.md in docs</a></dd>
+<dd>GitHub Pull Request: <a href="https://github.com/stillalex/scala-osgi-trials/pull/1">stillalex/scala-osgi-trials: Update README.md</a></dd>
+<dd>GitHub Pull Request: <a href="https://github.com/scalameta/sbt-macro-example/pull/4">scalameta/sbt-macro-example: Fix broken link to macro annotations in tutorial</a></dd>
+<dd>GitHub Pull Request: <a href="https://github.com/scalameta/sbt-semantic-example/pull/5">scalameta/sbt-semantic-example: Update README</a></dd>
+<dd>GitHub Issue: <a href="https://github.com/nidi3/graphviz-java/issues/21">nidi3/graphviz-java: JDK8 engine not supported?</a></dd>
+
       <dt>May 2017</dt>
-      <dd>GitHub Pull Request: <a href="https://github.com/lampepfl/dotty/pull/2643">lampepfl/dotty: Fix misspelling: update intersection-types.md in docs</a></dd>
       <dd>Quora answer: <a href="https://www.quora.com/What-IDE-can-I-comfortably-use-Python-on-Mac/answer/William-Narmontas">What IDE can I comfortably use Python on Mac?</a></dd>
       <dd>Disqus comment: <a href="http://blog.kunicki.org/blog/2016/07/20/implementing-a-custom-akka-streams-graph-stage/#comment-3323891068">Implementing a Custom Akka Streams Graph Stage</a> - I show how to do it without Graph Stage</dd>
       <dd>dev.to: <a href="https://dev.to/scalawilliam/web-standards-for-content-syndication">Web standards for content syndication</a></dd>

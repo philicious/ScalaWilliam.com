@@ -101,7 +101,10 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
     <div class="section" id="projects">
         <section class="slide">
             <h2>Open Source projects</h2>
+            <p>These are the projects that I run. I also <a href="/content/">participate in the development community</a>.</p>
             <ul id="os-projects-list" class="time-table">
+            <li><a href="https://github.com/ScalaWilliam/websub-to-eventsource" target="_blank">websub-to-eventsource</a> <span class="time">August 2017 to now</span></li>
+            <li><a href="https://github.com/ScalaWilliam/websub-execute" target="_blank">websub-execute</a> <span class="time">August 2017</span></li>
 		    <li><a href="https://github.com/ScalaWilliam/scalajs-cli-demo" target="_blank">scalajs-cli-demo</a> <span class="time">May 2017 to now</span></li>
 		    <li><a href="https://github.com/ScalaWilliam/eventsource-hub" target="_blank">EventSource Hub</a> <span class="time">April 2017 to now</span></li>
 		    <li><a href="https://github.com/ScalaWilliam/express-scalajs-nodejs-demo" target="_blank">Express on ScalaJS on NodeJS</a> <span class="time">April 2017</span></li>
@@ -145,7 +148,7 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
     </div>
     <div class="section" id="other-projects">
         <section class="slide">
-            <h2>Other projects</h2>
+            <h2>Other software projects</h2>
             <ul class="time-table" id="projects-list">
                 <li><a href="http://hi-skill.us/" target="_blank">HI-SKILL rankings</a> for <a
                             href="http://assault.cubers.net/" target="_blank">AssaultCube</a> <span class="time">June 2009 to December 2010</span>

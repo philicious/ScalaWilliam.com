@@ -7,11 +7,26 @@ If you're technical, head straight to the [Scala website](http://scala-lang.org/
 
 But if you think you're not technical, stay here.
 
+## Explanation 1
+
 - You've done Microsoft Excel
-- Excel is programming
+- [Excel is programming](https://www.quora.com/Can-MS-Excel-be-considered-a-functional-programming-language/answer/David-Colver?srid=DB6V)
+- Excel is restricted, therefore it is easy to learn
+- Excel is restricted, therefore complex Excel is difficult
+- So we need less restricted languages
+- Like the language Excel itself is written in (C)
 - Simple Excel = easy to learn
 - More complex Excel = difficult
 - 
+
+
+- https://www.slideshare.net/javiersantospaniego/scala-for-dummies-45535804
+- https://www.scala-lang.org/
+- https://www.javatpoint.com/what-is-scala
+- https://www.upwork.com/hiring/data/scala-hybrid-functionalobject-oriented-language-big-data/
+- https://www.quora.com/What-is-Scala-useful-for
+- http://allaboutscala.com/tutorials/scala-introduction/learn-scala-programming-language/
+- https://www.toptal.com/scala/why-should-i-learn-scala
 
 ...
 
