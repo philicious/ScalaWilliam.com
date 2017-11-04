@@ -5,23 +5,17 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
         <section class="slide">
             <span class="img"></span>
 
-		<p>Specialising in the <a href="http://scala-lang.org"
-            target="_blank">Scala</a> programming language since 2013.
-            <br/>Software development since 2004.</p>
-		
-		<p><a href="/cv/">Latest CV</a> –
-                <a href="#articles">Articles</a>
-                –
-                <a href="/content/">Social content</a>
-                –
-                <a href="#talks">Talks</a>
-                –
-                <a href="#projects">Projects</a>
-
-</p><p>
-                E-mail: <a href="mailto:hello@scalawilliam.com" target="_blank" title="E-mail"
-                >hello@scalawilliam.com</a>
-            </p>
+<ul>
+<li>Specialising in the <a href="http://scala-lang.org"
+            target="_blank">Scala</a> programming language since 2013.</li>
+            <li>Software development since 2004.</li>
+            <li>
+		Consulting via <a href="http://www.aptelements.com" target="_blank"
+				  >Apt Elements</a> since 2013.</li>
+                  <li>See <a href="/cv/">my latest CV</a>.</li>
+		<li>E-mail: <a href="mailto:hello@scalawilliam.com" target="_blank" title="E-mail"
+                >hello@scalawilliam.com</a>.</li>
+            </ul>
 	</section>
     </div>
 
@@ -132,10 +126,6 @@ require(dirname(__FILE__).DIRECTORY_SEPARATOR."shared".DIRECTORY_SEPARATOR."rend
                 </li>
                 <li><a target="_blank" href="http://pastebox.sf.net">PasteBox: Minimalist PHP Pastebin</a>
                 <span class="time">February 2007 to July 2009</span>
-                </li>
-
-                <li><a href="http://www.milanohousecurtains.co.uk/" target="_blank">Milano House Curtains</a>
-                <span class="time">August 2012 to now</span>
                 </li>
             </ul>
         </section>

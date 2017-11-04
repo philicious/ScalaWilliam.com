@@ -7,6 +7,7 @@ It's mostly done with [PHP](http://php.net/). You need PHP 7 installed.
 ```
 $ git clone git@github.com:ScalaWilliam/ScalaWilliam.com.git sw
 $ cd sw
+$ composer install
 $ php -S localhost:8111 router.php
 ```
 
