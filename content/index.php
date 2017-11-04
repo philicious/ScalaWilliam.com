@@ -28,6 +28,7 @@ require(dirname(__FILE__).'/../shared/render.inc.php');
 <dd>GitHub Pull Request: <a href="https://github.com/scalameta/sbt-macro-example/pull/4">scalameta/sbt-macro-example: Fix broken link to macro annotations in tutorial</a></dd>
 <dd>GitHub Pull Request: <a href="https://github.com/scalameta/sbt-semantic-example/pull/5">scalameta/sbt-semantic-example: Update README</a></dd>
 <dd>GitHub Issue: <a href="https://github.com/nidi3/graphviz-java/issues/21">nidi3/graphviz-java: JDK8 engine not supported?</a></dd>
+<dd>GitHub Issue: <a href="https://github.com/pauldijou/jwt-scala/issues/60">pauldijou/jwt-scala: request.jwtSession should be an Option?</a></dd>
 
       <dt>May 2017</dt>
       <dd>Quora answer: <a href="https://www.quora.com/What-IDE-can-I-comfortably-use-Python-on-Mac/answer/William-Narmontas">What IDE can I comfortably use Python on Mac?</a></dd>
